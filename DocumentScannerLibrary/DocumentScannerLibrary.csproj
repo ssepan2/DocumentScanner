@@ -132,6 +132,7 @@
     <None Include="Resources\BoxEmpty.png" />
     <None Include="Resources\BoxFull.png" />
     <None Include="Resources\DocumentScanner.bmp" />
+    <Content Include="License.txt" />
     <Content Include="Resources\Download.png" />
     <None Include="Resources\List.png" />
     <Content Include="Resources\ListSplitAbove.png" />

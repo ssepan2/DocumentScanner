@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\DocumentScanner.ico" />
+    <Content Include="License.txt" />
     <Content Include="settings\test.documentscannerserver">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
