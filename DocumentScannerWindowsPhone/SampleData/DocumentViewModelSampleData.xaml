@@ -1,0 +1,12 @@
+<local:DocumentViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DocumentScannerWindowsPhone" 
+    >
+
+    <local:DocumentViewModel.Document>
+        <local:DocumentModel ID="4caed53a-bfd0-4ac5-a63e-2c175cb22071" Description="document 1" DocumentType="DocumentType1" Filename="0.jpg" FilePath="/DocumentScannerWindowsPhone;component/SampleData/0.JPG"/>
+        <!---->
+    </local:DocumentViewModel.Document>
+    
+</local:DocumentViewModel>

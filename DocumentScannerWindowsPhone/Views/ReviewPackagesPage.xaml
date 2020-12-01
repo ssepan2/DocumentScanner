@@ -1,0 +1,98 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="DocumentScannerWindowsPhone.ReviewPackagesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    d:DataContext="{d:DesignData /SampleData/ReviewPackagesViewModelSampleData.xaml}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    >
+
+    <!--Data context is set to sample data above and LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <Border Grid.Row="0" Style="{StaticResource SectionBorderBottomStyle}">
+            <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,12,0,0">
+                <TextBlock x:Name="ApplicationTitle" Text="DocumentScanner Phone" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                <TextBlock x:Name="PageTitle" Text="Review Packages" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle2Style }"/>
+            </StackPanel>
+        </Border>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--<Border Grid.Row="1" Style="{StaticResource SectionBorderBottomStyle}">-->
+            <StackPanel x:Name="CompletedTitlePanel" Grid.Row="1" Margin="12,12,0,0">
+                <TextBlock x:Name="CompletedPageTitle" Text="Completed:" Style="{StaticResource PhoneTextSubtleStyle}"/>
+            </StackPanel>
+        <!--</Border>-->
+
+        <!--DocumentsPanel contains ListBox and ListBox ItemTemplate. Place additional content here-->
+        <Border Grid.Row="2" Style="{StaticResource SectionBorderBottomStyle}">
+        <Grid x:Name="CompletedPackagesPanel"  Margin="12,12,12,0">
+            <ListBox x:Name="CompletedPackageListBox" Margin="0,0,-12,0" ItemsSource="{Binding CompletedPackages}" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" SelectedIndex="{Binding Path=CompletedDetailIndex, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                      <StackPanel Margin="0,0,0,12" Width="432">
+                            <TextBlock x:Name="CompletedItemName" Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                            <!--<TextBlock x:Name="ItemDescription" Text="{Binding Description}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>-->
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        </Border>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--<Border Grid.Row="3" Style="{StaticResource SectionBorderBottomStyle}">-->
+            <StackPanel x:Name="FailedTitlePanel" Grid.Row="3" Margin="12,12,0,0">
+                <TextBlock x:Name="FailedPageTitle" Text="Failed:" Style="{StaticResource PhoneTextSubtleStyle}"/>
+            </StackPanel>
+        <!--</Border>-->
+
+        <!--DocumentsPanel contains ListBox and ListBox ItemTemplate. Place additional content here-->
+        <Border Grid.Row="4" Style="{StaticResource SectionBorderBottomStyle}">
+        <Grid x:Name="FailedPackagesPanel"  Margin="12,12,12,0">
+            <ListBox x:Name="FailedPackageListBox" Margin="0,0,-12,0" ItemsSource="{Binding FailedPackages}" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" SelectedIndex="{Binding Path=FailedDetailIndex, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                      <StackPanel Margin="0,0,0,12" Width="432">
+                            <TextBlock x:Name="FailedItemName" Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                            <!--<TextBlock x:Name="ItemDescription" Text="{Binding Description}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>-->
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        </Border>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="StatusPanel" Grid.Row="5" Margin="12,12,0,0">
+            <TextBlock x:Name="StatusMessage" Text="{Binding StatusMessage}" Margin="0,-7,0,0"  Style="{StaticResource TextBoxStatusMessageStyle}"/>
+            <TextBlock x:Name="ErrorMessage" Text="{Binding ErrorMessage}" Margin="0,-7,0,0" Style="{StaticResource TextBoxErrorMessageStyle}"/>
+        </StackPanel>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" >
+            <shell:ApplicationBar.MenuItems>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

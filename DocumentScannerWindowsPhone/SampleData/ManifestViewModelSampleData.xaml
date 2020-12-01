@@ -1,0 +1,29 @@
+<local:ManifestViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DocumentScannerWindowsPhone" 
+    
+    DetailIndex="-1"
+    >
+
+    <local:ManifestViewModel.Manifest>
+        <local:ManifestModel 
+            ID="06024141-4789-4330-8ae6-cf99ead9a5fc" 
+            Description="some Manifest" >
+
+            <local:ManifestModel.Documents>
+                <local:DocumentModel ID="4caed53a-bfd0-4ac5-a63e-2c175cb22071" Description="document 1" DocumentType="DocumentType1" Filename="0.jpg"/>
+                <local:DocumentModel ID="00fefd69-738c-4b63-826e-c8db48297a5f" Description="document 2" DocumentType="DocumentType2" Filename="1.jpg"/>
+                <local:DocumentModel ID="bd527137-d669-485d-bda2-7e7718f3abf8" Description="document 3" DocumentType="DocumentType3" Filename="2.jpg"/>
+                <local:DocumentModel ID="a2a08c5e-ab1f-4443-ade1-64577c92d94c" Description="document 4" DocumentType="DocumentType1" Filename="3.jpg"/>
+                <local:DocumentModel ID="d4c80864-28ec-4c91-b5c5-899c7c9133c2" Description="document 5" DocumentType="DocumentType2" Filename="4.jpg"/>
+                <local:DocumentModel ID="0c320e67-9e39-4ad6-8e1e-54eb895a94ca" Description="document 6" DocumentType="DocumentType3" Filename="5.jpg"/>
+
+            </local:ManifestModel.Documents>
+        </local:ManifestModel>
+
+
+        </local:ManifestViewModel.Manifest>
+    
+    
+</local:ManifestViewModel>

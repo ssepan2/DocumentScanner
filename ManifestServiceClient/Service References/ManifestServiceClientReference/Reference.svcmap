@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a49625eb-5280-46c1-92b6-c0a692141478" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:53408/PackageManifestService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PackageManifestService.xsd" MetadataType="Schema" ID="a9e6a853-8818-4ba0-97a6-42cbb1d38df8" SourceId="1" SourceUrl="http://localhost:53408/PackageManifestService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PackageManifestService1.xsd" MetadataType="Schema" ID="57800dc4-9b5f-4f13-9cfd-4ea054000ca7" SourceId="1" SourceUrl="http://localhost:53408/PackageManifestService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PackageManifestService2.xsd" MetadataType="Schema" ID="e5471bca-29d4-4362-937f-ffeb8e778778" SourceId="1" SourceUrl="http://localhost:53408/PackageManifestService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PackageManifestService.wsdl" MetadataType="Wsdl" ID="408d68fc-5505-4fb6-8f27-e762d3636737" SourceId="1" SourceUrl="http://localhost:53408/PackageManifestService.svc?wsdl" />
+    <MetadataFile FileName="PackageManifestService.disco" MetadataType="Disco" ID="7d65b31e-9327-4c14-812c-b59adca938b5" SourceId="1" SourceUrl="http://localhost:53408/PackageManifestService.svc?disco" />
+    <MetadataFile FileName="PackageManifestService3.xsd" MetadataType="Schema" ID="58f0ea0a-f0d7-459b-b101-54cfdecf6337" SourceId="1" SourceUrl="http://localhost:53408/PackageManifestService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

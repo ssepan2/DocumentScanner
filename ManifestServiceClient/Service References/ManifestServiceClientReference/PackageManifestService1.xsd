@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfPackageManifest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PackageManifest" nillable="true" type="tns:PackageManifest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPackageManifest" nillable="true" type="tns:ArrayOfPackageManifest" />
+  <xs:complexType name="PackageManifest">
+    <xs:sequence>
+      <xs:element name="_Count" type="xs:int" />
+      <xs:element name="_Description" nillable="true" type="xs:string" />
+      <xs:element name="_DocumentFiles" nillable="true" type="tns:ArrayOfImageFile" />
+      <xs:element name="_ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="_OperatorId" nillable="true" type="xs:string" />
+      <xs:element name="_TransactionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PackageManifest" nillable="true" type="tns:PackageManifest" />
+  <xs:complexType name="ArrayOfImageFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ImageFile" nillable="true" type="tns:ImageFile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImageFile" nillable="true" type="tns:ArrayOfImageFile" />
+  <xs:complexType name="ImageFile">
+    <xs:sequence>
+      <xs:element name="_Description" nillable="true" type="xs:string" />
+      <xs:element name="_DocumentType" nillable="true" type="xs:string" />
+      <xs:element name="_Filename" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageFile" nillable="true" type="tns:ImageFile" />
+</xs:schema>

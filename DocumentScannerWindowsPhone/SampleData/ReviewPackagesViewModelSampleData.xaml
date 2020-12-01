@@ -1,0 +1,22 @@
+<local:ReviewPackagesViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DocumentScannerWindowsPhone" 
+    
+    CompletedDetailIndex="-1"
+    FailedDetailIndex="-1"
+    >
+
+    <local:ReviewPackagesViewModel.CompletedPackages>
+        <local:PackageModel Name = "5f6a7637-f956-4ec8-b99d-34cedb4e7099"/>
+        <local:PackageModel Name = "1c3dee6c-5975-490a-8738-cb4302d048df"/>
+        <local:PackageModel Name = "0ea94cce-f9d7-467a-8ac7-a2c9b627bd58"/>
+    </local:ReviewPackagesViewModel.CompletedPackages>
+
+    <local:ReviewPackagesViewModel.FailedPackages>
+        <local:PackageModel Name = "84c75ed4-fdc0-4327-84ca-aa87a9087d5f"/>
+        <local:PackageModel Name = "4f3d1b7b-8621-409d-b6f0-62d50e90ac8a"/>
+        <local:PackageModel Name = "b868f2c5-97fc-4c2a-86eb-0c4d7f451b46"/>
+    </local:ReviewPackagesViewModel.FailedPackages>
+    
+</local:ReviewPackagesViewModel>

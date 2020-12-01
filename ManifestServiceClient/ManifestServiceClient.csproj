@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C3A24AA4-6FC2-4F0D-988A-91DA25B74FE1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ManifestServiceClient</RootNamespace>
+    <AssemblyName>ManifestServiceClient</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ManifestService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ManifestServiceClientReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.ImageFile.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.ImageFile1.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.ImageFile2.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.ImageFile3.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.ImageFile4.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.ImageFileBase.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.ImageFileBase1.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifest.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifest1.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase1.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase2.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase3.datasource" />
+    <None Include="Service References\ManifestServiceClientReference\PackageManifestService.wsdl" />
+    <None Include="Service References\ManifestServiceClientReference\PackageManifestService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ManifestServiceClientReference\PackageManifestService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ManifestServiceClientReference\PackageManifestService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ManifestServiceClientReference\PackageManifestService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj">
+      <Project>{9c11d8dd-e335-4fe3-aae6-5c3b17732890}</Project>
+      <Name>Ssepan.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
+      <Project>{0322295B-89F7-484C-B89F-7B0C56BA0E23}</Project>
+      <Name>DocumentScannerCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentScannerServiceCommon\DocumentScannerServiceCommon.csproj">
+      <Project>{ba9dbd80-24bc-4622-a029-df0cc9fbfd8c}</Project>
+      <Name>DocumentScannerServiceCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ManifestServiceClientReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ManifestServiceClientReference\PackageManifestService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ManifestServiceClientReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ManifestServiceClientReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ManifestServiceClientReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

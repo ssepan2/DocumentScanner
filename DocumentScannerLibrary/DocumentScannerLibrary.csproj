@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{83BDDE74-8E40-4751-B9EA-2DFEB03157D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocumentScannerLibrary</RootNamespace>
+    <AssemblyName>DocumentScannerLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images\DocumentScanner.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MVC\DSController.cs" />
+    <Compile Include="MVC\DSModel.cs" />
+    <Compile Include="MVC\Settings.cs" />
+    <Compile Include="MVC\DSSettingsController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ssepan.Application\Ssepan.Application.csproj">
+      <Project>{c69040cf-5acd-4f55-8540-49fb7c2a7aa2}</Project>
+      <Name>Ssepan.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Collections\Ssepan.Collections.csproj">
+      <Project>{07E139E8-739C-41C7-A53A-6AF3288B7B83}</Project>
+      <Name>Ssepan.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Compression\Ssepan.Compression.csproj">
+      <Project>{5F92C0BD-E954-49C4-A3ED-B0703819211A}</Project>
+      <Name>Ssepan.Compression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Io\Ssepan.Io.csproj">
+      <Project>{9EFE2EC6-F48E-4E4E-927F-068B54210E09}</Project>
+      <Name>Ssepan.Io</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Transaction\Ssepan.Transaction.csproj">
+      <Project>{B3EEA538-82CF-445E-B55B-89ADDAF3A6E3}</Project>
+      <Name>Ssepan.Transaction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj">
+      <Project>{9c11d8dd-e335-4fe3-aae6-5c3b17732890}</Project>
+      <Name>Ssepan.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TwainLib\TwainLib.csproj">
+      <Project>{908F1FE0-BDB6-47AD-85A2-7868B7EEE871}</Project>
+      <Name>TwainLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
+      <Project>{0322295B-89F7-484C-B89F-7B0C56BA0E23}</Project>
+      <Name>DocumentScannerCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ManifestServiceClient\ManifestServiceClient.csproj">
+      <Project>{C3A24AA4-6FC2-4F0D-988A-91DA25B74FE1}</Project>
+      <Name>ManifestServiceClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferServiceClient\TransferServiceClient.csproj">
+      <Project>{E7EE228C-54B2-4DA2-AE4C-7B0D3AE92A93}</Project>
+      <Name>TransferServiceClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\DocumentScanner.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Above.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Below.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Upload.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\BoxEmpty.png" />
+    <None Include="Resources\BoxFull.png" />
+    <None Include="Resources\DocumentScanner.bmp" />
+    <Content Include="Resources\Download.png" />
+    <None Include="Resources\List.png" />
+    <Content Include="Resources\ListSplitAbove.png" />
+    <Content Include="Resources\ListSplitBelow.png" />
+    <Content Include="Resources\Network.png" />
+    <None Include="Resources\no_document_selected.png" />
+    <None Include="Resources\no_image_loaded.png" />
+    <None Include="Resources\no_image_present.png" />
+    <Content Include="Resources\Package.png" />
+    <None Include="Resources\RotateCCW.png" />
+    <None Include="Resources\RotateCW.png" />
+    <Content Include="Resources\Scan.png" />
+    <None Include="Resources\Top.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Rewind.png" />
+    <None Include="Resources\Properties.png" />
+    <None Include="Resources\Print.png" />
+    <None Include="Resources\Open.png" />
+    <None Include="Resources\New.png" />
+    <None Include="Resources\Forward.png" />
+    <None Include="Resources\FastRewind.png" />
+    <None Include="Resources\FastForward.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

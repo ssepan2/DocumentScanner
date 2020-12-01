@@ -1,0 +1,15 @@
+<local:QueuedPackagesViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DocumentScannerWindowsPhone" 
+    
+    DetailIndex="-1"
+    >
+
+    <local:QueuedPackagesViewModel.Packages>
+        <local:PackageModel Name = "36e22f9e-42f1-46a5-bac9-16de54ec352a"/>
+        <local:PackageModel Name = "e4f8e525-3618-4607-ad0c-81f88e1b6106"/>
+        <local:PackageModel Name = "461cd15c-6441-43f6-899a-3613eb3e9512"/>
+    </local:QueuedPackagesViewModel.Packages>
+    
+</local:QueuedPackagesViewModel>
