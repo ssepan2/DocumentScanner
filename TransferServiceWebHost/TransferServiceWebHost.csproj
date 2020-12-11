@@ -81,10 +81,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
-      <Project>{0322295B-89F7-484C-B89F-7B0C56BA0E23}</Project>
-      <Name>DocumentScannerCommon</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TransferServiceServer\TransferServiceServer.csproj">
       <Project>{B6B17947-5248-42CE-A960-948F1D1C17F6}</Project>
       <Name>TransferServiceServer</Name>
