@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
 using Ssepan.Collections;
 using Ssepan.Graphics;
 using Ssepan.Utility;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace DocumentScannerCommon
 {
@@ -23,6 +23,7 @@ namespace DocumentScannerCommon
     {
         #region Declarations
         public const String IMAGE_FILE_TYPE = "jpg";
+        public const String FILE_EXTENSION = ".jpg";
         public static readonly ImageFormat IMAGE_FORMAT = ImageFormat.Jpeg; 
         #endregion Declarations
 

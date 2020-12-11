@@ -14,8 +14,6 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using Ssepan.Application;
-using Ssepan.Application.WinConsole;
-using Ssepan.Application.WinForms;
 using Ssepan.Collections;
 using Ssepan.Graphics;
 using Ssepan.Io;

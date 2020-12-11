@@ -1,105 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AF8182DE-5FEF-4594-8A75-24F4AC7D8590}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DocumentScannerServerLibrary</RootNamespace>
-    <AssemblyName>DocumentScannerServerLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>images\DocumentScanner.ico</ApplicationIcon>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="DSServerController.cs" />
-    <Compile Include="DSServerModel.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Ssepan.Application\Ssepan.Application.csproj">
-      <Project>{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}</Project>
-      <Name>Ssepan.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Collections\Ssepan.Collections.csproj">
-      <Project>{07E139E8-739C-41C7-A53A-6AF3288B7B83}</Project>
-      <Name>Ssepan.Collections</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Compression\Ssepan.Compression.csproj">
-      <Project>{5F92C0BD-E954-49C4-A3ED-B0703819211A}</Project>
-      <Name>Ssepan.Compression</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Io\Ssepan.Io.csproj">
-      <Project>{9EFE2EC6-F48E-4E4E-927F-068B54210E09}</Project>
-      <Name>Ssepan.Io</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Transaction\Ssepan.Transaction.csproj">
-      <Project>{B3EEA538-82CF-445E-B55B-89ADDAF3A6E3}</Project>
-      <Name>Ssepan.Transaction</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj">
-      <Project>{9c11d8dd-e335-4fe3-aae6-5c3b17732890}</Project>
-      <Name>Ssepan.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
-      <Project>{0322295B-89F7-484C-B89F-7B0C56BA0E23}</Project>
-      <Name>DocumentScannerCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\TransferServerBusiness\TransferServerBusiness.csproj">
-      <Project>{F98761B0-94C5-42E6-AB3D-5277D1856CE5}</Project>
-      <Name>TransferServerBusiness</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="images\DocumentScanner.ico" />
-    <Content Include="License.txt" />
-    <Content Include="settings\test.documentscannerserver">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

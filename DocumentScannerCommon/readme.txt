@@ -73,6 +73,9 @@ Enhancements:
 ~TODO:consolidate delete wait time settings name, location
 
 0.12:
+~Updated Ssepan.* to 2.6
+~update to Framework 4.8
+~convert to SDK style project
 ~Fixed issued in VS2015 where List<T> is returned as U[], by forcing return of generic list in WCF client proxy config (compile error remains, see next).
 ~Fixed compile error in VS2015 where List<T> is still returned as List<U>; moved service contract interfaces into new project DocumentScannerServiceCommon and Updated config files to reflect change.
 ~Fixed compile error in VS2015 where static SettingsBase properties had to be accessed directly instead of through property on SettingsController<T>.
