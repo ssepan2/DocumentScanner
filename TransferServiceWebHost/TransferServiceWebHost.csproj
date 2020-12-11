@@ -81,12 +81,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TransferServiceServer\TransferServiceServer.csproj">
-      <Project>{B6B17947-5248-42CE-A960-948F1D1C17F6}</Project>
-      <Name>TransferServiceServer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web.config.wsonly">
       <SubType>Designer</SubType>
     </None>
