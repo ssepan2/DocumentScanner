@@ -52,7 +52,7 @@ namespace DocumentScannerLibrary
         //Note:TModel Model exists in base
         #endregion Properties
 
-        #region Methods
+        #region Scanner Methods
         /// <summary>
         /// The Controller method for acquiring captured images from Twain device.
         /// Trigger a Twain Transfer of images to a List(Of Image) in ScannedImages, 
@@ -188,6 +188,11 @@ namespace DocumentScannerLibrary
             return returnValue;
         }
 
+        #endregion
+
+        #region Methods
+
+        #region Document Methods
         /// <summary>
         /// Search until end or until another item found; swap in latter case.
         /// </summary>
@@ -255,7 +260,9 @@ namespace DocumentScannerLibrary
             }
             return returnValue;
         }
+        # endregion Document Methods
 
+        #region Other Methods
         /// <summary>
         /// Return path of transaction image data folder under transaction data path.
         /// </summary>
@@ -411,7 +418,9 @@ namespace DocumentScannerLibrary
             }
             return returnValue;
         }
+        #endregion Other Methods
 
+        #region Send Receive Methods
         /// <summary>
         /// Transfer queued packages.
         /// Should only be called if PackagesQueued is true.
@@ -499,6 +508,7 @@ namespace DocumentScannerLibrary
 
                     //push package
                     Log.Write(String.Format("Sending {0}", transactionFolders.WorkingFile), EventLogEntryType.Information);
+                    //TODO:add Transfer Client Business layer to solution and call Transfer.PushFile
                     pushResult = 
                         PushPackageFile
                         (
@@ -612,6 +622,7 @@ namespace DocumentScannerLibrary
                 Log.Write(String.Format("Receiving Transaction ID: '{0}'", transactionId), EventLogEntryType.Information);
                 if 
                 (
+                    //TODO:add Transfer Client Business layer to solution and call Transfer.PullFile
                     !PullPackageFile
                     (
                         transactionId, 
@@ -691,7 +702,9 @@ namespace DocumentScannerLibrary
             }
             return returnValue;
         }
+        #endregion Send Receive Methods
 
+        #region Manifest Methods
         /// <summary>
         /// Confirm Manifests.
         /// State of settings is not a consideration.
@@ -792,7 +805,9 @@ namespace DocumentScannerLibrary
             }
             return returnValue;
         }
+        #endregion Manifest Methods
 
+        #region Package Methods
         /// <summary>
         /// UnPackage documents and manifest so that they can be edited.
         /// Should only be called for packages that failed to Send.
@@ -1066,7 +1081,9 @@ namespace DocumentScannerLibrary
             }
             return returnValue;
         }
+        #endregion Package Methods
 
+        #region Menu Methods
         ///// <summary>
         ///// Custom override of SettingsController(Of TSettings).New(); manages data file and data folder.
         ///// </summary>
@@ -1254,6 +1271,7 @@ namespace DocumentScannerLibrary
         //        throw;
         //    }
         //}
+        #endregion Menu Methods
 
         #region Transfer Service
         /// <summary>
@@ -1267,6 +1285,7 @@ namespace DocumentScannerLibrary
             Boolean returnValue = default(Boolean);
             try
             {
+                //TODO:add Transfer Client Business layer to solution and call Transfer.Ping
                 TransferService.EndpointConfigurationName = endpointConfigurationName;
                 if (!TransferService.Ping(ref errorMessage))
                 {
@@ -1547,7 +1566,6 @@ namespace DocumentScannerLibrary
             return returnValue;
         }
         #endregion Manifest Service
-        #endregion Methods
 
         #region private methods
         /// <summary>
@@ -1912,5 +1930,6 @@ namespace DocumentScannerLibrary
             return returnValue;
         }
         #endregion private methods
+        #endregion Methods
     }
 }

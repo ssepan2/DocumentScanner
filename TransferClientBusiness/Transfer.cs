@@ -125,6 +125,9 @@ namespace TransferClientBusiness
                     throw new Exception(String.Format("Transfer Client Business is unable to Push file to Transfer Service Client: {0}\nID: {1}\nFilename: {2}", errorMessage, id, filePath));
                 }
 
+                //delete package file after upload
+                System.IO.File.Delete(filePath);
+
                 returnValue = true;
             }
             catch (Exception ex)

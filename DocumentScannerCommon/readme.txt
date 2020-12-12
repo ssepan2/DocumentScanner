@@ -57,7 +57,7 @@ On the server side, packages are processed as one or more are detected in a the 
 Packages that have been processed may be viewed in the Confirm tab. Select a date to view and click 'List Manifests'. Manifest information will populate the grid to the left, and right-clicking each will pop up a menu with a menu choice 'List Documents', which will populate the grid to the right with document information. (Note: Images on the server are not displayed at this time.)
 Packages that have failed to Send can now be un-packaged for editing and correction. Un-packaged data will produce a settings file of <transactionid>.documentscanner.
 UnPackaged packages can be edited and can be split into two smaller package settings definitions to help with packages that fail due to their size. In the Scan tab, select a row, right click, and select 'Split Package Above' or 'Split Package Below' to split above or below the selected row, respectively. The portion below will retain the original name and transaction id. The portion above will be assigned a new name and transaction id, and will the one left open in the editor when the split is complete. Note: UnPackage is only available from the Failed list on the Review tab; is is not available from the Queued list on the Send tab.
-Manifests can be queued on the server by an administrator (manual process for now) so that the client can pull the data as a package and open it. The unpackaged manifest adn images-folder are places in the server Data\<user>\<send>\ folder, where 'user' is a folder named with the operator id, and 'send' is a folder name defined by the UserSendFolder setting in the web config file. The user can view available manifests in the new Receive tab, and can right click a manifest and choose 'Receive'. This will trigger th eserver logic to package the manifest and images-folder, and transmit it back to the client. The package will then be unpackaged and opened in the client.
+Manifests can be queued on the server by an administrator (manual process for now) so that the client can pull the data as a package and open it. The unpackaged manifest and images-folder are placed in the server Data\<user>\<send>\ folder, where 'user' is a folder named with the operator id, and 'send' is a folder name defined by the UserSendFolder setting in the web config file. The user can view available manifests in the new Receive tab, and can right click a manifest and choose 'Receive'. This will trigger th eserver logic to package the manifest and images-folder, and transmit it back to the client. The package will then be unpackaged and opened in the client.
 
 Enhancements:
 0.Next: (PLANNED)
@@ -73,7 +73,7 @@ Enhancements:
 ~TODO:consolidate delete wait time settings name, location
 
 0.12:
-~Updated Ssepan.* to 2.6
+~Updated Ssepan.* to 2.7
 ~update to Framework 4.8
 ~convert to SDK style project
 ~Fixed issued in VS2015 where List<T> is returned as U[], by forcing return of generic list in WCF client proxy config (compile error remains, see next).
