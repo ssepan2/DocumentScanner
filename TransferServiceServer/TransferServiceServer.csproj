@@ -4,13 +4,9 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Ssepan.Application\Ssepan.Application.csproj">
-    </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj">
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerServerLibrary\DocumentScannerServerLibrary.csproj">
-    </ProjectReference>
-    <ProjectReference Include="..\DocumentScannerServiceCommon\DocumentScannerServiceCommon.csproj">
     </ProjectReference>
     <ProjectReference Include="..\TransferServerBusiness\TransferServerBusiness.csproj">
     </ProjectReference>

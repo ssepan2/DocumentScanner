@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
+using System.Reflection;
 using System.Text;
-using Ssepan.Application;
+//using Ssepan.Application;
 using Ssepan.Utility;
 using TransferServerBusiness;
 using DocumentScannerServerLibrary;
-using DocumentScannerServiceCommon;
-using System.Diagnostics;
-using System.Reflection;
+//using DocumentScannerServiceCommon;
 
 namespace TransferServiceServer
 {
@@ -22,7 +22,7 @@ namespace TransferServiceServer
 
         public FileTransferService()
         { 
-            //TODO:find way to move DSServerController assignment out of TransferServiceServer
+            //TODO:find way to move DSServerController assignment out of TransferServiceServer, so that these delegates can be injected somehow
             TransferServerBusiness.Transfer.pushDelegate = DSServerController<DSServerModel>.PushFile;
             TransferServerBusiness.Transfer.pullDelegate = DSServerController<DSServerModel>.PullFile;
         }
