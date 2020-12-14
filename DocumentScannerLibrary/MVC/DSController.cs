@@ -508,9 +508,8 @@ namespace DocumentScannerLibrary
 
                     //push package
                     Log.Write(String.Format("Sending {0}", transactionFolders.WorkingFile), EventLogEntryType.Information);
-                    //TODO:add Transfer Client Business layer to solution and call Transfer.PushFile
                     pushResult = 
-                        PushPackageFile
+                        TransferClientBusiness.Transfer.PushFile
                         (
                             transactionFolders.ID, 
                             SettingsController<Settings>.Settings.Manifest.OperatorId, 
@@ -622,8 +621,7 @@ namespace DocumentScannerLibrary
                 Log.Write(String.Format("Receiving Transaction ID: '{0}'", transactionId), EventLogEntryType.Information);
                 if 
                 (
-                    //TODO:add Transfer Client Business layer to solution and call Transfer.PullFile
-                    !PullPackageFile
+                    !TransferClientBusiness.Transfer.PullFile
                     (
                         transactionId, 
                         operatorId,
@@ -1273,129 +1271,10 @@ namespace DocumentScannerLibrary
         //}
         #endregion Menu Methods
 
-        #region Transfer Service
-        /// <summary>
-        /// Call Service Ping test
-        /// </summary>
-        /// <param name="endpointConfigurationName"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static Boolean PingTransferService(String endpointConfigurationName, ref String errorMessage)
-        {
-            Boolean returnValue = default(Boolean);
-            try
-            {
-                //TODO:add Transfer Client Business layer to solution and call Transfer.Ping
-                TransferService.EndpointConfigurationName = endpointConfigurationName;
-                if (!TransferService.Ping(ref errorMessage))
-                {
-                    throw new Exception(String.Format("Transfer Client Business is unable to Ping Transfer Service Client: {0}", errorMessage));
-                }
-
-                returnValue = true;
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Perform business logic for client side of pull; receive the bytes and store a file.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="operatorId"></param>
-        /// <param name="filePath">Filename with path. Path will reflect configuration 'PullReceivePath'. </param>
-        /// <param name="endpointConfigurationName"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static Boolean PullPackageFile(String id, String operatorId, String filePath, String endpointConfigurationName, ref String errorMessage)
-        {
-            Boolean returnValue = default(Boolean);
-            Byte[] bytes = default(Byte[]);
-            String filename = default(String);
-            String receivePath = default(String);
-            String tempFilePath = default(String);
-            String packageFilePath = default(String);
-
-            try
-            {
-                //Path must be stripped from filename for use in service.
-                receivePath = Path.GetDirectoryName(filePath);
-                filename = Path.GetFileName(filePath);
-
-                //call service to receive bytes
-                TransferService.EndpointConfigurationName = endpointConfigurationName;
-                if (!TransferService.Pull(id, operatorId, filename, ref bytes, ref errorMessage))
-                {
-                    throw new Exception(String.Format("Transfer Client Business is unable to Pull file from Transfer Service Client: {0}\nID: {1}\nFilename: {2}", errorMessage, id, filename));
-                }
-
-                //get temp file path and write bytes to temp file
-                tempFilePath = Path.Combine(receivePath, String.Format("{0}.{1}", Path.GetFileNameWithoutExtension(filename), DocumentScannerCommon.Package.TEMP_FILE_TYPE));
-                if (!Files.Write(tempFilePath, bytes))
-                {
-                    throw new Exception(String.Format("Transfer Client Business is unable to write file to client: {0}\nID: {1}\ntemp file path: {2}", errorMessage, id, tempFilePath));
-                }
-
-                //get package file path and rename temp file
-                packageFilePath = Path.Combine(receivePath, filename);
-                System.IO.File.Move(tempFilePath, packageFilePath);
-
-                returnValue = true;
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Perform business logic for client side of push; load a file and send the bytes.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="operatorId"></param>
-        /// <param name="filePath">Filename with path. Path will reflect configuration 'PushSendPath'. </param>
-        /// <param name="endpointConfigurationName"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static Boolean PushPackageFile(String id, String operatorId, String filePath, String endpointConfigurationName, ref String errorMessage)
-        {
-            Boolean returnValue = default(Boolean);
-            Byte[] bytes = default(Byte[]);
-
-            try
-            {
-                //load file bytes from client
-                if (!Files.Read(filePath, ref bytes))
-                {
-                    throw new Exception(String.Format("Unable to read file from client: {0}\nID: {1}\nFilename: {2}", errorMessage, id, filePath));
-                }
-
-                //call service to send bytes
-                //Path must be stripped from filename for use in service.
-                TransferService.EndpointConfigurationName = endpointConfigurationName;
-                if (!TransferService.Push(id, operatorId, Path.GetFileName(filePath), bytes, ref errorMessage))
-                {
-                    throw new Exception(String.Format("Transfer Client Business is unable to Push file to Transfer Service Client: {0}\nID: {1}\nFilename: {2}", errorMessage, id, filePath));
-                }
-
-                returnValue = true;
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-        #endregion Transfer Service
 
         #region Manifest Service
 
+        //TODO:move to ManifestClientBusiness; no callers to redirect
         /// <summary>
         /// Call Service Ping test
         /// </summary>
@@ -1422,6 +1301,7 @@ namespace DocumentScannerLibrary
             return returnValue;
         }
 
+        //TODO:move to ManifestClientBusiness; ConfirmManifestsInBackground caller to redirect
         /// <summary>
         /// Perform business logic for client side of manifest query; receive the list and convert.
         /// Given the Operator ID and the specified date, 
@@ -1458,6 +1338,7 @@ namespace DocumentScannerLibrary
             return returnValue;
         }
 
+        //TODO:move to ManifestClientBusiness; no caller to redirect
         /// <summary>
         /// Perform business logic for client side of document query; receive list as-is.
         ///Given the Operator ID, a Transaction ID, and the specified date, 
@@ -1496,6 +1377,7 @@ namespace DocumentScannerLibrary
             return returnValue;
         }
 
+        //TODO:move to ManifestClientBusiness; AvailableManifestsInBackground caller to redirect
         /// <summary>
         /// Perform business logic for client side of manifest query; receive the list and convert.
         /// Given the Operator ID and the specified date, 
@@ -1529,7 +1411,9 @@ namespace DocumentScannerLibrary
             }
             return returnValue;
         }
-        //TODO:is this call-layer needed? can endpoint config be done by caller (also in ctrlr)
+        //TODO:is this call-layer needed? can endpoint config be done by caller (also in ctrlr) (2009)
+        //TODO:No, this layer belongs in as-yet unwritten ManifestClientBusiness (2020)
+        //TODO:move to ManifestClientBusiness; ? caller to redirect
         /// <summary>
         /// Perform business logic for client side of document query; receive list as-is.
         ///Given the Operator ID, a Transaction ID, and the specified date, 

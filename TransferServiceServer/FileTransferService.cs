@@ -7,11 +7,9 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.Reflection;
 using System.Text;
-//using Ssepan.Application;
 using Ssepan.Utility;
 using TransferServerBusiness;
 using DocumentScannerServerLibrary;
-//using DocumentScannerServiceCommon;
 
 namespace TransferServiceServer
 {

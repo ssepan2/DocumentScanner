@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
-using System.Text;
-using System.Diagnostics;
 using System.Reflection;
+using System.Text;
 using Ssepan.Utility;
 using DocumentScannerCommon;
 using DocumentScannerServiceCommon;
