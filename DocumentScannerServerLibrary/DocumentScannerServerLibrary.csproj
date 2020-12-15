@@ -18,7 +18,5 @@
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
     </ProjectReference>
-    <ProjectReference Include="..\TransferServerBusiness\TransferServerBusiness.csproj">
-    </ProjectReference>
   </ItemGroup>
 </Project>

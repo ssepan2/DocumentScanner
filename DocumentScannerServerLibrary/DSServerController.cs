@@ -22,7 +22,6 @@ namespace DocumentScannerServerLibrary
             class,
             IModel,
             new()
-            //TODO:ITransfer,
     {
         #region Declarations
         #endregion Declarations
@@ -104,9 +103,10 @@ namespace DocumentScannerServerLibrary
             return returnValue;
         }
 
-        #region ITransferServerBusiness
+        #region TransferServerBusiness.ITransfer
         /// <summary>
         /// Perform business logic for server side of pull; takes a filename, loads a file, and returns the bytes.
+        /// Used as delegate method in TransferServerBusiness.Transfer for use by TransferServerServer.FileTransferService.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="operatorId"></param>
@@ -243,6 +243,7 @@ namespace DocumentScannerServerLibrary
 
         /// <summary>
         /// Perform business logic for server side of push; takes the bytes and store a file.
+        /// Used as delegate method in TransferServerBusiness.Transfer for use by TransferServerServer.FileTransferService.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="operatorId"></param>
@@ -285,12 +286,14 @@ namespace DocumentScannerServerLibrary
             }
             return returnValue;
         }
-        #endregion ITransferServerBusiness
+        #endregion TransferServerBusiness.ITransfer
 
-        #region ManifestBusiness
+        #region IManifestBusiness.IManifest
+        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID and the specified date, 
         /// return a List(Of PackageManifest) from the server.
+        /// Used as delegate method in ManifestServerBusiness.Manifest for use by ManifestServiceServer.PackageManifestService.
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="date"></param>
@@ -355,9 +358,11 @@ namespace DocumentScannerServerLibrary
             return returnValue;
         }
 
+        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID, a Transaction ID, and the specified date, 
         /// return a List(Of ImageFile) from the server.
+        /// Used as delegate method in ManifestServerBusiness.Manifest for use by ManifestServiceServer.PackageManifestService.
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="transactionId"></param>
@@ -411,9 +416,11 @@ namespace DocumentScannerServerLibrary
             return returnValue;
         }
 
+        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID and the operator id, 
         /// return a List(Of PackageManifest) from the server.
+        /// Used as delegate method in ManifestServerBusiness.Manifest for use by ManifestServiceServer.PackageManifestService.
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="date"></param>
@@ -479,9 +486,11 @@ namespace DocumentScannerServerLibrary
             return returnValue;
         }
 
+        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID, a Transaction ID, and the operator id, 
         /// return a List(Of ImageFile) from the server.
+        /// Used as delegate method in ManifestServerBusiness.Manifest for use by ManifestServiceServer.PackageManifestService.
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="transactionId"></param>
@@ -534,7 +543,7 @@ namespace DocumentScannerServerLibrary
             }
             return returnValue;
         }
-        #endregion ManifestBusiness
+        #endregion IManifestBusiness.IManifest
 
         #region Methods
         /// <summary>

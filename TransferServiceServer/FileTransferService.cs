@@ -9,7 +9,6 @@ using System.Reflection;
 using System.Text;
 using Ssepan.Utility;
 using TransferServerBusiness;
-using DocumentScannerServerLibrary;
 
 namespace TransferServiceServer
 {
@@ -19,10 +18,19 @@ namespace TransferServiceServer
     {
 
         public FileTransferService()
-        { 
-            //TODO:find way to move DSServerController assignment out of TransferServiceServer, so that these delegates can be injected somehow
-            TransferServerBusiness.Transfer.pushDelegate = DSServerController<DSServerModel>.PushFile;
-            TransferServerBusiness.Transfer.pullDelegate = DSServerController<DSServerModel>.PullFile;
+        {
+            string errorMessage = default(String);
+
+            //Was doing this:
+            //TransferServerBusiness.Transfer.pushDelegate = DSServerController<DSServerModel>.PushFile;
+            //TransferServerBusiness.Transfer.pullDelegate = DSServerController<DSServerModel>.PullFile;
+            //Moved DSServerController assignment out of TransferServiceServer. 
+            //Call TransferServerBusiness.Transfer.InitDelegates() to have it load delegates from another library.
+            if (!TransferServerBusiness.Transfer.InitDelegates(ref errorMessage))
+            {
+                throw new Exception(String.Format("Transfer Service Server is unable to init delegates to Transfer Server Business: {0}", errorMessage));
+            }
+
         }
 
         /// <summary>
