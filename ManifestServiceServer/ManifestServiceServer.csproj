@@ -10,12 +10,9 @@
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
     </ProjectReference>
-    <ProjectReference Include="..\DocumentScannerServerLibrary\DocumentScannerServerLibrary.csproj">
-    </ProjectReference>
     <ProjectReference Include="..\DocumentScannerServiceCommon\DocumentScannerServiceCommon.csproj">
     </ProjectReference>
-    <ProjectReference Include="..\TransferServerBusiness\TransferServerBusiness.csproj">
-    </ProjectReference>
+    <ProjectReference Include="..\ManifestServerBusiness\ManifestServerBusiness.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ServiceModel" />

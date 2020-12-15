@@ -8,9 +8,8 @@ using System.ServiceModel.Activation;
 using System.Reflection;
 using System.Text;
 using Ssepan.Utility;
+using ManifestServerBusiness;
 using DocumentScannerCommon;
-using DocumentScannerServiceCommon;
-using DocumentScannerServerLibrary;
 
 namespace ManifestServiceServer
 {
@@ -18,6 +17,20 @@ namespace ManifestServiceServer
     public class PackageManifestService : 
         IPackageManifestService
     {
+
+        public PackageManifestService()
+        {
+            string errorMessage = default(String);
+
+            //Moved DSServerController assignment out of ManifestServiceServer. 
+            //Call TransferServerBusiness.Transfer.InitDelegates() to have it load delegates from another library.
+            if (!ManifestServerBusiness.Manifest.InitDelegates(ref errorMessage))
+            {
+                throw new Exception(String.Format("Manifest Service Server is unable to init delegates to Manifest Server Business: {0}", errorMessage));
+            }
+
+        }
+
         /// <summary>
         /// Responds to client Ping.
         /// </summary>
@@ -56,7 +69,7 @@ namespace ManifestServiceServer
             try
             {
                 returnValue = 
-                    DSServerController<DSServerModel>.ManifestsConfirmed
+                    ManifestServerBusiness.Manifest.manifestsConfirmedDelegate
                     (
                         contract.OperatorId, 
                         contract.Date, 
@@ -88,8 +101,8 @@ namespace ManifestServiceServer
 
             try
             {
-                returnValue =
-                    DSServerController<DSServerModel>.DocumentsConfirmed
+                returnValue = 
+                    ManifestServerBusiness.Manifest.documentsConfirmedDelegate
                     (
                         contract.OperatorId,
                         contract.TransactionId,
@@ -123,7 +136,7 @@ namespace ManifestServiceServer
             try
             {
                 returnValue = 
-                    DSServerController<DSServerModel>.ManifestsAvailable
+                    ManifestServerBusiness.Manifest.manifestsAvailableDelegate
                     (
                         contract.OperatorId, 
                         contract.Date, 
@@ -155,8 +168,8 @@ namespace ManifestServiceServer
 
             try
             {
-                returnValue =
-                    DSServerController<DSServerModel>.DocumentsAvailable
+                returnValue = 
+                    ManifestServerBusiness.Manifest.documentsAvailableDelegate
                     (
                         contract.OperatorId,
                         contract.TransactionId,

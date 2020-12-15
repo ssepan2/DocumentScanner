@@ -289,7 +289,6 @@ namespace DocumentScannerServerLibrary
         #endregion TransferServerBusiness.ITransfer
 
         #region IManifestBusiness.IManifest
-        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID and the specified date, 
         /// return a List(Of PackageManifest) from the server.
@@ -358,7 +357,6 @@ namespace DocumentScannerServerLibrary
             return returnValue;
         }
 
-        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID, a Transaction ID, and the specified date, 
         /// return a List(Of ImageFile) from the server.
@@ -416,7 +414,6 @@ namespace DocumentScannerServerLibrary
             return returnValue;
         }
 
-        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID and the operator id, 
         /// return a List(Of PackageManifest) from the server.
@@ -486,7 +483,6 @@ namespace DocumentScannerServerLibrary
             return returnValue;
         }
 
-        //TODO call from delegate method in ManifestServerBusiness.Manifest
         /// <summary>
         /// Given the Operator ID, a Transaction ID, and the operator id, 
         /// return a List(Of ImageFile) from the server.
