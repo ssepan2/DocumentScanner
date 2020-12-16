@@ -18,8 +18,8 @@ using Ssepan.Io;
 using Ssepan.Transaction;
 using Ssepan.Utility;
 using DocumentScannerCommon;
-using TransferServiceClient;
-using ManifestServiceClient;
+using ManifestClientBusiness;
+using TransferClientBusiness;
 using TwainLib;
 
 namespace DocumentScannerLibrary
@@ -732,10 +732,11 @@ namespace DocumentScannerLibrary
                 worker.ReportProgress((Int32)((stepsCountComplete / stepsCountTotal) * 100), "querying...");
                 
                 returnValue =
-                    ManifestsConfirmed
+                    Manifest.ManifestsConfirmed
                     (
                         operatorId,
                         date,
+                        DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName,
                         ref errorMessage
                     );
 
@@ -782,9 +783,10 @@ namespace DocumentScannerLibrary
                 worker.ReportProgress((Int32)((stepsCountComplete / stepsCountTotal) * 100), "querying...");
 
                 returnValue =
-                    ManifestsAvailable
+                    Manifest.ManifestsAvailable
                     (
                         operatorId,
+                        DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName,
                         ref errorMessage
                     );
 
@@ -1270,186 +1272,6 @@ namespace DocumentScannerLibrary
         //    }
         //}
         #endregion Menu Methods
-
-
-        #region Manifest Service
-
-        //TODO:move to ManifestClientBusiness; no callers to redirect
-        /// <summary>
-        /// Call Service Ping test
-        /// </summary>
-        /// <param name="endpointConfigurationName"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static Boolean PingManifestService(String endpointConfigurationName, ref String errorMessage)
-        {
-            Boolean returnValue = default(Boolean);
-            try
-            {
-                ManifestService.EndpointConfigurationName = endpointConfigurationName;
-                if (!ManifestService.Ping(ref errorMessage))
-                {
-                    throw new Exception(String.Format("Manifest Client Business is unable to Ping Manifest Service Client: {0}", errorMessage));
-                }
-
-                returnValue = true;
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-
-        //TODO:move to ManifestClientBusiness; ConfirmManifestsInBackground caller to redirect
-        /// <summary>
-        /// Perform business logic for client side of manifest query; receive the list and convert.
-        /// Given the Operator ID and the specified date, 
-        /// return a List(Of PackageManifest) from the server.
-        /// </summary>
-        /// <param name="operatorId"></param>
-        /// <param name="date"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> ManifestsConfirmed
-        (
-            String operatorId,
-            DateTime date,
-            ref String errorMessage
-        )
-        {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
-
-            try
-            {
-                //call service to receive list
-                ManifestService.EndpointConfigurationName = DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName;
-                returnValue = ManifestService.ManifestsConfirmed(operatorId, date, ref errorMessage);
-                if (returnValue == null)
-                {
-                    throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for package manifests: '{0}'\nUsername: '{1}'\nDate: '{2}'", errorMessage, operatorId, date));
-                }
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-
-        //TODO:move to ManifestClientBusiness; no caller to redirect
-        /// <summary>
-        /// Perform business logic for client side of document query; receive list as-is.
-        ///Given the Operator ID, a Transaction ID, and the specified date, 
-        ///return a List(Of ImageFile) from the server.
-        /// </summary>
-        /// <param name="operatorId"></param>
-        /// <param name="transactionId"></param>
-        /// <param name="date"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<ImageFile> DocumentsConfirmed
-        (
-            String operatorId,
-            String transactionId,
-            DateTime date,
-            ref String errorMessage
-        )
-        {
-            List<ImageFile> returnValue = default(List<ImageFile>);
-
-            try
-            {
-                //call service to receive list
-                ManifestService.EndpointConfigurationName = DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName;
-                returnValue = ManifestService.DocumentsConfirmed(operatorId, transactionId, date, ref errorMessage);
-                if (returnValue == null)
-                {
-                    throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for documents: '{0}'\nUsername: '{1}'\nDate: '{2}'\nTransaction: '{3}'", errorMessage, operatorId, date, transactionId));
-                }
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-
-        //TODO:move to ManifestClientBusiness; AvailableManifestsInBackground caller to redirect
-        /// <summary>
-        /// Perform business logic for client side of manifest query; receive the list and convert.
-        /// Given the Operator ID and the specified date, 
-        /// return a List(Of PackageManifest) from the server.
-        /// </summary>
-        /// <param name="operatorId"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> ManifestsAvailable
-        (
-            String operatorId,
-            ref String errorMessage
-        )
-        {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
-
-            try
-            {
-                //call service to receive list
-                ManifestService.EndpointConfigurationName = DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName;
-                returnValue = ManifestService.ManifestsAvailable(operatorId, ref errorMessage);
-                if (returnValue == null)
-                {
-                    throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for package manifests: '{0}'\nUsername: '{1}'", errorMessage, operatorId));
-                }
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-        //TODO:is this call-layer needed? can endpoint config be done by caller (also in ctrlr) (2009)
-        //TODO:No, this layer belongs in as-yet unwritten ManifestClientBusiness (2020)
-        //TODO:move to ManifestClientBusiness; ? caller to redirect
-        /// <summary>
-        /// Perform business logic for client side of document query; receive list as-is.
-        ///Given the Operator ID, a Transaction ID, and the specified date, 
-        ///return a List(Of ImageFile) from the server.
-        /// </summary>
-        /// <param name="operatorId"></param>
-        /// <param name="transactionId"></param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<ImageFile> DocumentsAvailable
-        (
-            String operatorId,
-            String transactionId,
-            ref String errorMessage
-        )
-        {
-            List<ImageFile> returnValue = default(List<ImageFile>);
-
-            try
-            {
-                //call service to receive list
-                ManifestService.EndpointConfigurationName = DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName;
-                returnValue = ManifestService.DocumentsAvailable(operatorId, transactionId, ref errorMessage);
-                if (returnValue == null)
-                {
-                    throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for documents: '{0}'\nUsername: '{1}'\nTransaction: '{3}'", errorMessage, operatorId, transactionId));
-                }
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-            return returnValue;
-        }
-        #endregion Manifest Service
 
         #region private methods
         /// <summary>

@@ -24,11 +24,8 @@
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
     </ProjectReference>
-    <ProjectReference Include="..\ManifestServiceClient\ManifestServiceClient.csproj">
-    </ProjectReference>
+    <ProjectReference Include="..\ManifestClientBusiness\ManifestClientBusiness.csproj" />
     <ProjectReference Include="..\TransferClientBusiness\TransferClientBusiness.csproj" />
-    <ProjectReference Include="..\TransferServiceClient\TransferServiceClient.csproj">
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />

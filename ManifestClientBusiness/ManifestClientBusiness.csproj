@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ssepan.Io\Ssepan.Io.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\ManifestServiceClient\ManifestServiceClient.csproj" />
+  </ItemGroup>
+</Project>

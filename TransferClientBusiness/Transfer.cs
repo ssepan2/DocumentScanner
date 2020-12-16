@@ -1,13 +1,14 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Ssepan.Io;
 using Ssepan.Utility;
-using System.Diagnostics;
-using System.Reflection;
+using TransferServiceClient;
 
 namespace TransferClientBusiness
 {
@@ -23,13 +24,17 @@ namespace TransferClientBusiness
         /// <param name="endpointConfigurationName"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static Boolean Ping(String endpointConfigurationName, ref String errorMessage)
+        public static Boolean Ping
+        (
+            String endpointConfigurationName, 
+            ref String errorMessage
+        )
         {
             Boolean returnValue = default(Boolean);
             try
             {
-                TransferServiceClient.TransferService.EndpointConfigurationName = endpointConfigurationName;
-                if (!TransferServiceClient.TransferService.Ping(ref errorMessage))
+                TransferService.EndpointConfigurationName = endpointConfigurationName;
+                if (!TransferService.Ping(ref errorMessage))
                 { 
                     throw new Exception(String.Format("Transfer Client Business is unable to Ping Transfer Service Client: {0}", errorMessage));
                 }
@@ -52,7 +57,14 @@ namespace TransferClientBusiness
         /// <param name="endpointConfigurationName"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static Boolean PullFile(String id, String operatorId, String filePath, String endpointConfigurationName, ref String errorMessage)
+        public static Boolean PullFile
+        (
+            String id, 
+            String operatorId, 
+            String filePath, 
+            String endpointConfigurationName, 
+            ref String errorMessage
+        )
         {
             Boolean returnValue = default(Boolean);
             Byte[] bytes = default(Byte[]);
@@ -68,8 +80,8 @@ namespace TransferClientBusiness
                 filename = Path.GetFileName(filePath);
 
                 //call service to receive bytes
-                TransferServiceClient.TransferService.EndpointConfigurationName = endpointConfigurationName;
-                if (!TransferServiceClient.TransferService.Pull(id, operatorId, filename, ref bytes, ref errorMessage))
+                TransferService.EndpointConfigurationName = endpointConfigurationName;
+                if (!TransferService.Pull(id, operatorId, filename, ref bytes, ref errorMessage))
                 {
                     throw new Exception(String.Format("Transfer Client Business is unable to Pull file from Transfer Service Client: {0}\nID: {1}\nFilename: {2}", errorMessage, id, filename));
                 }
@@ -104,7 +116,14 @@ namespace TransferClientBusiness
         /// <param name="endpointConfigurationName"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static Boolean PushFile(String id, String operatorId, String filePath, String endpointConfigurationName, ref String errorMessage)
+        public static Boolean PushFile
+        (
+            String id, 
+            String operatorId, 
+            String filePath, 
+            String endpointConfigurationName, 
+            ref String errorMessage
+        )
         {
             Boolean returnValue = default(Boolean);
             Byte[] bytes = default(Byte[]);
@@ -119,8 +138,8 @@ namespace TransferClientBusiness
 
                 //call service to send bytes
                 //Path must be stripped from filename for use in service.
-                TransferServiceClient.TransferService.EndpointConfigurationName = endpointConfigurationName;
-                if (!TransferServiceClient.TransferService.Push(id, operatorId, Path.GetFileName(filePath), bytes, ref errorMessage))
+                TransferService.EndpointConfigurationName = endpointConfigurationName;
+                if (!TransferService.Push(id, operatorId, Path.GetFileName(filePath), bytes, ref errorMessage))
                 {
                     throw new Exception(String.Format("Transfer Client Business is unable to Push file to Transfer Service Client: {0}\nID: {1}\nFilename: {2}", errorMessage, id, filePath));
                 }

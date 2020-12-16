@@ -72,6 +72,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferClientBusiness", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestServerBusiness", "ManifestServerBusiness\ManifestServerBusiness.csproj", "{048D3AB4-7557-4226-8063-29774D9C5DCA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestClientBusiness", "ManifestClientBusiness\ManifestClientBusiness.csproj", "{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -380,6 +382,18 @@ Global
 		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|x86.ActiveCfg = Release|Any CPU
 		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|x86.Build.0 = Release|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|x86.Build.0 = Debug|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|x86.ActiveCfg = Release|Any CPU
+		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

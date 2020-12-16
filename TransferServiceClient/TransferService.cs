@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
+using System.Reflection;
 using System.Text;
 using Ssepan.Utility;
-using TransferServiceClient.TransferServiceClientReference;
 using DocumentScannerServiceCommon;
-using System.Diagnostics;
-using System.Reflection;
+using TransferServiceClient.TransferServiceClientReference;
 
 namespace TransferServiceClient
 {
