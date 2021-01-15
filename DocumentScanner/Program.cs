@@ -97,8 +97,6 @@ namespace DocumentScanner
                 //load, parse, run switches
                 DoSwitches(args);
 
-                InitModelAndSettings();
-
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new DocumentViewer(args));
@@ -130,20 +128,6 @@ namespace DocumentScanner
                     //new CommandLineSwitch("H", "H invokes the Help command.", false, ConsoleApplication.Help)//may already be loaded
                 }
             );
-        }
-
-        static void InitModelAndSettings()
-        {
-            //create Settings before first use by Model
-            if (SettingsController<Settings>.Settings == null)
-            {
-                SettingsController<Settings>.New();
-            }
-            //Model properties rely on Settings, so don't call Refresh before this is run.
-            if (DSController<DSModel>.Model == null)
-            {
-                DSController<DSModel>.New();
-            }
         }
         #endregion FormAppBase
 

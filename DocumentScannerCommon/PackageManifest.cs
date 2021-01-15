@@ -7,19 +7,20 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Microsoft.VisualBasic.FileIO;
+using System.Diagnostics;
+using System.Reflection;
+using Ssepan.Application;
 using Ssepan.Collections;
 using Ssepan.Io;
 using Ssepan.Utility;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace DocumentScannerCommon
 {
     [Serializable]
     [TypeConverter(typeof(ExpandableObjectConverter))]
     public class PackageManifest :
-        IEquatable<PackageManifest>,
-        INotifyPropertyChanged
+        SettingsComponentBase,
+        IEquatable<PackageManifest>//,
     {
         #region Declarations
         public const String DATA_FILE_TYPE = "xml";
@@ -78,28 +79,28 @@ namespace DocumentScannerCommon
         #endregion IEquatable<T> Members
 
         #region INotifyPropertyChanged support
-        //If property of ISettings object changes, fire PropertyChanged, which notifies any subscribed observers.
-        //Called by all 'set' statements in ISettigns object properties.
-        [field:NonSerialized]
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(String propertyName)
-        {
-            try
-            {
-                if (this.PropertyChanged != null)
-                {
-                    this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-#if debug
-                    Log.Write(MethodBase.GetCurrentMethod().DeclaringType.Module.Name, MethodBase.GetCurrentMethod() + Log.FormatEntry(String.Format("PropertyChanged: {0}", propertyName), MethodBase.GetCurrentMethod().DeclaringType.FullName, MethodBase.GetCurrentMethod().Name), EventLogEntryType.Information);
-#endif
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-                //throw;
-            }
-        }
+//        //If property of ISettings object changes, fire PropertyChanged, which notifies any subscribed observers.
+//        //Called by all 'set' statements in ISettigns object properties.
+//        [field:NonSerialized]
+//        public event PropertyChangedEventHandler PropertyChanged;
+//        protected void OnPropertyChanged(String propertyName)
+//        {
+//            try
+//            {
+//                if (this.PropertyChanged != null)
+//                {
+//                    this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+//#if debug
+//                    Log.Write(MethodBase.GetCurrentMethod().DeclaringType.Module.Name, MethodBase.GetCurrentMethod() + Log.FormatEntry(String.Format("PropertyChanged: {0}", propertyName), MethodBase.GetCurrentMethod().DeclaringType.FullName, MethodBase.GetCurrentMethod().Name), EventLogEntryType.Information);
+//#endif
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
+//                //throw;
+//            }
+//        }
         #endregion INotifyPropertyChanged support
 
         #region NonPersisted Properties

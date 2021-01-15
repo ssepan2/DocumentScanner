@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
+using Ssepan.Application;
 using Ssepan.Collections;
 using Ssepan.Graphics;
 using Ssepan.Utility;
@@ -18,8 +19,9 @@ namespace DocumentScannerCommon
     [Serializable()]
     [TypeConverter(typeof(ExpandableObjectConverter))]
     public class ImageFile :
-        IEquatable<ImageFile>,
-        INotifyPropertyChanged
+        SettingsComponentBase,
+        IEquatable<ImageFile>//,
+        //INotifyPropertyChanged
     {
         #region Declarations
         public const String IMAGE_FILE_TYPE = "jpg";
@@ -39,29 +41,29 @@ namespace DocumentScannerCommon
         #endregion Constructors
 
         #region INotifyPropertyChanged support
-        [field: NonSerialized]
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(String propertyName)
-        {
-            try
-            {
-                if (this.PropertyChanged != null)
-                {
-                    this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-#if debug
-                    Log.Write(
-                        MethodBase.GetCurrentMethod().DeclaringType.Module.Name,
-                        Log.FormatEntry(String.Format("PropertyChanged: {0}", propertyName), MethodBase.GetCurrentMethod().DeclaringType.FullName, MethodBase.GetCurrentMethod().Name),
-                        EventLogEntryType.Information);
-#endif
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-                //throw;
-            }
-        }
+//        [field: NonSerialized]
+//        public event PropertyChangedEventHandler PropertyChanged;
+//        void OnPropertyChanged(String propertyName)
+//        {
+//            try
+//            {
+//                if (this.PropertyChanged != null)
+//                {
+//                    this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+//#if debug
+//                    Log.Write(
+//                        MethodBase.GetCurrentMethod().DeclaringType.Module.Name,
+//                        Log.FormatEntry(String.Format("PropertyChanged: {0}", propertyName), MethodBase.GetCurrentMethod().DeclaringType.FullName, MethodBase.GetCurrentMethod().Name),
+//                        EventLogEntryType.Information);
+//#endif
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
+//                //throw;
+//            }
+//        }
         #endregion INotifyPropertyChanged support
 
         #region IEquatable<T> Members

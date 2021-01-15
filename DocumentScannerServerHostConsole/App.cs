@@ -178,8 +178,13 @@ namespace DocumentScannerServerHostConsole
         {
             try
             {
-                //subscribe to notifications
-                ModelController<DSServerModel>.Model.PropertyChanged += PropertyChangedEventHandlerDelegate;
+                //tell controller how model should notify view about non-persisted properties AND including model properties that may be part of settings
+                ModelController<DSServerModel>.DefaultHandler = PropertyChangedEventHandlerDelegate;
+
+                //tell controller how settings should notify view about persisted properties
+                SettingsController<Settings>.DefaultHandler = PropertyChangedEventHandlerDelegate;
+
+                InitModelAndSettings();
 
                 //class to handle standard behaviors
                 ViewModelController<String, ConsoleViewModel<String, Settings, DSServerModel>>.New
@@ -227,6 +232,20 @@ namespace DocumentScannerServerHostConsole
                     ViewModel.ErrorMessage = ex.Message;
                 }
                 Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
+            }
+        }
+
+        protected void InitModelAndSettings()
+        {
+            //create Settings before first use by Model
+            if (SettingsController<Settings>.Settings == null)
+            {
+                SettingsController<Settings>.New();
+            }
+            //Model properties rely on Settings, so don't call Refresh before this is run.
+            if (ModelController<DSServerModel>.Model == null)
+            {
+                ModelController<DSServerModel>.New();
             }
         }
 

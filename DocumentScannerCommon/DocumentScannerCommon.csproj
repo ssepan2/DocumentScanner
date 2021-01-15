@@ -4,6 +4,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Ssepan.Application\Ssepan.Application.csproj" />
     <ProjectReference Include="..\..\Ssepan.Collections\Ssepan.Collections.csproj">
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Compression\Ssepan.Compression.csproj">
