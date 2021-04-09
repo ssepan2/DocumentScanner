@@ -1,33 +1,127 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{83BDDE74-8E40-4751-B9EA-2DFEB03157D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocumentScannerLibrary</RootNamespace>
+    <AssemblyName>DocumentScannerLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images\DocumentScanner.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="ImageFile.cs" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MVC\DSClientModelController.cs" />
+    <Compile Include="MVC\DSClientModel.cs" />
+    <Compile Include="MVC\DSClientSettingsController.cs" />
+    <Compile Include="MVC\DSClientSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Ssepan.Application\Ssepan.Application.csproj">
+      <Project>{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}</Project>
+      <Name>Ssepan.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Collections\Ssepan.Collections.csproj">
+      <Project>{07E139E8-739C-41C7-A53A-6AF3288B7B83}</Project>
+      <Name>Ssepan.Collections</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Compression\Ssepan.Compression.csproj">
+      <Project>{5F92C0BD-E954-49C4-A3ED-B0703819211A}</Project>
+      <Name>Ssepan.Compression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Graphics\Ssepan.Graphics.csproj">
+      <Project>{65314B1F-7719-4E25-9D3E-55E893F80B1B}</Project>
+      <Name>Ssepan.Graphics</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Io\Ssepan.Io.csproj">
+      <Project>{9EFE2EC6-F48E-4E4E-927F-068B54210E09}</Project>
+      <Name>Ssepan.Io</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Ssepan.Patterns\Ssepan.Patterns.csproj">
+      <Project>{02B288FD-2642-4A7F-96E0-54031FA137F8}</Project>
+      <Name>Ssepan.Patterns</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Transaction\Ssepan.Transaction.csproj">
+      <Project>{B3EEA538-82CF-445E-B55B-89ADDAF3A6E3}</Project>
+      <Name>Ssepan.Transaction</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj">
+      <Project>{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}</Project>
+      <Name>Ssepan.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\TwainLib\TwainLib.csproj">
+      <Project>{908F1FE0-BDB6-47AD-85A2-7868B7EEE871}</Project>
+      <Name>TwainLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
+      <Project>{0322295B-89F7-484C-B89F-7B0C56BA0E23}</Project>
+      <Name>DocumentScannerCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ManifestClientBusiness\ManifestClientBusiness.csproj" />
-    <ProjectReference Include="..\TransferClientBusiness\TransferClientBusiness.csproj" />
+    <ProjectReference Include="..\ManifestClientBusiness\ManifestClientBusiness.csproj">
+      <Project>{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}</Project>
+      <Name>ManifestClientBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ManifestServiceClient\ManifestServiceClient.csproj">
+      <Project>{C3A24AA4-6FC2-4F0D-988A-91DA25B74FE1}</Project>
+      <Name>ManifestServiceClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferClientBusiness\TransferClientBusiness.csproj">
+      <Project>{198B3D52-E173-426E-A983-0C29B7954044}</Project>
+      <Name>TransferClientBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferServiceClient\TransferServiceClient.csproj">
+      <Project>{E7EE228C-54B2-4DA2-AE4C-7B0D3AE92A93}</Project>
+      <Name>TransferServiceClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
+    <None Include="images\DocumentScanner.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

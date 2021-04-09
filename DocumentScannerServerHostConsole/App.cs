@@ -10,9 +10,12 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
+using Ssepan.Application.WinConsole;
 using Ssepan.Io;
 using Ssepan.Utility;
 using DocumentScannerServerLibrary;
+using DocumentScannerServerLibrary.MVC;
 
 namespace DocumentScannerServerHostConsole
 {
@@ -21,8 +24,8 @@ namespace DocumentScannerServerHostConsole
     {
         #region Declarations
         protected Boolean disposed;
-        protected ConsoleViewModel<String, Settings, DSServerModel> ViewModel =
-            default(ConsoleViewModel<String, Settings, DSServerModel>);
+        protected ConsoleViewModel<String, DSServerSettings, DSServerModel> ViewModel =
+            default(ConsoleViewModel<String, DSServerSettings, DSServerModel>);
         private static Boolean _ValueChangedProgrammatically;
         #endregion Declarations
 
@@ -182,15 +185,15 @@ namespace DocumentScannerServerHostConsole
                 ModelController<DSServerModel>.DefaultHandler = PropertyChangedEventHandlerDelegate;
 
                 //tell controller how settings should notify view about persisted properties
-                SettingsController<Settings>.DefaultHandler = PropertyChangedEventHandlerDelegate;
+                SettingsController<DSServerSettings>.DefaultHandler = PropertyChangedEventHandlerDelegate;
 
                 InitModelAndSettings();
 
                 //class to handle standard behaviors
-                ViewModelController<String, ConsoleViewModel<String, Settings, DSServerModel>>.New
+                ViewModelController<String, ConsoleViewModel<String, DSServerSettings, DSServerModel>>.New
                 (
                     ViewName,
-                    new ConsoleViewModel<String, Settings, DSServerModel>
+                    new ConsoleViewModel<String, DSServerSettings, DSServerModel>
                     (
                         this.PropertyChangedEventHandlerDelegate,
                         new Dictionary<String, String>() 
@@ -204,7 +207,7 @@ namespace DocumentScannerServerHostConsole
                         }
                     )
                 );
-                ViewModel = ViewModelController<String, ConsoleViewModel<String, Settings, DSServerModel>>.ViewModel[ViewName];
+                ViewModel = ViewModelController<String, ConsoleViewModel<String, DSServerSettings, DSServerModel>>.ViewModel[ViewName];
 
                 //Init config parameters
                 if (!LoadParameters())
@@ -214,7 +217,7 @@ namespace DocumentScannerServerHostConsole
 
                 //DEBUG:filename coming in is being converted/passed as DOS 8.3 format equivalent
                 //Load
-                if ((SettingsController<Settings>.FilePath == null) || (SettingsController<Settings>.Filename == SettingsController<Settings>.FILE_NEW))
+                if ((SettingsController<DSServerSettings>.FilePath == null) || (SettingsController<DSServerSettings>.Filename == SettingsController<DSServerSettings>.FILE_NEW))
                 {
                     //NEW
                     ViewModel.FileNew();
@@ -238,9 +241,9 @@ namespace DocumentScannerServerHostConsole
         protected void InitModelAndSettings()
         {
             //create Settings before first use by Model
-            if (SettingsController<Settings>.Settings == null)
+            if (SettingsController<DSServerSettings>.Settings == null)
             {
-                SettingsController<Settings>.New();
+                SettingsController<DSServerSettings>.New();
             }
             //Model properties rely on Settings, so don't call Refresh before this is run.
             if (ModelController<DSServerModel>.Model == null)
@@ -255,7 +258,7 @@ namespace DocumentScannerServerHostConsole
             //save user and application settings 
             //Properties.Settings.Default.Save();
 
-            if (SettingsController<Settings>.Settings.Dirty)
+            if (SettingsController<DSServerSettings>.Settings.Dirty)
             {
                 //SAVE
                 ViewModel.FileSave();
@@ -320,7 +323,7 @@ namespace DocumentScannerServerHostConsole
                 ////apply settings that shouldn't use databindings
 
                 //apply settings that can't use databindings
-                Console.Title = Path.GetFileName(SettingsController<Settings>.Filename) + " - " + ViewName;
+                Console.Title = Path.GetFileName(SettingsController<DSServerSettings>.Filename) + " - " + ViewName;
 
                 //apply settings that don't have databindings
                 //ViewModel.StatusBarDirtyMessage.Visible = (SettingsController<Settings>.Settings.Dirty);
@@ -347,7 +350,7 @@ namespace DocumentScannerServerHostConsole
 
             try
             {
-                if ((Program.Filename != null) && (Program.Filename != SettingsController<Settings>.FILE_NEW))
+                if ((Program.Filename != null) && (Program.Filename != SettingsController<DSServerSettings>.FILE_NEW))
                 {
                     //got filename from command line
                     //DEBUG:filename coming in is being converted/passed as DOS 8.3 format equivalent

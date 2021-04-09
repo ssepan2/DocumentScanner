@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TransferServiceClient</RootNamespace>
     <AssemblyName>TransferServiceClient</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -85,37 +85,44 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\DocumentScannerServiceCommon.TransactionContract.datasource" />
     <None Include="Properties\DataSources\DocumentScannerServiceCommon.TransactionContract1.datasource" />
-    <None Include="Service References\TransferServiceClientReference\FileTransferService.wsdl" />
-    <None Include="Service References\TransferServiceClientReference\FileTransferService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TransferServiceClientReference\FileTransferService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TransferServiceClientReference\FileTransferService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\TransferServiceClientReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\TransferServiceClientReference\FileTransferService.disco" />
+    <None Include="Service References\TransferServiceClientReference\configuration91.svcinfo">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\TransferServiceClientReference\configuration91.svcinfo" />
+    <None Include="Service References\TransferServiceClientReference\configuration.svcinfo">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\TransferServiceClientReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Service References\TransferServiceClientReference\FileTransferService1.wsdl">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TransferServiceClientReference\FileTransferService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TransferServiceClientReference\FileTransferService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TransferServiceClientReference\FileTransferService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TransferServiceClientReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="License.txt" />
+    <None Include="Service References\TransferServiceClientReference\FileTransferService1.disco">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

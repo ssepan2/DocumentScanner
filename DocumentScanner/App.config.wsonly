@@ -34,7 +34,7 @@
       </wsHttpBinding>
     </bindings>
     <client>
-      <endpoint address="http://localhost:53408/FileTransferService.svc"
+      <endpoint address="http://localhost:8732/FileTransferService.svc"
           binding="wsHttpBinding" bindingConfiguration="WSHttpBinding_IFileTransferService"
           contract="TransferServiceClientReference.IFileTransferService"
           name="WSHttpBinding_IFileTransferService">

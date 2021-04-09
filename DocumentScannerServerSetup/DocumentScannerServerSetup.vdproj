@@ -88,37 +88,7 @@
         "Entry"
         {
         "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
-        "OwnerKey" = "8:_2629646D56BE4A248EC8867F774011E7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
-        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
-        "OwnerKey" = "8:_BDEFABBDC554C1F67956DC7B62EB9B23"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
-        "OwnerKey" = "8:_F67AAC9CC4FD4B69FC28AC30ECC39A4C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
-        "OwnerKey" = "8:_4812342650A04AB4AB110755A2AF6D67"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
-        "OwnerKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
+        "OwnerKey" = "8:_480E3D178F4AC37072B53D0D687030E1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,7 +100,37 @@
         "Entry"
         {
         "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
-        "OwnerKey" = "8:_480E3D178F4AC37072B53D0D687030E1"
+        "OwnerKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
+        "OwnerKey" = "8:_4812342650A04AB4AB110755A2AF6D67"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
+        "OwnerKey" = "8:_F67AAC9CC4FD4B69FC28AC30ECC39A4C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
+        "OwnerKey" = "8:_BDEFABBDC554C1F67956DC7B62EB9B23"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
+        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
+        "OwnerKey" = "8:_2629646D56BE4A248EC8867F774011E7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -142,13 +142,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
-        "OwnerKey" = "8:_2629646D56BE4A248EC8867F774011E7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
-        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
+        "OwnerKey" = "8:_F67AAC9CC4FD4B69FC28AC30ECC39A4C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,7 +154,13 @@
         "Entry"
         {
         "MsmKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
-        "OwnerKey" = "8:_F67AAC9CC4FD4B69FC28AC30ECC39A4C"
+        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
+        "OwnerKey" = "8:_2629646D56BE4A248EC8867F774011E7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -184,13 +184,13 @@
         "Entry"
         {
         "MsmKey" = "8:_CD28BBB9B684101F1AEC04FE413AF9A9"
-        "OwnerKey" = "8:_2629646D56BE4A248EC8867F774011E7"
+        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_CD28BBB9B684101F1AEC04FE413AF9A9"
-        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
+        "OwnerKey" = "8:_2629646D56BE4A248EC8867F774011E7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,55 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_74EE9254CA03B911EA84E433CA6B0955"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BDEFABBDC554C1F67956DC7B62EB9B23"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F67AAC9CC4FD4B69FC28AC30ECC39A4C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4812342650A04AB4AB110755A2AF6D67"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0AF4D0C8000DE985A21048BE32997C4C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_480E3D178F4AC37072B53D0D687030E1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_73C378EF002C58087CB09BC1478D4C35"
+        "OwnerKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -274,7 +226,55 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_89F64F22E34F81194FE79C45FDB5004D"
+        "OwnerKey" = "8:_73C378EF002C58087CB09BC1478D4C35"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_480E3D178F4AC37072B53D0D687030E1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0AF4D0C8000DE985A21048BE32997C4C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A02EA034B75419ACD78BE191A3293C7A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4812342650A04AB4AB110755A2AF6D67"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F67AAC9CC4FD4B69FC28AC30ECC39A4C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BDEFABBDC554C1F67956DC7B62EB9B23"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7F4CAF35EA4C5486FAF857183346910B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_74EE9254CA03B911EA84E433CA6B0955"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -286,7 +286,7 @@
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
         "OutputFilename" = "8:Debug\\DocumentScannerServerSetup.msi"
-        "PackageFilesAs" = "3:2"
+        "PackageFilesAs" = "3:4"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
         "Compression" = "3:2"
@@ -389,11 +389,6 @@
             "AssemblyAsmDisplayName" = "8:Ssepan.Graphics, Version=2.6.0.27204, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_0AF4D0C8000DE985A21048BE32997C4C"
-                    {
-                    "Name" = "8:Ssepan.Graphics.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ssepan.Graphics.dll"
             "TargetName" = "8:"
@@ -420,11 +415,6 @@
             "AssemblyAsmDisplayName" = "8:Ssepan.Compression, Version=2.6.0.27205, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_480E3D178F4AC37072B53D0D687030E1"
-                    {
-                    "Name" = "8:Ssepan.Compression.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ssepan.Compression.dll"
             "TargetName" = "8:"
@@ -451,11 +441,6 @@
             "AssemblyAsmDisplayName" = "8:DocumentScannerCommon, Version=0.11.6596.27208, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_4812342650A04AB4AB110755A2AF6D67"
-                    {
-                    "Name" = "8:DocumentScannerCommon.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DocumentScannerCommon.dll"
             "TargetName" = "8:"
@@ -482,11 +467,6 @@
             "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_73C378EF002C58087CB09BC1478D4C35"
-                    {
-                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
             "TargetName" = "8:"
@@ -513,11 +493,6 @@
             "AssemblyAsmDisplayName" = "8:TransferServerBusiness, Version=0.11.6596.27205, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_74EE9254CA03B911EA84E433CA6B0955"
-                    {
-                    "Name" = "8:TransferServerBusiness.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:TransferServerBusiness.dll"
             "TargetName" = "8:"
@@ -544,11 +519,6 @@
             "AssemblyAsmDisplayName" = "8:DocumentScannerServerLibrary, Version=0.11.6596.27209, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_7F4CAF35EA4C5486FAF857183346910B"
-                    {
-                    "Name" = "8:DocumentScannerServerLibrary.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:DocumentScannerServerLibrary.dll"
             "TargetName" = "8:"
@@ -575,11 +545,6 @@
             "AssemblyAsmDisplayName" = "8:Ssepan.Utility, Version=2.6.0.27203, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_89F64F22E34F81194FE79C45FDB5004D"
-                    {
-                    "Name" = "8:Ssepan.Utility.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ssepan.Utility.dll"
             "TargetName" = "8:"
@@ -606,11 +571,6 @@
             "AssemblyAsmDisplayName" = "8:Ssepan.Io, Version=2.6.0.27204, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A02EA034B75419ACD78BE191A3293C7A"
-                    {
-                    "Name" = "8:Ssepan.Io.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ssepan.Io.dll"
             "TargetName" = "8:"
@@ -637,11 +597,6 @@
             "AssemblyAsmDisplayName" = "8:Ssepan.Application, Version=2.6.3.27207, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_BDEFABBDC554C1F67956DC7B62EB9B23"
-                    {
-                    "Name" = "8:Ssepan.Application.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ssepan.Application.dll"
             "TargetName" = "8:"
@@ -668,11 +623,6 @@
             "AssemblyAsmDisplayName" = "8:Ssepan.Collections, Version=2.6.0.27204, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CD28BBB9B684101F1AEC04FE413AF9A9"
-                    {
-                    "Name" = "8:Ssepan.Collections.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ssepan.Collections.dll"
             "TargetName" = "8:"
@@ -699,11 +649,6 @@
             "AssemblyAsmDisplayName" = "8:Ssepan.Transaction, Version=2.6.0.27207, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F67AAC9CC4FD4B69FC28AC30ECC39A4C"
-                    {
-                    "Name" = "8:Ssepan.Transaction.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ssepan.Transaction.dll"
             "TargetName" = "8:"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="JHkXzwzXrS22Pg8rLa5y68nnH2o=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="tEPh2jHK73bPO+OSU2B7d7eLmb0=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="basic1manifest">
       <properties>
@@ -236,10 +236,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ws1manifest" contract="ManifestServiceClientReference.IPackageManifestService" bindingType="wsHttpBinding" address="http://localhost:53408/PackageManifestService.svc/ws1" bindingConfiguration="ws1manifest">
+    <endpoint name="ws1manifest" contract="ManifestServiceClientReference.IPackageManifestService" bindingType="wsHttpBinding" address="http://localhost:8732/PackageManifestService.svc/ws1" bindingConfiguration="ws1manifest">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:53408/PackageManifestService.svc/ws1</serializedValue>
+          <serializedValue>http://localhost:8732/PackageManifestService.svc/ws1</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -321,10 +321,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="basic1manifest" contract="ManifestServiceClientReference.IPackageManifestService" bindingType="basicHttpBinding" address="http://localhost:53408/PackageManifestService.svc/basic1" bindingConfiguration="basic1manifest">
+    <endpoint name="basic1manifest" contract="ManifestServiceClientReference.IPackageManifestService" bindingType="basicHttpBinding" address="http://localhost:8732/PackageManifestService.svc/basic1" bindingConfiguration="basic1manifest">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:53408/PackageManifestService.svc/basic1</serializedValue>
+          <serializedValue>http://localhost:8732/PackageManifestService.svc/basic1</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

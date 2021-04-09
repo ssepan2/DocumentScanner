@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="w9PbHVK/jqyQuRO5yeVqBvcWho0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="6UnOw1hw5NeQuMC2bQTzJ0j516U=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="basic0transfer">
       <properties>
@@ -236,10 +236,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ws0transfer" contract="TransferServiceClientReference.IFileTransferService" bindingType="wsHttpBinding" address="http://localhost:53408/FileTransferService.svc/ws0" bindingConfiguration="ws0transfer">
+    <endpoint name="ws0transfer" contract="TransferServiceClientReference.IFileTransferService" bindingType="wsHttpBinding" address="http://localhost:8732/FileTransferService.svc/ws0" bindingConfiguration="ws0transfer">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:53408/FileTransferService.svc/ws0</serializedValue>
+          <serializedValue>http://localhost:8732/FileTransferService.svc/ws0</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -321,10 +321,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="basic0transfer" contract="TransferServiceClientReference.IFileTransferService" bindingType="basicHttpBinding" address="http://localhost:53408/FileTransferService.svc/basic0" bindingConfiguration="basic0transfer">
+    <endpoint name="basic0transfer" contract="TransferServiceClientReference.IFileTransferService" bindingType="basicHttpBinding" address="http://localhost:8732/FileTransferService.svc/basic0" bindingConfiguration="basic0transfer">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:53408/FileTransferService.svc/basic0</serializedValue>
+          <serializedValue>http://localhost:8732/FileTransferService.svc/basic0</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

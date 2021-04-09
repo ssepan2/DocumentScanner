@@ -5,18 +5,20 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using Ssepan.Io;
 using Ssepan.Transaction;
 using Ssepan.Utility;
 using DocumentScannerCommon;
 //using TransferServerBusiness;
 
-namespace DocumentScannerServerLibrary
+namespace DocumentScannerServerLibrary.MVC
+
 {
     /// <summary>
     /// This is the MVC Controller
     /// </summary>
-    public class DSServerController<TModel> : 
+    public class DSServerModelController<TModel> : 
         ModelController<TModel>
         where TModel :
             class,
@@ -27,7 +29,7 @@ namespace DocumentScannerServerLibrary
         #endregion Declarations
 
         #region Constructors
-        public DSServerController()
+        public DSServerModelController()
         {
                 //Init config parameters
                 if (!LoadConfigParameters())
@@ -40,6 +42,43 @@ namespace DocumentScannerServerLibrary
         #region Properties
         //Note:TModel Model exists in base
         #endregion Properties
+
+
+        #region Other Methods
+        /// <summary>
+        /// Return path of transaction image data folder under transaction data path.
+        /// </summary>
+        /// <param name="forceTransactionId"></param>
+        /// <returns></returns>
+        public static String GetTransactionImagesPath(Boolean forceTransactionId)
+        {
+            String returnValue = default(String);
+            try
+            {
+                if (SettingsController<DSServerSettings>.Filename == SettingsController<DSServerSettings>.FILE_NEW)
+                {
+                    //file is '(new)' and not saved; filename matches folder
+                    returnValue = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, SettingsController<DSServerSettings>.Filename);
+                }
+                else if (forceTransactionId)
+                {
+                    //force transaction id as folder name
+                    returnValue = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, SettingsController<DSServerSettings>.Settings.Manifest.TransactionId);
+                }
+                else
+                {
+                    //file is not '(new)' and was saved; transaction id matches folder
+                    returnValue = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, SettingsController<DSServerSettings>.Settings.Manifest.TransactionId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
+                //throw;
+            }
+            return returnValue;
+        }
+        #endregion Other Methods
 
         /// <summary>
         /// Load from app config
@@ -61,37 +100,37 @@ namespace DocumentScannerServerLibrary
                 {
                     throw new Exception(String.Format("Unable to load ReCreateWaitMilliseconds: '{0}'", _reCreateWaitMilliseconds));
                 }
-                DSServerController<DSServerModel>.Model.ReCreateWaitMilliseconds = _reCreateWaitMilliseconds;
+                DSServerModelController<DSServerModel>.Model.ReCreateWaitMilliseconds = _reCreateWaitMilliseconds;
 
                 if (!Configuration.ReadString("UserSendFolder", out _userSendFolder))
                 {
                     throw new Exception(String.Format("Unable to load UserSendFolder: '{0}'", _userSendFolder));
                 }
-                DSServerController<DSServerModel>.Model.UserSendFolder = _userSendFolder;
+                DSServerModelController<DSServerModel>.Model.UserSendFolder = _userSendFolder;
 
                 if (!Configuration.ReadString("DataPath", out _dataPath))
                 {
                     throw new Exception(String.Format("Unable to load DataPath: '{0}'", _dataPath));
                 }
-                DSServerController<DSServerModel>.Model.DataPath = _dataPath;
+                DSServerModelController<DSServerModel>.Model.DataPath = _dataPath;
 
                 if (!Configuration.ReadString("PushReceivePath", out _pushReceivePath))
                 {
                     throw new Exception(String.Format("Unable to load PushReceivePath: '{0}'", _pushReceivePath));
                 }
-                DSServerController<DSServerModel>.Model.PushReceivePath = _pushReceivePath;
+                DSServerModelController<DSServerModel>.Model.PushReceivePath = _pushReceivePath;
 
                 if (!Configuration.ReadValue<Int32>("CompletedTransactionRetentionDays", out _completedTransactionRetentionDays))
                 {
                     throw new Exception(String.Format("Unable to load CompletedTransactionRetentionDays: '{0}'", _completedTransactionRetentionDays));
                 }
-                DSServerController<DSServerModel>.Model.CompletedTransactionRetentionDays = _completedTransactionRetentionDays;
+                DSServerModelController<DSServerModel>.Model.CompletedTransactionRetentionDays = _completedTransactionRetentionDays;
 
                 if (!Configuration.ReadValue<Int32>("ErrorTransactionRetentionDays", out _errorTransactionRetentionDays))
                 {
                     throw new Exception(String.Format("Unable to load ErrorTransactionRetentionDays: '{0}'", _errorTransactionRetentionDays));
                 }
-                DSServerController<DSServerModel>.Model.ErrorTransactionRetentionDays = _errorTransactionRetentionDays;
+                DSServerModelController<DSServerModel>.Model.ErrorTransactionRetentionDays = _errorTransactionRetentionDays;
                 
                 returnValue = true;
             }
@@ -142,10 +181,10 @@ namespace DocumentScannerServerLibrary
                 }
                 
                 //get user path
-                userPath = Path.Combine(DSServerController<DSServerModel>.Model.DataPath, operatorId);
+                userPath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, operatorId);
 
                 //get user send path
-                userSendPath = Path.Combine(userPath, DSServerController<DSServerModel>.Model.UserSendFolder);
+                userSendPath = Path.Combine(userPath, DSServerModelController<DSServerModel>.Model.UserSendFolder);
                
                 
                 //validate manifest, and return manifest object
@@ -174,7 +213,7 @@ namespace DocumentScannerServerLibrary
                     !DocumentScannerCommon.Package.PreparePackageSubFolder
                     (
                         packageContentsPackageSubfolderPath,
-                        DSServerController<DSServerModel>.Model.ReCreateWaitMilliseconds,
+                        DSServerModelController<DSServerModel>.Model.ReCreateWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage
                     )
@@ -192,7 +231,7 @@ namespace DocumentScannerServerLibrary
                         manifest,
                         userSendPath,
                         packageContentsPackageSubfolderPath,
-                        DSServerController<DSServerModel>.Model.ReCreateWaitMilliseconds,
+                        DSServerModelController<DSServerModel>.Model.ReCreateWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage
                     )
@@ -212,7 +251,7 @@ namespace DocumentScannerServerLibrary
                         id,
                         sendPath,
                         userSendPath, //creates package folder as subfolder of user folder in Data folder
-                        DSServerController<DSServerModel>.Model.ReCreateWaitMilliseconds,
+                        DSServerModelController<DSServerModel>.Model.ReCreateWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage
                     )
@@ -296,16 +335,18 @@ namespace DocumentScannerServerLibrary
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="date"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> ManifestsConfirmed
+        /// <returns>Boolean</returns>
+        public static Boolean ManifestsConfirmed
         (
             String operatorId,
             DateTime date,
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
             List<String> manifestFilePaths = default(List<String>);
             String userDataPath = default(String);
             String datedUserDataPath = default(String);
@@ -314,10 +355,10 @@ namespace DocumentScannerServerLibrary
 
             try
             {
-                returnValue = new List<PackageManifest>();
+                manifestList = new List<PackageManifest>();
 
                 //user folder in data folder
-                userDataPath = Path.Combine(DSServerController<DSServerModel>.Model.DataPath, operatorId);
+                userDataPath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, operatorId);
 
                 //dated folder in user folder
                 datedUserDataPath = Path.Combine(userDataPath, TransactionFolders.GetDatedSubFolderNameFromDate(date));
@@ -346,8 +387,9 @@ namespace DocumentScannerServerLibrary
                         throw new Exception(String.Format("Manifest '{0}' invalid: \n'{1}'", manifest.TransactionId, manifest.ErrorMessage));
                     }
 
-                    returnValue.Add(manifest);
+                    manifestList.Add(manifest);
                 }
+                returnValue = true;
             }
             catch (Exception ex)
             {
@@ -365,17 +407,19 @@ namespace DocumentScannerServerLibrary
         /// <param name="operatorId"></param>
         /// <param name="transactionId"></param>
         /// <param name="date"></param>
+        /// <param name="documentList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<ImageFile> DocumentsConfirmed
+        /// <returns>Boolean</returns>
+        public static Boolean DocumentsConfirmed
         (
             String operatorId,
             String transactionId,
             DateTime date,
+            ref List<ImageFile> documentList,
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
+            Boolean returnValue = default(Boolean);
             PackageManifest manifest = default(PackageManifest);
             String manifestFilePath = default(String);
             String userDataPath = default(String);
@@ -384,10 +428,10 @@ namespace DocumentScannerServerLibrary
 
             try
             {
-                returnValue = new List<ImageFile>();
+                documentList = new List<ImageFile>();
 
                 //user folder in data folder
-                userDataPath = Path.Combine(DSServerController<DSServerModel>.Model.DataPath, operatorId);
+                userDataPath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, operatorId);
 
                 //dated folder in user folder
                 datedUserDataPath = Path.Combine(userDataPath, TransactionFolders.GetDatedSubFolderNameFromDate(date));
@@ -404,7 +448,8 @@ namespace DocumentScannerServerLibrary
                 }
 
                 //load document list into return list
-                returnValue = manifest.DocumentFiles.ToList<ImageFile>();
+                documentList = manifest.DocumentFiles.ToList<ImageFile>();
+                returnValue = true;
             }
             catch (Exception ex)
             {
@@ -421,16 +466,18 @@ namespace DocumentScannerServerLibrary
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="date"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> ManifestsAvailable
+        /// <returns>Boolean</returns>
+        public static Boolean ManifestsAvailable
         (
             String operatorId,
             DateTime date,
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
             List<String> manifestFilePaths = default(List<String>);
             String userDataPath = default(String);
             String sendUserDataPath = default(String);
@@ -439,13 +486,13 @@ namespace DocumentScannerServerLibrary
 
             try
             {
-                returnValue = new List<PackageManifest>();
+                manifestList = new List<PackageManifest>();
 
                 //user folder in data folder
-                userDataPath = Path.Combine(DSServerController<DSServerModel>.Model.DataPath, operatorId);
+                userDataPath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, operatorId);
 
                 //send folder in user folder
-                sendUserDataPath = Path.Combine(userDataPath, DSServerController<DSServerModel>.Model.UserSendFolder);
+                sendUserDataPath = Path.Combine(userDataPath, DSServerModelController<DSServerModel>.Model.UserSendFolder);
                 //do not throw error if dated folder does not exist -- just return empty list
                 if (!Directory.Exists(sendUserDataPath))
                 {
@@ -472,8 +519,9 @@ namespace DocumentScannerServerLibrary
                         throw new Exception(String.Format("Manifest '{0}' invalid: \n'{1}'", manifest.TransactionId, manifest.ErrorMessage));
                     }
 
-                    returnValue.Add(manifest);
+                    manifestList.Add(manifest);
                 }
+                returnValue = true;
             }
             catch (Exception ex)
             {
@@ -491,17 +539,19 @@ namespace DocumentScannerServerLibrary
         /// <param name="operatorId"></param>
         /// <param name="transactionId"></param>
         /// <param name="date"></param>
+        /// <param name="documentList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<ImageFile> DocumentsAvailable
+        /// <returns>Boolean</returns>
+        public static Boolean DocumentsAvailable
         (
             String operatorId,
             String transactionId,
             DateTime date,
+            ref List<ImageFile> documentList,
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
+            Boolean returnValue = default(Boolean);
             PackageManifest manifest = default(PackageManifest);
             String manifestFilePath = default(String);
             String userDataPath = default(String);
@@ -510,13 +560,13 @@ namespace DocumentScannerServerLibrary
 
             try
             {
-                returnValue = new List<ImageFile>();
+                documentList = new List<ImageFile>();
 
                 //user folder in data folder
-                userDataPath = Path.Combine(DSServerController<DSServerModel>.Model.DataPath, operatorId);
+                userDataPath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, operatorId);
 
                 //send folder in user folder
-                sendUserDataPath = Path.Combine(userDataPath, DSServerController<DSServerModel>.Model.UserSendFolder);
+                sendUserDataPath = Path.Combine(userDataPath, DSServerModelController<DSServerModel>.Model.UserSendFolder);
 
                 //load manifest 
                 manifestFilePath = Path.Combine(sendUserDataPath, String.Format("{0}.{1}", transactionId, DocumentScannerCommon.PackageManifest.DATA_FILE_TYPE));
@@ -530,7 +580,8 @@ namespace DocumentScannerServerLibrary
                 }
 
                 //load document list into return list
-                returnValue = manifest.DocumentFiles.ToList<ImageFile>();
+                documentList = manifest.DocumentFiles.ToList<ImageFile>();
+                returnValue = true;
             }
             catch (Exception ex)
             {
@@ -549,7 +600,7 @@ namespace DocumentScannerServerLibrary
         {
             try
             {
-                DSServerController<DSServerModel>.Model.IsChanged = true;//Value doesn't matter; a changed fire event;
+                DSServerModelController<DSServerModel>.Model.IsChanged = true;//Value doesn't matter; a changed fire event;
             }
             catch (Exception ex)
             {
@@ -584,7 +635,7 @@ namespace DocumentScannerServerLibrary
             {
                 reportProgressDelegate(String.Format("validating...{0}", packageCount));
 
-                packageFilenames = DSServerController<DSServerModel>.Model.PackagesQueued;
+                packageFilenames = DSServerModelController<DSServerModel>.Model.PackagesQueued;
                 if (!(packageFilenames.Count > 0))
                 {
                     reportProgressDelegate(String.Format("No packages queued....{0}", packageFilenames.Count));
@@ -597,10 +648,10 @@ namespace DocumentScannerServerLibrary
                     transactionFolders =
                         new TransactionFolders
                         (
-                            DSServerController<DSServerModel>.Model.TransactionRootPath,
-                            DSServerController<DSServerModel>.Model.TransactionWorkingPath,
-                            DSServerController<DSServerModel>.Model.TransactionCompletedPath,
-                            DSServerController<DSServerModel>.Model.TransactionErrorPath,
+                            DSServerModelController<DSServerModel>.Model.TransactionRootPath,
+                            DSServerModelController<DSServerModel>.Model.TransactionWorkingPath,
+                            DSServerModelController<DSServerModel>.Model.TransactionCompletedPath,
+                            DSServerModelController<DSServerModel>.Model.TransactionErrorPath,
                             true,
                             true,
                             false,
@@ -658,7 +709,7 @@ namespace DocumentScannerServerLibrary
                         }
                                             
                         //reload package list
-                        packageFilenames = DSServerController<DSServerModel>.Model.PackagesQueued;
+                        packageFilenames = DSServerModelController<DSServerModel>.Model.PackagesQueued;
                     }
 
                     //report final status
@@ -670,8 +721,8 @@ namespace DocumentScannerServerLibrary
                     (
                         !transactionFolders.CleanUp
                         (
-                            new TimeSpan(DSServerController<DSServerModel>.Model.CompletedTransactionRetentionDays, 0, 0, 0),
-                            new TimeSpan(DSServerController<DSServerModel>.Model.ErrorTransactionRetentionDays, 0, 0, 0),
+                            new TimeSpan(DSServerModelController<DSServerModel>.Model.CompletedTransactionRetentionDays, 0, 0, 0),
+                            new TimeSpan(DSServerModelController<DSServerModel>.Model.ErrorTransactionRetentionDays, 0, 0, 0),
                             ref errorMessage
                         )
                     )
@@ -724,7 +775,7 @@ namespace DocumentScannerServerLibrary
                         transactionFolders.ID,
                         transactionFolders.WorkingFilePath, //location of package file
                         transactionFolders.WorkingFilePath, //extract to subfolder in same location as package file
-                        DSServerController<DSServerModel>.Model.ReCreateWaitMilliseconds,
+                        DSServerModelController<DSServerModel>.Model.ReCreateWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage,
                         out manifest
@@ -739,7 +790,7 @@ namespace DocumentScannerServerLibrary
                 reportProgressDelegate(String.Format("creating destination..."));
 
                 //prepare destination
-                userPath = Path.Combine(DSServerController<DSServerModel>.Model.DataPath, manifest.OperatorId); 
+                userPath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, manifest.OperatorId); 
                 if (!Directory.Exists(userPath))
                 {
                     //if user path does not exist, create it
@@ -773,7 +824,7 @@ namespace DocumentScannerServerLibrary
                         manifest,
                         packageContentsPackageSubfolderPath,
                         datedPath,
-                        DSServerController<DSServerModel>.Model.ReCreateWaitMilliseconds,
+                        DSServerModelController<DSServerModel>.Model.ReCreateWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage
                     )

@@ -5,22 +5,23 @@ using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using Ssepan.Io;
 using Ssepan.Utility;
 
-namespace DocumentScannerLibrary
+namespace DocumentScannerServerLibrary.MVC
 {
 	/// <summary>
     /// Manager for the persisted Settings. Custom override.
     /// </summary>
-    public class DSSettingsController :
-        SettingsController<Settings>
+    public class DSServerSettingsController :
+        SettingsController<DSServerSettings>
     {
         #region constructors
         /// <summary>
         /// Init properties
         /// </summary>
-        public DSSettingsController()
+        public DSServerSettingsController()
         {
             try
             {
@@ -54,10 +55,10 @@ namespace DocumentScannerLibrary
                         String folderPath = default(String);
 
                         //check for folder and delete if present
-                        folderPath = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.FILE_NEW);
+                        folderPath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, SettingsController<DSServerSettings>.FILE_NEW);
 
                         //check for folder and delete if present
-                        Folder.DeleteFolderWithWait(folderPath, DSController<DSModel>.Model.ReNewWaitMilliseconds);
+                        Folder.DeleteFolderWithWait(folderPath, DSServerModelController<DSServerModel>.Model.ReCreateWaitMilliseconds);
 
                         //check for folder and create if missing
                         if (!Directory.Exists(folderPath))
@@ -67,7 +68,7 @@ namespace DocumentScannerLibrary
                     };
 
                 //Note:static method 'overridden' in base class
-                SettingsController<Settings>.New();
+                SettingsController<DSServerSettings>.New();
 
                 postNewDelegate();
             }
@@ -93,11 +94,11 @@ namespace DocumentScannerLibrary
                         //Open was not synchronizing OldFilename with Filename, and Save logic was seeing '(new)'
                         //and performing wrong actions.
                         //force new Filename into OldFilename
-                        SettingsController<Settings>.Filename = SettingsController<Settings>.Filename;
+                        SettingsController<DSServerSettings>.Filename = SettingsController<DSServerSettings>.Filename;
                     };
 
                 //Note:static method 'overridden' in base class
-                SettingsController<Settings>.Open();
+                SettingsController<DSServerSettings>.Open();
 
                 postOpenDelegate();
             }
@@ -125,28 +126,28 @@ namespace DocumentScannerLibrary
                         String newFolderPath_ = default(String);
                         String filePath = default(String);
 
-                        if (SettingsController<Settings>.OldFilename.ToUpper() != SettingsController<Settings>.Filename.ToUpper())
+                        if (SettingsController<DSServerSettings>.OldFilename.ToUpper() != SettingsController<DSServerSettings>.Filename.ToUpper())
                         {
 
-                            if (SettingsController<Settings>.OldFilename == SettingsController<Settings>.FILE_NEW)
+                            if (SettingsController<DSServerSettings>.OldFilename == SettingsController<DSServerSettings>.FILE_NEW)
                             {
                                 //source will be (new)
                                 //if (new), then rename folder to transaction's id
-                                oldFolderPath_ = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.OldFilename);
+                                oldFolderPath_ = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, SettingsController<DSServerSettings>.OldFilename);
                                 //force transaction id for destination
-                                newFolderPath_ = DSController<DSModel>.GetTransactionImagesPath(true);
+                                newFolderPath_ = DSServerModelController<DSServerModel>.GetTransactionImagesPath(true);
                                 Directory.Move(oldFolderPath_, newFolderPath_);
                             }
                             else //(oldFilename != SettingsController<Settings>.FILE_NEW) 
                             {
                                 //if not (new), then delete original data file
                                 //filename is different; delete original because it has same transaction #
-                                filePath = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.OldFilename);
+                                filePath = Path.Combine(DSServerModelController<DSServerModel>.Model.DataPath, SettingsController<DSServerSettings>.OldFilename);
                                 System.IO.File.Delete(filePath);
                             }
 
                             //force new Filename into OldFilename
-                            SettingsController<Settings>.Filename = SettingsController<Settings>.Filename;
+                            SettingsController<DSServerSettings>.Filename = SettingsController<DSServerSettings>.Filename;
                         }
                     };
 
@@ -154,7 +155,7 @@ namespace DocumentScannerLibrary
                 //...but refresh was seeing non-new transaction and getting wrong transaction path...
                 // ... because folder was still 'new' until Move().
                 //Note:static method 'overridden' in base class
-                SettingsController<Settings>.Save();
+                SettingsController<DSServerSettings>.Save();
 
                 postSaveDelegate();
             }

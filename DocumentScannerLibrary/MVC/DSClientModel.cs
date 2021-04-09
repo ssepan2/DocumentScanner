@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -13,26 +14,26 @@ using DocumentScannerCommon;
 //using TransferServiceClient;
 using ManifestServiceClient;
 
-namespace DocumentScannerLibrary
+namespace DocumentScannerLibrary.MVC
 {
     /// <summary>
     /// run-time model; relies on settings
     /// </summary>
     [TypeConverter(typeof(ExpandableObjectConverter))]
-    public class DSModel :
+    public class DSClientModel :
         ModelBase
     {
         #region Declarations
         #endregion Declarations
 
         #region Constructors
-        public DSModel() 
+        public DSClientModel() 
         {
-            if (SettingsController<Settings>.Settings == null)
+            if (SettingsController<DSClientSettings>.Settings == null)
             {
-                SettingsController<Settings>.New();
+                SettingsController<DSClientSettings>.New();
             }
-            Debug.Assert(SettingsController<Settings>.Settings != null, "SettingsController<Settings>.Settings != null");
+            Debug.Assert(SettingsController<DSClientSettings>.Settings != null, "SettingsController<DSClientSettings>.Settings != null");
         }
         #endregion Constructors
 
@@ -45,11 +46,11 @@ namespace DocumentScannerLibrary
         public override Boolean Equals(IModelComponent other)
         {
             Boolean returnValue = default(Boolean);
-            DSModel otherModel = default(DSModel);
+            DSClientModel otherModel = default(DSClientModel);
 
             try
             {
-                otherModel = other as DSModel;
+                otherModel = other as DSClientModel;
 
                 if (this == otherModel)
                 {
@@ -89,30 +90,30 @@ namespace DocumentScannerLibrary
         #region Persisted Properties
         public PackageManifest Manifest
         {
-            get { return SettingsController<Settings>.Settings.Manifest; }
+            get { return SettingsController<DSClientSettings>.Settings.Manifest; }
             set
             {
-                SettingsController<Settings>.Settings.Manifest = value;
+                SettingsController<DSClientSettings>.Settings.Manifest = value;
                 OnPropertyChanged("Manifest");
             }
         }
 
         public String Version
         {
-            get { return SettingsController<Settings>.Settings.Version; }
+            get { return SettingsController<DSClientSettings>.Settings.Version; }
             set
             {
-                SettingsController<Settings>.Settings.Version = value;
+                SettingsController<DSClientSettings>.Settings.Version = value;
                 OnPropertyChanged("Version");
             }
         }
 
         //public String UserName
         //{
-        //    get { return SettingsController<Settings>.Settings.UserName; }
+        //    get { return SettingsController<DSClientSettings>.Settings.UserName; }
         //    set 
         //    { 
-        //        SettingsController<Settings>.Settings.UserName = value;
+        //        SettingsController<DSClientSettings>.Settings.UserName = value;
         //        OnPropertyChanged("UserName");
         //    }
         //}

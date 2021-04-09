@@ -14,12 +14,14 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using Ssepan.Collections;
 using Ssepan.Graphics;
 using Ssepan.Io;
 using Ssepan.Utility;
 using DocumentScannerCommon;
 using DocumentScannerLibrary;
+using DocumentScannerLibrary.MVC;
 using DocumentScannerLibrary.Properties;
 
 namespace DocumentScanner
@@ -184,7 +186,7 @@ namespace DocumentScanner
                 if (e.PropertyName == "Dirty")
                 {
                     //apply settings that don't have databindings
-                    ViewModel.DirtyIconIsVisible = (SettingsController<Settings>.Settings.Dirty);
+                    ViewModel.DirtyIconIsVisible = (SettingsController<DSClientSettings>.Settings.Dirty);
                 }
                 #endregion Settings
             }
@@ -531,7 +533,7 @@ namespace DocumentScanner
         {
             try
             {
-                DSController<DSModel>.Model.Refresh();
+                DSClientModelController<DSClientModel>.Model.Refresh();
             }
             catch (Exception ex)
             {
@@ -544,7 +546,7 @@ namespace DocumentScanner
         {
             try
             {
-                DSController<DSModel>.Model.Refresh();
+                DSClientModelController<DSClientModel>.Model.Refresh();
             }
             catch (Exception ex)
             {
@@ -656,7 +658,7 @@ namespace DocumentScanner
 
                     //run process
                     ea.Result =
-                        DSController<DSModel>.ConfirmManifestsInBackground//Note:pass wrapper instead of this.--SJS
+                        DSClientModelController<DSClientModel>.ConfirmManifestsInBackground//Note:pass wrapper instead of this.--SJS
                         (
                             arguments.Item1,
                             arguments.Item2, 
@@ -698,7 +700,7 @@ namespace DocumentScanner
                     //Confirmed manifests
                     confirmedManifestBindingSource.DataSource = (List<PackageManifest>)e.Result;
 
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         //tabControl.SelectTab(tabPageConfirm);
                     }
@@ -729,7 +731,7 @@ namespace DocumentScanner
 
                     //run process
                     ea.Result = 
-                        DSController<DSModel>.AvailableManifestsInBackground//Note:pass wrapper instead of this.--SJS
+                        DSClientModelController<DSClientModel>.AvailableManifestsInBackground//Note:pass wrapper instead of this.--SJS
                         (
                             arguments.Item1,
                             worker,
@@ -770,7 +772,7 @@ namespace DocumentScanner
                     //Available manifests
                     receivableManifestBindingSource.DataSource = (List<PackageManifest>)e.Result;
 
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         tabControl.SelectTab(tabPageReceive);
                     }
@@ -789,7 +791,7 @@ namespace DocumentScanner
             (
                 sender as BackgroundWorker,
                 e,
-                DSController<DSModel>.SendInBackground
+                DSClientModelController<DSClientModel>.SendInBackground
             );
         }
 
@@ -821,7 +823,7 @@ namespace DocumentScanner
                     ViewModel.StopProgressBar("Send Finished...", "One or more packages not sent.");
 
                     //go to Review tab to see failed packages too
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         this.tabControl.SelectTab(this.tabPageReview);
                     }
@@ -830,7 +832,7 @@ namespace DocumentScanner
                 () =>
                 {
 
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         tabControl.SelectTab(tabPageReview);
                     }
@@ -849,7 +851,7 @@ namespace DocumentScanner
             (
                 sender as BackgroundWorker,
                 e,
-                DSController<DSModel>.ReceiveInBackground
+                DSClientModelController<DSClientModel>.ReceiveInBackground
             );
         }
 
@@ -881,7 +883,7 @@ namespace DocumentScanner
                     ViewModel.StopProgressBar("Receive terminated...", "Package not received.");
 
                     //go to passed tab 
-                    //if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    //if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     //{
                     //    this.tabControl.SelectTab(this.tabPageReceive);
                     //}
@@ -896,7 +898,7 @@ namespace DocumentScanner
                     receivableManifestsDataGridView.ClearSelection();
                     receivableManifestBindingSource.DataSource = new List<PackageManifest>();
 
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         tabControl.SelectTab(tabPageScan);
                     }
@@ -915,7 +917,7 @@ namespace DocumentScanner
             (
                 sender as BackgroundWorker,
                 e,
-                DSController<DSModel>.PackageInBackground
+                DSClientModelController<DSClientModel>.PackageInBackground
             );
         }
 
@@ -946,7 +948,7 @@ namespace DocumentScanner
                 () =>
                 { 
 
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         tabControl.SelectTab(tabPageSend);
                     }
@@ -965,7 +967,7 @@ namespace DocumentScanner
             (
                 sender as BackgroundWorker,
                 e,
-                DSController<DSModel>.UnPackageInBackground
+                DSClientModelController<DSClientModel>.UnPackageInBackground
             );
         }
 
@@ -996,7 +998,7 @@ namespace DocumentScanner
                 () =>
                 {
 
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         tabControl.SelectTab(tabPageScan);
                     }
@@ -1015,7 +1017,7 @@ namespace DocumentScanner
             (
                 sender as BackgroundWorker, 
                 e,
-                DSController<DSModel>.SplitPackageSettingsInBackground
+                DSClientModelController<DSClientModel>.SplitPackageSettingsInBackground
             );
         }
 
@@ -1045,7 +1047,7 @@ namespace DocumentScanner
                 null,
                 () =>
                 {
-                    if (DSController<DSModel>.Model.AutoNavigateTabs)
+                    if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                     {
                         tabControl.SelectTab(tabPageScan);
                     }
@@ -1135,7 +1137,7 @@ namespace DocumentScanner
             try
             {
                 //tell controller how model should notify view about non-persisted properties AND including model properties that may be part of settings
-                ModelController<DSModel>.DefaultHandler = PropertyChangedEventHandlerDelegate;
+                ModelController<DSClientModel>.DefaultHandler = PropertyChangedEventHandlerDelegate;
 
                 //tell controller how settings should notify view about persisted properties
                 SettingsController<Settings>.DefaultHandler = PropertyChangedEventHandlerDelegate;
@@ -1235,7 +1237,7 @@ namespace DocumentScanner
     #endif
 
                 //Display dirty state
-                DSController<DSModel>.Model.Refresh();
+                DSClientModelController<DSClientModel>.Model.Refresh();
             }
             catch (Exception ex)
             {
@@ -1255,9 +1257,9 @@ namespace DocumentScanner
                 SettingsController<Settings>.New();
             }
             //Model properties rely on Settings, so don't call Refresh before this is run.
-            if (DSController<DSModel>.Model == null)
+            if (DSClientModelController<DSClientModel>.Model == null)
             {
-                DSController<DSModel>.New();
+                DSClientModelController<DSClientModel>.New();
             }
         }
 
@@ -1291,7 +1293,7 @@ namespace DocumentScanner
             }
 
             //unsubscribe from model notifications
-            DSController<DSModel>.Model.PropertyChanged -= PropertyChangedEventHandlerDelegate;
+            DSClientModelController<DSClientModel>.Model.PropertyChanged -= PropertyChangedEventHandlerDelegate;
         }
 
         protected void _Run()
@@ -1331,20 +1333,20 @@ namespace DocumentScanner
                 //SEND
                 //queued
                 queuedBindingSource.DataSource =
-                    (from path in DSController<DSModel>.Model.PackagesQueued
+                    (from path in DSClientModelController<DSClientModel>.Model.PackagesQueued
                      select new { Name = Path.GetFileNameWithoutExtension(path) }).ToList();
 
                 //REVIEW
                 //completed list
                 completedBindingSource.DataSource =
-                    (from path in DSController<DSModel>.Model.PackagesCompleted
+                    (from path in DSClientModelController<DSClientModel>.Model.PackagesCompleted
                      select new { Name = Path.GetFileNameWithoutExtension(path) }).ToList();
 
                 //failed list
                 //Note: ToList overcomes a problem with binding IEnumerable<anonymoustype> to DataGridView,
                 // where grid adds an empty row.
                 failedBindingSource.DataSource =
-                    (from path in DSController<DSModel>.Model.PackagesFailed
+                    (from path in DSClientModelController<DSClientModel>.Model.PackagesFailed
                      select new { Name = Path.GetFileNameWithoutExtension(path), Filename = Path.GetFileName(path), FilePath = path }).ToList();
 
                 //SCAN
@@ -1454,7 +1456,7 @@ namespace DocumentScanner
                     (
                         NetworkInterface.GetIsNetworkAvailable() 
                         && 
-                        DSController<DSModel>.Model.ArePackagesQueued
+                        DSClientModelController<DSClientModel>.Model.ArePackagesQueued
                     );
                 this.buttonFileSend.Enabled = this.menuFileSend.Enabled;
                 this.sendButton.Enabled = this.menuFileSend.Enabled;
@@ -1576,61 +1578,61 @@ namespace DocumentScanner
                 {
                     throw new Exception(String.Format("Unable to load FileTransferServiceEndpointConfigurationName: '{0}'", _fileTransferServiceEndpointConfigurationName));
                 }
-                DSController<DSModel>.Model.FileTransferServiceEndpointConfigurationName = _fileTransferServiceEndpointConfigurationName;
+                DSClientModelController<DSClientModel>.Model.FileTransferServiceEndpointConfigurationName = _fileTransferServiceEndpointConfigurationName;
 
                 if (!Configuration.ReadString("PackageManifestServiceEndpointConfigurationName", out _packageManifestServiceEndpointConfigurationName))
                 {
                     throw new Exception(String.Format("Unable to load PackageManifestServiceEndpointConfigurationName: '{0}'", _packageManifestServiceEndpointConfigurationName));
                 }
-                DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName = _packageManifestServiceEndpointConfigurationName;
+                DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName = _packageManifestServiceEndpointConfigurationName;
 
                 //if (!Configuration.ReadValue<Int32>("ImageQualityPercent", out _imageQualityPercent))
                 //{
                 //    throw new Exception(String.Format("Unable to load ImageQualityPercent: '{0}'", _imageQualityPercent));
                 //}
-                //DSController<DSModel>.Model.ImageQualityPercent = _imageQualityPercent;
+                //DSClientModelController<DSClientModel>.Model.ImageQualityPercent = _imageQualityPercent;
 
                 if (!Configuration.ReadValue<Boolean>("AutoNavigateTabs", out _autoNavigateTabs))
                 {
                     throw new Exception(String.Format("Unable to load AutoNavigateTabs: '{0}'", _autoNavigateTabs));
                 }
-                DSController<DSModel>.Model.AutoNavigateTabs = _autoNavigateTabs;
+                DSClientModelController<DSClientModel>.Model.AutoNavigateTabs = _autoNavigateTabs;
 
                 if (!Configuration.ReadValue<Int32>("ReNewWaitMilliseconds", out _reNewWaitMilliseconds))
                 {
                     throw new Exception(String.Format("Unable to load ReNewWaitMilliseconds: '{0}'", _reNewWaitMilliseconds));
                 }
-                DSController<DSModel>.Model.ReNewWaitMilliseconds = _reNewWaitMilliseconds;
+                DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds = _reNewWaitMilliseconds;
 
                 if (!Configuration.ReadString("DataPath", out _dataPath))
                 {
                     throw new Exception(String.Format("Unable to load DataPath: '{0}'", _dataPath));
                 }
-                DSController<DSModel>.Model.DataPath = _dataPath;
+                DSClientModelController<DSClientModel>.Model.DataPath = _dataPath;
 
                 if (!Configuration.ReadString("PushSendPath", out _pushSendPath))
                 {
                     throw new Exception(String.Format("Unable to load PushSendPath: '{0}'", _pushSendPath));
                 }
-                DSController<DSModel>.Model.PushSendPath = _pushSendPath;
+                DSClientModelController<DSClientModel>.Model.PushSendPath = _pushSendPath;
 
                 if (!Configuration.ReadString("PullReceivePath", out _pullReceivePath))
                 {
                     throw new Exception(String.Format("Unable to load PullReceivePath: '{0}'", _pullReceivePath));
                 }
-                DSController<DSModel>.Model.PullReceivePath = _pullReceivePath;
+                DSClientModelController<DSClientModel>.Model.PullReceivePath = _pullReceivePath;
 
                 if (!Configuration.ReadValue<Int32>("CompletedTransactionRetentionDays", out _completedTransactionRetentionDays))
                 {
                     throw new Exception(String.Format("Unable to load CompletedTransactionRetentionDays: '{0}'", _completedTransactionRetentionDays));
                 }
-                DSController<DSModel>.Model.CompletedTransactionRetentionDays = _completedTransactionRetentionDays;
+                DSClientModelController<DSClientModel>.Model.CompletedTransactionRetentionDays = _completedTransactionRetentionDays;
 
                 if (!Configuration.ReadValue<Int32>("ErrorTransactionRetentionDays", out _errorTransactionRetentionDays))
                 {
                     throw new Exception(String.Format("Unable to load ErrorTransactionRetentionDays: '{0}'", _errorTransactionRetentionDays));
                 }
-                DSController<DSModel>.Model.ErrorTransactionRetentionDays = _errorTransactionRetentionDays;
+                DSClientModelController<DSClientModel>.Model.ErrorTransactionRetentionDays = _errorTransactionRetentionDays;
 
                 returnValue = true;
             }

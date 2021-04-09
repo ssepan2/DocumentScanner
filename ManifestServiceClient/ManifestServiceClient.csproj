@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ManifestServiceClient</RootNamespace>
     <AssemblyName>ManifestServiceClient</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -66,11 +66,12 @@
     <None Include="Properties\DataSources\DocumentScannerCommon.ImageFileBase1.datasource" />
     <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifest.datasource" />
     <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifest1.datasource" />
-    <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifest2.datasource" />
     <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase.datasource" />
     <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase1.datasource" />
     <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase2.datasource" />
     <None Include="Properties\DataSources\DocumentScannerCommon.PackageManifestBase3.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerServiceCommon.DocumentContract.datasource" />
+    <None Include="Properties\DataSources\DocumentScannerServiceCommon.ManifestContract.datasource" />
     <None Include="Service References\ManifestServiceClientReference\PackageManifestService.wsdl" />
     <None Include="Service References\ManifestServiceClientReference\PackageManifestService.xsd">
       <SubType>Designer</SubType>
@@ -86,12 +87,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Ssepan.Application\Ssepan.Application.csproj">
+      <Project>{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}</Project>
+      <Name>Ssepan.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj">
-      <Project>{9c11d8dd-e335-4fe3-aae6-5c3b17732890}</Project>
+      <Project>{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}</Project>
       <Name>Ssepan.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerCommon\DocumentScannerCommon.csproj">
-      <Project>{0322295b-89f7-484c-b89f-7b0c56ba0e23}</Project>
+      <Project>{0322295B-89F7-484C-B89F-7B0C56BA0E23}</Project>
       <Name>DocumentScannerCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocumentScannerServiceCommon\DocumentScannerServiceCommon.csproj">
@@ -112,13 +117,13 @@
     <None Include="Service References\ManifestServiceClientReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ManifestServiceClientReference\PackageManifestService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ManifestServiceClientReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:53408/PackageManifestService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" />
-  <xs:import schemaLocation="http://localhost:53408/PackageManifestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" />
+  <xs:import schemaLocation="http://localhost:8732/PackageManifestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" />
   <xs:element name="Ping">
     <xs:complexType>
       <xs:sequence>
@@ -28,7 +27,8 @@
   <xs:element name="ManifestsConfirmedResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" minOccurs="0" name="ManifestsConfirmedResult" nillable="true" type="q2:ArrayOfPackageManifest" />
+        <xs:element minOccurs="0" name="ManifestsConfirmedResult" type="xs:boolean" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q2:ManifestContract" />
         <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -36,7 +36,7 @@
   <xs:element name="DocumentsConfirmed">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q3:ManifestContract" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q3:DocumentContract" />
         <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -44,7 +44,8 @@
   <xs:element name="DocumentsConfirmedResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" minOccurs="0" name="DocumentsConfirmedResult" nillable="true" type="q4:ArrayOfImageFile" />
+        <xs:element minOccurs="0" name="DocumentsConfirmedResult" type="xs:boolean" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q4:DocumentContract" />
         <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -60,7 +61,8 @@
   <xs:element name="ManifestsAvailableResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" minOccurs="0" name="ManifestsAvailableResult" nillable="true" type="q6:ArrayOfPackageManifest" />
+        <xs:element minOccurs="0" name="ManifestsAvailableResult" type="xs:boolean" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q6:ManifestContract" />
         <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -68,7 +70,7 @@
   <xs:element name="DocumentsAvailable">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q7:ManifestContract" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q7:DocumentContract" />
         <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -76,7 +78,8 @@
   <xs:element name="DocumentsAvailableResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" minOccurs="0" name="DocumentsAvailableResult" nillable="true" type="q8:ArrayOfImageFile" />
+        <xs:element minOccurs="0" name="DocumentsAvailableResult" type="xs:boolean" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" minOccurs="0" name="contract" nillable="true" type="q8:DocumentContract" />
         <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>

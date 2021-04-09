@@ -6,20 +6,21 @@ using System.Reflection;
 using System.Text;
 using Ssepan.Utility;
 using DocumentScannerServerLibrary;
+using DocumentScannerServerLibrary.MVC;
 
 namespace TransferServerBusiness
 {
     public class Transfer //:
         //ITransfer
     {
-        //keep delegates here to act as bridge between FileTransferServer.FileTransferService and DSServerController<DSServerModel>
+        //keep delegates here to act as bridge between FileTransferServer.FileTransferService and DSServerModelController<DSServerModel>
         public delegate X PushDelegate<T, S, U, V, W, X>(T t, S s, U u, V[] v, ref W w);
-        public static  PushDelegate<String, String, String, Byte, String, Boolean> pushDelegate = null; //DocumentScannerServerController.AsStatic.PushFile;
+        public static  PushDelegate<String, String, String, Byte, String, Boolean> pushDelegate = null; //DSServerModelController.AsStatic.PushFile;
         public delegate E PullDelegate<A, F, B, C, D, E>(A a, F f, B b, ref C[] c, ref D d);
-        public static  PullDelegate<String, String, String, Byte, String, Boolean> pullDelegate = null; //DocumentScannerServerController.AsStatic.PullFile;
+        public static  PullDelegate<String, String, String, Byte, String, Boolean> pullDelegate = null; //DSServerModelController.AsStatic.PullFile;
 
         /// <summary>
-        /// Load pushDelegate, pullDelegate from DSServerController<DSServerModel>.
+        /// Load pushDelegate, pullDelegate from DSServerModelController<DSServerModel>.
         /// </summary>
         /// <param name="errorMessage"></param>
         /// <returns>Boolean</returns>
@@ -29,8 +30,8 @@ namespace TransferServerBusiness
 
             try
             {
-                pushDelegate = DSServerController<DSServerModel>.PushFile;
-                pullDelegate = DSServerController<DSServerModel>.PullFile;
+                pushDelegate = DSServerModelController<DSServerModel>.PushFile;
+                pullDelegate = DSServerModelController<DSServerModel>.PullFile;
 
                 returnValue = true;
             }

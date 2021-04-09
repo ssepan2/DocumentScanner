@@ -130,7 +130,7 @@
 </value>
   </data>
   <data name="menuFileNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileNew.Text" xml:space="preserve">
     <value>&amp;New</value>
@@ -156,7 +156,7 @@
     <value>Ctrl+O</value>
   </data>
   <data name="menuFileOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileOpen.Text" xml:space="preserve">
     <value>&amp;Open</value>
@@ -181,44 +181,44 @@
     <value>Ctrl+S</value>
   </data>
   <data name="menuFileSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileSave.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <data name="menuFileSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileSaveAs.Text" xml:space="preserve">
     <value>Save &amp;As...</value>
   </data>
   <data name="menuFileSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 6</value>
+    <value>143, 6</value>
   </data>
   <data name="menuFileScan.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>White</value>
   </data>
   <data name="menuFileScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileScan.Text" xml:space="preserve">
     <value>S&amp;can...</value>
   </data>
   <data name="menuFileSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileSelect.Text" xml:space="preserve">
     <value>Selec&amp;t...</value>
   </data>
   <data name="menuFileSeparator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 6</value>
+    <value>143, 6</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuFilePackage.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="menuFilePackage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFilePackage.Text" xml:space="preserve">
     <value>&amp;Package</value>
@@ -230,7 +230,7 @@
     <value>False</value>
   </data>
   <data name="menuFileSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileSend.Text" xml:space="preserve">
     <value>S&amp;end</value>
@@ -239,16 +239,16 @@
     <value>Send package (upload / transmit)</value>
   </data>
   <data name="menuFileSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 6</value>
+    <value>143, 6</value>
   </data>
   <data name="menuFileExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuFileExit.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
   <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
+    <value>37, 20</value>
   </data>
   <data name="menuFile.Text" xml:space="preserve">
     <value>&amp;File</value>
@@ -271,13 +271,13 @@
     <value>Black</value>
   </data>
   <data name="menuEditCopyToClipboard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="menuEditCopyToClipboard.Text" xml:space="preserve">
     <value>&amp;Copy to Clipboard</value>
   </data>
   <data name="menuEditSeparator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 6</value>
+    <value>168, 6</value>
   </data>
   <data name="menuEditProperties.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -298,25 +298,25 @@
     <value>Black</value>
   </data>
   <data name="menuEditProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="menuEditProperties.Text" xml:space="preserve">
     <value>P&amp;roperties...</value>
   </data>
   <data name="menuEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
+    <value>39, 20</value>
   </data>
   <data name="menuEdit.Text" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
   <data name="menuHelpAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>220, 22</value>
   </data>
   <data name="menuHelpAbout.Text" xml:space="preserve">
     <value>&amp;About DocumentScanner ...</value>
   </data>
   <data name="menuHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+    <value>44, 20</value>
   </data>
   <data name="menuHelp.Text" xml:space="preserve">
     <value>&amp;Help</value>
@@ -389,7 +389,7 @@
     <value>Magenta</value>
   </data>
   <data name="menuDocumentsPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsPrint.Text" xml:space="preserve">
     <value>&amp;Print...</value>
@@ -401,13 +401,13 @@
     <value>Magenta</value>
   </data>
   <data name="menuDocumentsScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsScan.Text" xml:space="preserve">
     <value>Scan...</value>
   </data>
   <data name="menuDocumentsSeparator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 6</value>
+    <value>194, 6</value>
   </data>
   <data name="menuDocumentsRotateCCW90.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -416,7 +416,7 @@
     <value>Magenta</value>
   </data>
   <data name="menuDocumentsRotateCCW90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsRotateCCW90.Text" xml:space="preserve">
     <value>Rotate CCW 90 degrees</value>
@@ -428,13 +428,13 @@
     <value>Magenta</value>
   </data>
   <data name="menuDocumentsRotateCW90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsRotateCW90.Text" xml:space="preserve">
     <value>Rotate CW 90 degrees</value>
   </data>
   <data name="menuDocumentsSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 6</value>
+    <value>194, 6</value>
   </data>
   <data name="menuDocumentsPromoteDocument.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -450,7 +450,7 @@
     <value>Fuchsia</value>
   </data>
   <data name="menuDocumentsPromoteDocument.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsPromoteDocument.Text" xml:space="preserve">
     <value>Promote Document</value>
@@ -469,19 +469,19 @@
     <value>Fuchsia</value>
   </data>
   <data name="menuDocumentsDemoteDocument.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsDemoteDocument.Text" xml:space="preserve">
     <value>Demote Document</value>
   </data>
   <data name="menuDocumentsSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 6</value>
+    <value>194, 6</value>
   </data>
   <data name="menuDocumentsSplitPackageAbove.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="menuDocumentsSplitPackageAbove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsSplitPackageAbove.Text" xml:space="preserve">
     <value>Split Package Above</value>
@@ -490,13 +490,13 @@
     <value>False</value>
   </data>
   <data name="menuDocumentsSplitPackageBelow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuDocumentsSplitPackageBelow.Text" xml:space="preserve">
     <value>Split Package Below</value>
   </data>
   <data name="menuDocuments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 198</value>
+    <value>198, 198</value>
   </data>
   <data name="&gt;&gt;menuDocuments.Name" xml:space="preserve">
     <value>menuDocuments</value>
@@ -523,13 +523,13 @@
     <value>Magenta</value>
   </data>
   <data name="menuFailedUnpackage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>133, 22</value>
   </data>
   <data name="menuFailedUnpackage.Text" xml:space="preserve">
     <value>&amp;Unpackage</value>
   </data>
   <data name="menuFailed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 26</value>
+    <value>134, 26</value>
   </data>
   <data name="&gt;&gt;menuFailed.Name" xml:space="preserve">
     <value>menuFailed</value>
@@ -550,7 +550,7 @@
     <value>Magenta</value>
   </data>
   <data name="menuConfirmationListManifestDocumentConfirmations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>156, 22</value>
   </data>
   <data name="menuConfirmationListManifestDocumentConfirmations.Text" xml:space="preserve">
     <value>&amp;List Documents</value>
@@ -559,7 +559,7 @@
     <value>False</value>
   </data>
   <data name="menuConfirmation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 26</value>
+    <value>157, 26</value>
   </data>
   <data name="&gt;&gt;menuConfirmation.Name" xml:space="preserve">
     <value>menuConfirmation</value>
@@ -583,7 +583,7 @@
     <value>Magenta</value>
   </data>
   <data name="menuReceiveListManifestDocuments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>156, 22</value>
   </data>
   <data name="menuReceiveListManifestDocuments.Text" xml:space="preserve">
     <value>&amp;List Documents</value>
@@ -592,7 +592,7 @@
     <value>False</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 6</value>
+    <value>153, 6</value>
   </data>
   <data name="toolStripSeparator17.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -601,13 +601,13 @@
     <value>False</value>
   </data>
   <data name="menuReceiveManifest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>156, 22</value>
   </data>
   <data name="menuReceiveManifest.Text" xml:space="preserve">
     <value>&amp;Receive</value>
   </data>
   <data name="menuReceive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 54</value>
+    <value>157, 54</value>
   </data>
   <data name="&gt;&gt;menuReceive.Name" xml:space="preserve">
     <value>menuReceive</value>
@@ -978,7 +978,7 @@
     <value>74, 48</value>
   </data>
   <data name="manifestDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 20</value>
+    <value>232, 20</value>
   </data>
   <data name="manifestDescription.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1098,7 +1098,7 @@
     <value>0, 0</value>
   </data>
   <data name="documentsPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>483, 16</value>
+    <value>309, 16</value>
   </data>
   <data name="documentsPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1149,7 +1149,7 @@
     <value>Add new</value>
   </data>
   <data name="bnDocuments_CountItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="bnDocuments_CountItem.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -1286,10 +1286,10 @@
     <value>6, 25</value>
   </data>
   <data name="bnDocuments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="bnDocuments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>483, 25</value>
+    <value>309, 25</value>
   </data>
   <data name="bnDocuments.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1331,7 +1331,7 @@
     <value>0, 74</value>
   </data>
   <data name="dgvDocuments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>483, 372</value>
+    <value>309, 88</value>
   </data>
   <data name="dgvDocuments.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1373,7 +1373,7 @@
     <value>3, 0</value>
   </data>
   <data name="documentPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 16</value>
+    <value>299, 16</value>
   </data>
   <data name="documentPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1406,7 +1406,7 @@
     <value>3, 19</value>
   </data>
   <data name="documentPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 452</value>
+    <value>299, 168</value>
   </data>
   <data name="documentPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -1439,10 +1439,10 @@
     <value>1</value>
   </data>
   <data name="splitScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 628</value>
+    <value>618, 344</value>
   </data>
   <data name="splitScan.SplitterDistance" type="System.Int32, mscorlib">
-    <value>483</value>
+    <value>309</value>
   </data>
   <data name="splitScan.TabIndex" type="System.Int32, mscorlib">
     <value>110</value>
@@ -1466,7 +1466,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 634</value>
+    <value>624, 350</value>
   </data>
   <data name="tabPageScan.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1535,7 +1535,7 @@
     <value>0, 0</value>
   </data>
   <data name="queuedPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 16</value>
+    <value>306, 16</value>
   </data>
   <data name="queuedPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1580,7 +1580,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton2.Text" xml:space="preserve">
     <value>Add new</value>
@@ -1589,7 +1589,7 @@
     <value>False</value>
   </data>
   <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -1617,7 +1617,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton3.Text" xml:space="preserve">
     <value>Delete</value>
@@ -1732,10 +1732,10 @@
     <value>6, 25</value>
   </data>
   <data name="queuedBindingNavigator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="queuedBindingNavigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>483, 25</value>
+    <value>309, 25</value>
   </data>
   <data name="queuedBindingNavigator.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1768,7 +1768,7 @@
     <value>0, 48</value>
   </data>
   <data name="queuedDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>483, 475</value>
+    <value>309, 191</value>
   </data>
   <data name="queuedDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1810,10 +1810,10 @@
     <value>1</value>
   </data>
   <data name="splitSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 628</value>
+    <value>618, 344</value>
   </data>
   <data name="splitSend.SplitterDistance" type="System.Int32, mscorlib">
-    <value>483</value>
+    <value>309</value>
   </data>
   <data name="splitSend.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1837,7 +1837,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 634</value>
+    <value>624, 350</value>
   </data>
   <data name="tabPageSend.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1876,7 +1876,7 @@
     <value>0, 0</value>
   </data>
   <data name="completedPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>486, 16</value>
+    <value>308, 16</value>
   </data>
   <data name="completedPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1921,7 +1921,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton7.Text" xml:space="preserve">
     <value>Add new</value>
@@ -1930,7 +1930,7 @@
     <value>False</value>
   </data>
   <data name="toolStripLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripLabel2.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -1958,7 +1958,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton8.Text" xml:space="preserve">
     <value>Delete</value>
@@ -2073,10 +2073,10 @@
     <value>6, 25</value>
   </data>
   <data name="completedBindingNavigator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="completedBindingNavigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 25</value>
+    <value>314, 25</value>
   </data>
   <data name="completedBindingNavigator.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -2109,7 +2109,7 @@
     <value>0, 19</value>
   </data>
   <data name="completedDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>486, 504</value>
+    <value>308, 220</value>
   </data>
   <data name="completedDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -2151,7 +2151,7 @@
     <value>0, 0</value>
   </data>
   <data name="failedPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 16</value>
+    <value>310, 16</value>
   </data>
   <data name="failedPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -2196,7 +2196,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton13.Text" xml:space="preserve">
     <value>Add new</value>
@@ -2205,7 +2205,7 @@
     <value>False</value>
   </data>
   <data name="toolStripLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripLabel3.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -2233,7 +2233,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton14.Text" xml:space="preserve">
     <value>Delete</value>
@@ -2348,10 +2348,10 @@
     <value>6, 25</value>
   </data>
   <data name="failedBindingNavigator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="failedBindingNavigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 25</value>
+    <value>300, 25</value>
   </data>
   <data name="failedBindingNavigator.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -2384,7 +2384,7 @@
     <value>0, 19</value>
   </data>
   <data name="failedDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 504</value>
+    <value>301, 220</value>
   </data>
   <data name="failedDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -2414,10 +2414,10 @@
     <value>1</value>
   </data>
   <data name="splitReview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 628</value>
+    <value>618, 344</value>
   </data>
   <data name="splitReview.SplitterDistance" type="System.Int32, mscorlib">
-    <value>492</value>
+    <value>314</value>
   </data>
   <data name="splitReview.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2441,7 +2441,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageReview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 634</value>
+    <value>624, 350</value>
   </data>
   <data name="tabPageReview.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2474,7 +2474,7 @@
     <value>44, 48</value>
   </data>
   <data name="confirmationDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>442, 20</value>
+    <value>264, 20</value>
   </data>
   <data name="confirmationDateTimePicker.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -2564,7 +2564,7 @@
     <value>0, 0</value>
   </data>
   <data name="confirmManifestsPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 16</value>
+    <value>314, 16</value>
   </data>
   <data name="confirmManifestsPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2609,7 +2609,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton19.Text" xml:space="preserve">
     <value>Add new</value>
@@ -2618,7 +2618,7 @@
     <value>False</value>
   </data>
   <data name="toolStripLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripLabel4.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -2646,7 +2646,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton20.Text" xml:space="preserve">
     <value>Delete</value>
@@ -2761,10 +2761,10 @@
     <value>6, 25</value>
   </data>
   <data name="confirmedManifestsBindingNavigator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="confirmedManifestsBindingNavigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 25</value>
+    <value>314, 25</value>
   </data>
   <data name="confirmedManifestsBindingNavigator.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2806,7 +2806,7 @@
     <value>0, 74</value>
   </data>
   <data name="confirmedManifestsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>486, 449</value>
+    <value>308, 165</value>
   </data>
   <data name="confirmedManifestsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2848,7 +2848,7 @@
     <value>0, 0</value>
   </data>
   <data name="confirmDocumentsPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 16</value>
+    <value>301, 16</value>
   </data>
   <data name="confirmDocumentsPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -2893,7 +2893,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton25.Text" xml:space="preserve">
     <value>Add new</value>
@@ -2902,7 +2902,7 @@
     <value>False</value>
   </data>
   <data name="toolStripLabel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripLabel5.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -2930,7 +2930,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton26.Text" xml:space="preserve">
     <value>Delete</value>
@@ -3045,10 +3045,10 @@
     <value>6, 25</value>
   </data>
   <data name="confirmedDocumentsBindingNavigator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="confirmedDocumentsBindingNavigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 25</value>
+    <value>300, 25</value>
   </data>
   <data name="confirmedDocumentsBindingNavigator.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -3081,7 +3081,7 @@
     <value>0, 19</value>
   </data>
   <data name="confirmedDocumentsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 504</value>
+    <value>301, 220</value>
   </data>
   <data name="confirmedDocumentsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -3111,10 +3111,10 @@
     <value>1</value>
   </data>
   <data name="splitConfirm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 628</value>
+    <value>618, 344</value>
   </data>
   <data name="splitConfirm.SplitterDistance" type="System.Int32, mscorlib">
-    <value>492</value>
+    <value>314</value>
   </data>
   <data name="splitConfirm.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
@@ -3138,7 +3138,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageConfirm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 634</value>
+    <value>624, 350</value>
   </data>
   <data name="tabPageConfirm.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3207,7 +3207,7 @@
     <value>0, 0</value>
   </data>
   <data name="receiveManifestsPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 16</value>
+    <value>314, 16</value>
   </data>
   <data name="receiveManifestsPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -3252,7 +3252,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton31.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton31.Text" xml:space="preserve">
     <value>Add new</value>
@@ -3261,7 +3261,7 @@
     <value>False</value>
   </data>
   <data name="toolStripLabel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripLabel6.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -3289,7 +3289,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton32.Text" xml:space="preserve">
     <value>Delete</value>
@@ -3404,10 +3404,10 @@
     <value>6, 25</value>
   </data>
   <data name="receivableManifestsBindingNavigator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="receivableManifestsBindingNavigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 25</value>
+    <value>314, 25</value>
   </data>
   <data name="receivableManifestsBindingNavigator.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3449,7 +3449,7 @@
     <value>0, 48</value>
   </data>
   <data name="receivableManifestsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>486, 475</value>
+    <value>308, 191</value>
   </data>
   <data name="receivableManifestsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3491,7 +3491,7 @@
     <value>0, 0</value>
   </data>
   <data name="receiveDocumentsPanelCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 16</value>
+    <value>301, 16</value>
   </data>
   <data name="receiveDocumentsPanelCaption.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -3536,7 +3536,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton37.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton37.Text" xml:space="preserve">
     <value>Add new</value>
@@ -3545,7 +3545,7 @@
     <value>False</value>
   </data>
   <data name="toolStripLabel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripLabel7.Text" xml:space="preserve">
     <value>of {0}</value>
@@ -3573,7 +3573,7 @@
     <value>True</value>
   </data>
   <data name="toolStripButton38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>23, 20</value>
   </data>
   <data name="toolStripButton38.Text" xml:space="preserve">
     <value>Delete</value>
@@ -3688,10 +3688,10 @@
     <value>6, 25</value>
   </data>
   <data name="availableDocumentsBindingNavigator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 603</value>
+    <value>0, 319</value>
   </data>
   <data name="availableDocumentsBindingNavigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 25</value>
+    <value>300, 25</value>
   </data>
   <data name="availableDocumentsBindingNavigator.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -3724,7 +3724,7 @@
     <value>0, 19</value>
   </data>
   <data name="availableDocumentsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 504</value>
+    <value>301, 220</value>
   </data>
   <data name="availableDocumentsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -3754,10 +3754,10 @@
     <value>1</value>
   </data>
   <data name="splitReceive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 628</value>
+    <value>618, 344</value>
   </data>
   <data name="splitReceive.SplitterDistance" type="System.Int32, mscorlib">
-    <value>492</value>
+    <value>314</value>
   </data>
   <data name="splitReceive.TabIndex" type="System.Int32, mscorlib">
     <value>112</value>
@@ -3781,7 +3781,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageReceive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 634</value>
+    <value>624, 350</value>
   </data>
   <data name="tabPageReceive.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3803,6 +3803,9 @@
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 52</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>632, 376</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>110</value>

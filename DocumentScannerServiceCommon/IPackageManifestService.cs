@@ -16,34 +16,34 @@ namespace DocumentScannerServiceCommon
         Boolean Ping(ref String errorMessage);
 
         [OperationContract]
-        [ServiceKnownType(typeof(List<PackageManifest>))]
-        List<PackageManifest> ManifestsConfirmed
+        //[ServiceKnownType(typeof(List<PackageManifest>))]
+        Boolean ManifestsConfirmed
         (
-            ManifestContract contract, 
+            ref ManifestContract contract, 
             ref String errorMessage
         );
 
         [OperationContract]
-        [ServiceKnownType(typeof(List<ImageFile>))]
-        List<ImageFile> DocumentsConfirmed
+        //[ServiceKnownType(typeof(List<ImageFile>))]
+        Boolean DocumentsConfirmed
         (
-            ManifestContract contract, 
+            ref DocumentContract contract, 
             ref String errorMessage
         );
 
         [OperationContract]
-        [ServiceKnownType(typeof(List<PackageManifest>))]
-        List<PackageManifest> ManifestsAvailable
+        //[ServiceKnownType(typeof(List<PackageManifest>))]
+        Boolean ManifestsAvailable
         (
-            ManifestContract contract, 
+            ref ManifestContract contract, 
             ref String errorMessage
         );
 
         [OperationContract]
-        [ServiceKnownType(typeof(List<ImageFile>))]
-        List<ImageFile> DocumentsAvailable
+        //[ServiceKnownType(typeof(List<ImageFile>))]
+        Boolean DocumentsAvailable
         (
-            ManifestContract contract, 
+            ref DocumentContract contract, 
             ref String errorMessage
         );
 
@@ -75,6 +75,59 @@ namespace DocumentScannerServiceCommon
         {
             get { return _Date; }
             set { _Date = value; }
+        }
+
+        private List<PackageManifest> _Manifests = null;
+        [DataMember]
+        public List<PackageManifest> Manifests
+        {
+            get { return _Manifests; }
+            set { _Manifests = value; }
+        }
+
+        private String _ErrorMessage = default(String);
+        [DataMember]
+        public String ErrorMessage
+        {
+            get { return _ErrorMessage; }
+            set { _ErrorMessage = value; }
+        }
+    }
+
+
+    [DataContract]
+    public class DocumentContract
+    {
+        private String _OperatorId = String.Empty;
+        [DataMember]
+        public String OperatorId
+        {
+            get { return _OperatorId; }
+            set { _OperatorId = value; }
+        }
+
+        private String _TransactionId = String.Empty;
+        [DataMember]
+        public String TransactionId
+        {
+            get { return _TransactionId; }
+            set { _TransactionId = value; }
+        }
+
+        private DateTime _Date = DateTime.Now;
+        [DataMember]
+        public DateTime Date
+        {
+            get { return _Date; }
+            set { _Date = value; }
+        }
+
+        private List<ImageFile> _Documents = null;
+        [DataMember]
+        public List<ImageFile> Documents
+        {
+            get { return _Documents; }
+            set { _Documents = value; }
         }
 
         private String _ErrorMessage = default(String);

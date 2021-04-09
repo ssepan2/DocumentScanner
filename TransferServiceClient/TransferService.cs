@@ -86,7 +86,7 @@ namespace TransferServiceClient
         public static Boolean Push(String id, String operatorId, String filename, Byte[] bytes, ref String errorMessage)
         {
             Boolean returnValue = default(Boolean);
-            DocumentScannerServiceCommon.TransactionContract contract = default(DocumentScannerServiceCommon.TransactionContract);
+            DocumentScannerServiceCommon.TransferContract contract = default(DocumentScannerServiceCommon.TransferContract);
             FileTransferServiceClient client = default(FileTransferServiceClient);
 
             try
@@ -101,7 +101,7 @@ namespace TransferServiceClient
                 }
 
                 //perform Push
-                contract = new DocumentScannerServiceCommon.TransactionContract();
+                contract = new DocumentScannerServiceCommon.TransferContract();
                 contract.ID = id;
                 contract.Operator = operatorId;
                 contract.Filename = filename;
@@ -140,7 +140,7 @@ namespace TransferServiceClient
         public static Boolean Pull(String id, String operatorId, String filename, ref Byte[] bytes, ref String errorMessage)
         {
             Boolean returnValue = default(Boolean);
-            DocumentScannerServiceCommon.TransactionContract contract = default(DocumentScannerServiceCommon.TransactionContract);
+            DocumentScannerServiceCommon.TransferContract contract = default(DocumentScannerServiceCommon.TransferContract);
             FileTransferServiceClient client = default(FileTransferServiceClient);
 
             try
@@ -155,7 +155,7 @@ namespace TransferServiceClient
                 }
                 
                 ///perform Pull
-                contract = new DocumentScannerServiceCommon.TransactionContract();
+                contract = new DocumentScannerServiceCommon.TransferContract();
                 contract.ID = id;
                 contract.Operator = operatorId;
                 contract.Filename = filename;

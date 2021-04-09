@@ -10,13 +10,14 @@ using Microsoft.VisualBasic.FileIO;
 using System.Diagnostics;
 using System.Reflection;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using Ssepan.Collections;
 using Ssepan.Io;
 using Ssepan.Utility;
 
 namespace DocumentScannerCommon
 {
-    [Serializable]
+    [Serializable()]
     [TypeConverter(typeof(ExpandableObjectConverter))]
     public class PackageManifest :
         SettingsComponentBase,
@@ -31,6 +32,12 @@ namespace DocumentScannerCommon
         private Action<Object, ListChangedEventArgs> documentFilesListChangedDelegate = null;
         #endregion Delegates
         #endregion Declarations
+
+        #region Constructors
+        public PackageManifest()
+        { 
+        }
+        #endregion Constructors
 
         #region IEquatable<T> Members
         public bool Equals(PackageManifest other)
@@ -104,17 +111,19 @@ namespace DocumentScannerCommon
         #endregion INotifyPropertyChanged support
 
         #region NonPersisted Properties
-        private String _ErrorMessage = default(String);
-        [XmlIgnore]
+        #endregion NonPersisted Properties
+
+        #region Persisted Properties
+        [OptionalField]
+        private String _ErrorMessage = String.Empty;
         public String ErrorMessage
         {
             get { return _ErrorMessage; }
             set { _ErrorMessage = value; }
         }
-        #endregion NonPersisted Properties
 
-        #region Persisted Properties
         //note:serializer won't serialize properties that contain the default value.
+        [OptionalField]
         private OrderedEquatableBindingList<ImageFile> _DocumentFiles = new OrderedEquatableBindingList<ImageFile>();
         /// <summary>
         /// Document file list.
@@ -141,6 +150,7 @@ namespace DocumentScannerCommon
             }
         }
 
+        [OptionalField]
         private String _Description = String.Empty;
         /// <summary>
         /// Describe Manifest.
@@ -157,6 +167,7 @@ namespace DocumentScannerCommon
             }
         }
 
+        [OptionalField]
         private String _TransactionId = String.Empty;
         /// <summary>
         /// Transaction-specific guid.
@@ -173,6 +184,7 @@ namespace DocumentScannerCommon
             }
         }
 
+        [OptionalField]
         private String _OperatorId = String.Empty;
         /// <summary>
         /// Username of operator
@@ -189,6 +201,7 @@ namespace DocumentScannerCommon
             }
         }
 
+        [OptionalField]
         private Int32 _Count = default(Int32);
         /// <summary>
         /// A snapshot of the length of the Documents list.

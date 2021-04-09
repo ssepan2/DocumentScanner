@@ -116,7 +116,7 @@ Enhancements:
 ~Fixed error assignment in instances of BackgroundWorker.
 ~Added validation check for document type against document types list.
 ~Renumbered Ssepan.* to 2.3 for change to Ssepan.Utility.ObjectHelper to include Cast().
-~Modified DocumentScannerCommon.DocumentType to contain GetDocumentTypes method, instead of DocumentTypes properties that were in DocumentScannerLibrary.DocumentScannerController and DocumentScannerServerLibrary.DocumentScannerServerController. DocumentTypes.xml content was moved into a 'Resources' subfolder and it's contents are accessible as a resource via DocumentScannerCommon.Properties.Resources.DocumentTypes.
+~Modified DocumentScannerCommon.DocumentType to contain GetDocumentTypes method, instead of DocumentTypes properties that were in DocumentScannerLibrary.DocumentScannerController and DocumentScannerServerLibrary.DSServerModelController. DocumentTypes.xml content was moved into a 'Resources' subfolder and it's contents are accessible as a resource via DocumentScannerCommon.Properties.Resources.DocumentTypes.
 
 0.5: 
 ~Modified Ssepan.Graphics to add static extension ImageExtensions to System.Drawing.Image; extensions provide access to ImageCodecInfo.

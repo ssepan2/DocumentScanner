@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Microsoft.VisualBasic;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using Ssepan.Collections;
 using Ssepan.Compression;
 using Ssepan.Io;
@@ -22,12 +23,12 @@ using ManifestClientBusiness;
 using TransferClientBusiness;
 using TwainLib;
 
-namespace DocumentScannerLibrary
+namespace DocumentScannerLibrary.MVC
 {
     /// <summary>
     /// This is the MVC Controller
     /// </summary>
-    public class DSController<TModel> : 
+    public class DSClientModelController<TModel> : 
         ModelController<TModel>
         where TModel :
             class,
@@ -38,7 +39,7 @@ namespace DocumentScannerLibrary
         #endregion Declarations
 
         #region Constructors
-        public DSController()
+        public DSClientModelController()
         {
             ////Init config parameters
             //if (!LoadConfigParameters())
@@ -73,7 +74,7 @@ namespace DocumentScannerLibrary
                 }
 
                 //scan image(s)
-                DSController<DSModel>.Model.TwainSource.AcquireAndTransfer();
+                DSClientModelController<DSClientModel>.Model.TwainSource.AcquireAndTransfer();
 
                 returnValue = true;
             }
@@ -103,25 +104,25 @@ namespace DocumentScannerLibrary
 
             try
             {
-                if (DSController<DSModel>.Model.TwainSource.ScannedImages.Count > 0)
+                if (DSClientModelController<DSClientModel>.Model.TwainSource.ScannedImages.Count > 0)
                 {
                     //convert List<Image> to List<ImageFile>
-                    foreach (Image image in DSController<DSModel>.Model.TwainSource.ScannedImages)
+                    foreach (Image image in DSClientModelController<DSClientModel>.Model.TwainSource.ScannedImages)
                     {
                         //save image to disk
                         imageFile = new ImageFile(String.Format("{0}.{1}", Guid.NewGuid().ToString(), ImageFile.IMAGE_FILE_TYPE));
-                        if (imageFile.SaveDocumentItem(DSController<DSModel>.GetTransactionImagesPath(false), image))
+                        if (imageFile.SaveDocumentItem(DSClientModelController<DSClientModel>.GetTransactionImagesPath(false), image))
                         {
                             //check for duplicates in collection; duplicate filenames should have been checked during image save
-                            if (SettingsController<Settings>.Settings.Manifest.DocumentFiles.Any(i => i.Filename == imageFile.Filename))
+                            if (SettingsController<DSClientSettings>.Settings.Manifest.DocumentFiles.Any(i => i.Filename == imageFile.Filename))
                             {
-                                Log.Write(String.Format("Unable to store duplicate image Filename in Settings Document Files: {0}", imageFile.Filename), EventLogEntryType.Error);
+                                Log.Write(String.Format("Unable to store duplicate image Filename in DSClientSettings Document Files: {0}", imageFile.Filename), EventLogEntryType.Error);
                                 continue;
                             }
 
                             _ValueChanging = true;
 
-                            SettingsController<Settings>.Settings.Manifest.DocumentFiles.Add(imageFile);
+                            SettingsController<DSClientSettings>.Settings.Manifest.DocumentFiles.Add(imageFile);
 
                             _ValueChanging = false;
                         }
@@ -151,7 +152,7 @@ namespace DocumentScannerLibrary
                 _ValueChanging = false;
 
                 //update ui
-                DSController<DSModel>.Model.Refresh();
+                DSClientModelController<DSClientModel>.Model.Refresh();
             }
             return returnValue;
         }
@@ -173,7 +174,7 @@ namespace DocumentScannerLibrary
                 }
 
                 //select scanner
-                DSController<DSModel>.Model.TwainSource.SelectSource();
+                DSClientModelController<DSClientModel>.Model.TwainSource.SelectSource();
 
                 returnValue = true;
             }
@@ -206,7 +207,7 @@ namespace DocumentScannerLibrary
             {
                 _ValueChanging = true;
 
-                SettingsController<Settings>.Settings.Manifest.DocumentFiles.ShiftListItem<OrderedEquatableBindingList<ImageFile>, ImageFile>
+                SettingsController<DSClientSettings>.Settings.Manifest.DocumentFiles.ShiftListItem<OrderedEquatableBindingList<ImageFile>, ImageFile>
                     (
                         shiftType, 
                         (item => item.Filename == imageFile.Filename), //match on Filename property
@@ -216,7 +217,7 @@ namespace DocumentScannerLibrary
                 _ValueChanging = false;
 
                 //refresh
-                DSController<DSModel>.Model.Refresh();
+                DSClientModelController<DSClientModel>.Model.Refresh();
 
                 returnValue = true;
             }
@@ -248,7 +249,7 @@ namespace DocumentScannerLibrary
                 _ValueChanging = false;
 
                 //refresh
-                DSController<DSModel>.Model.Refresh();
+                DSClientModelController<DSClientModel>.Model.Refresh();
 
                 returnValue = true;
             }
@@ -273,20 +274,20 @@ namespace DocumentScannerLibrary
             String returnValue = default(String);
             try
             {
-                if (SettingsController<Settings>.Filename == SettingsController<Settings>.FILE_NEW)
+                if (SettingsController<DSClientSettings>.Filename == SettingsController<DSClientSettings>.FILE_NEW)
                 {
                     //file is '(new)' and not saved; filename matches folder
-                    returnValue = Path.Combine(DSController<DSModel>.Model.DataPath,SettingsController<Settings>.Filename);
+                    returnValue = Path.Combine(DSClientModelController<DSClientModel>.Model.DataPath,SettingsController<DSClientSettings>.Filename);
                 }
                 else if (forceTransactionId)
                 {
                     //force transaction id as folder name
-                    returnValue = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.Settings.Manifest.TransactionId);
+                    returnValue = Path.Combine(DSClientModelController<DSClientModel>.Model.DataPath, SettingsController<DSClientSettings>.Settings.Manifest.TransactionId);
                 }
                 else
                 {
                     //file is not '(new)' and was saved; transaction id matches folder
-                    returnValue = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.Settings.Manifest.TransactionId);
+                    returnValue = Path.Combine(DSClientModelController<DSClientModel>.Model.DataPath, SettingsController<DSClientSettings>.Settings.Manifest.TransactionId);
                 }
             }
             catch (Exception ex)
@@ -301,12 +302,12 @@ namespace DocumentScannerLibrary
         /// Package documents and submit package for transfer.
         /// Should only be called for non-New settings that are not Dirty.
         /// 
-        /// Settings (containing manifest data) are in a file named <transaction#>.documentscanner in DSController<DSModel>.Model.DataPath.
-        /// Images are in a folder called <transaction#> in DSController<DSModel>.Model.DataPath.
-        /// Manifest will be saved in a folder called <transaction#> in DSController<DSModel>.Model.DataPath.
-        /// Copy Images folder and Manifest and create Package in a folder called <transaction#> in DSController<DSModel>.Model.DataPath.
-        /// Move Package to DSController<DSModel>.Model.PushSendPath.
-        /// Delete Images folder, Manifest, and Settings.
+        /// DSClientSettings (containing manifest data) are in a file named <transaction#>.documentscanner in DSClientModelController<DSClientModel>.Model.DataPath.
+        /// Images are in a folder called <transaction#> in DSClientModelController<DSClientModel>.Model.DataPath.
+        /// Manifest will be saved in a folder called <transaction#> in DSClientModelController<DSClientModel>.Model.DataPath.
+        /// Copy Images folder and Manifest and create Package in a folder called <transaction#> in DSClientModelController<DSClientModel>.Model.DataPath.
+        /// Move Package to DSClientModelController<DSClientModel>.Model.PushSendPath.
+        /// Delete Images folder, Manifest, and DSClientSettings.
         /// Perform New.
         /// </summary>
         /// <param name="worker"></param>
@@ -340,11 +341,11 @@ namespace DocumentScannerLibrary
                 //1..2 of 6
                 if
                 (
-                    !ExtractManifestSettings
+                    !ExtractManifestDSClientSettings
                     (
-                        SettingsController<Settings>.Settings.Manifest.TransactionId,
-                        DSController<DSModel>.Model.DataPath, //extract to subfolder in Data folder
-                        DSController<DSModel>.Model.ReNewWaitMilliseconds,
+                        SettingsController<DSClientSettings>.Settings.Manifest.TransactionId,
+                        DSClientModelController<DSClientModel>.Model.DataPath, //extract to subfolder in Data folder
+                        DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage,
                         out manifest
@@ -371,10 +372,10 @@ namespace DocumentScannerLibrary
                     !DocumentScannerCommon.Package.FillManifestPackage
                     (
                         manifest,
-                        SettingsController<Settings>.Settings.Manifest.TransactionId,
-                        DSController<DSModel>.Model.PushSendPath,
-                        DSController<DSModel>.Model.DataPath, //create package folder as subfolder in Data folder
-                        DSController<DSModel>.Model.ReNewWaitMilliseconds,
+                        SettingsController<DSClientSettings>.Settings.Manifest.TransactionId,
+                        DSClientModelController<DSClientModel>.Model.PushSendPath,
+                        DSClientModelController<DSClientModel>.Model.DataPath, //create package folder as subfolder in Data folder
+                        DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage
                     )
@@ -387,17 +388,17 @@ namespace DocumentScannerLibrary
                 //clean up
                 
                 //delete images folder
-                Folder.DeleteFolderWithWait(DSController<DSModel>.GetTransactionImagesPath(false), DSController<DSModel>.Model.ReNewWaitMilliseconds);
+                Folder.DeleteFolderWithWait(DSClientModelController<DSClientModel>.GetTransactionImagesPath(false), DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds);
                 
                 //delete settings and manifest
-                System.IO.File.Delete(SettingsController<Settings>.Filename);
+                System.IO.File.Delete(SettingsController<DSClientSettings>.Filename);
 
                 //perform New
                 //6 of 6
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "new");
                 //prevent change notifications that could update views; refresh views explicitly after this thread ends
                 _NoUiOnThisThread = true;
-                DSSettingsController.New();
+                DSClientSettingsController.New();
                 _NoUiOnThisThread = false;
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "complete");
 
@@ -452,7 +453,7 @@ namespace DocumentScannerLibrary
                 //validate package list
                 //0 of N + 2
                 worker.ReportProgress((Int32)((stepsCountComplete / stepsCountTotal) * 100), "validating...");
-                packageFilenames = DSController<DSModel>.Model.PackagesQueued;
+                packageFilenames = DSClientModelController<DSClientModel>.Model.PackagesQueued;
                 packageCountTotal = packageFilenames.Count;
                 if (!(packageCountTotal > 0))
                 {
@@ -468,10 +469,10 @@ namespace DocumentScannerLibrary
                 transactionFolders = 
                     new TransactionFolders
                     (
-                        DSController<DSModel>.Model.TransactionRootPath,
-                        DSController<DSModel>.Model.TransactionWorkingPath,
-                        DSController<DSModel>.Model.TransactionCompletedPath,
-                        DSController<DSModel>.Model.TransactionErrorPath,
+                        DSClientModelController<DSClientModel>.Model.TransactionRootPath,
+                        DSClientModelController<DSClientModel>.Model.TransactionWorkingPath,
+                        DSClientModelController<DSClientModel>.Model.TransactionCompletedPath,
+                        DSClientModelController<DSClientModel>.Model.TransactionErrorPath,
                         true,
                         true,
                         false,
@@ -512,9 +513,9 @@ namespace DocumentScannerLibrary
                         TransferClientBusiness.Transfer.PushFile
                         (
                             transactionFolders.ID, 
-                            SettingsController<Settings>.Settings.Manifest.OperatorId, 
+                            SettingsController<DSClientSettings>.Settings.Manifest.OperatorId, 
                             transactionFolders.WorkingFile, 
-                            DSController<DSModel>.Model.FileTransferServiceEndpointConfigurationName, 
+                            DSClientModelController<DSClientModel>.Model.FileTransferServiceEndpointConfigurationName, 
                             ref errorMessage
                         );
                     accumulatedResult = accumulatedResult && pushResult;
@@ -539,13 +540,13 @@ namespace DocumentScannerLibrary
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "finalizing...");
 
                 //clean up archives
-                transactionFolders.TransactionFilename = "*." + /*SettingsController<Settings>.Settings*/SettingsBase.FileTypeExtension; //if Use... flags are clear, a file extension is needed; this may not have been set if no files found to process.
+                transactionFolders.TransactionFilename = "*." + /*SettingsController<DSClientSettings>.Settings*/SettingsBase.FileTypeExtension; //if Use... flags are clear, a file extension is needed; this may not have been set if no files found to process.
                 if 
                 (
                     !transactionFolders.CleanUp
                     (
-                        new TimeSpan(DSController<DSModel>.Model.CompletedTransactionRetentionDays, 0, 0, 0),
-                        new TimeSpan(DSController<DSModel>.Model.ErrorTransactionRetentionDays, 0, 0, 0), 
+                        new TimeSpan(DSClientModelController<DSClientModel>.Model.CompletedTransactionRetentionDays, 0, 0, 0),
+                        new TimeSpan(DSClientModelController<DSClientModel>.Model.ErrorTransactionRetentionDays, 0, 0, 0), 
                         ref errorMessage
                     )
                 )
@@ -605,7 +606,7 @@ namespace DocumentScannerLibrary
 
                 //calculate package file name
                 packageFilename = String.Format("{0}.{1}", transactionId, DocumentScannerCommon.Package.PACKAGE_FILE_TYPE);
-                packageFilePath = Path.Combine(DSController<DSModel>.Model.PullReceivePath, packageFilename);
+                packageFilePath = Path.Combine(DSClientModelController<DSClientModel>.Model.PullReceivePath, packageFilename);
 
 
                 //tell extraction how to report progress
@@ -626,7 +627,7 @@ namespace DocumentScannerLibrary
                         transactionId, 
                         operatorId,
                         packageFilePath, 
-                        DSController<DSModel>.Model.FileTransferServiceEndpointConfigurationName, 
+                        DSClientModelController<DSClientModel>.Model.FileTransferServiceEndpointConfigurationName, 
                         ref errorMessage
                     )
                 )
@@ -645,9 +646,9 @@ namespace DocumentScannerLibrary
                     !DocumentScannerCommon.Package.ExtractManifestPackage
                     (
                         transactionId,
-                        DSController<DSModel>.Model.PullReceivePath, //location of package file in receive
-                        DSController<DSModel>.Model.DataPath, //extract to subfolder in Data folder
-                        DSController<DSModel>.Model.ReNewWaitMilliseconds,
+                        DSClientModelController<DSClientModel>.Model.PullReceivePath, //location of package file in receive
+                        DSClientModelController<DSClientModel>.Model.DataPath, //extract to subfolder in Data folder
+                        DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage,
                         out manifest
@@ -671,12 +672,12 @@ namespace DocumentScannerLibrary
                 //load settings with manifest from a package subfolder of the Data path
                 if
                 (
-                    !FillManifestSettings
+                    !FillManifestDSClientSettings
                     (
                         manifest,
                         transactionId,
-                        DSController<DSModel>.Model.DataPath, //extract to subfolder in Data folder
-                        DSController<DSModel>.Model.ReNewWaitMilliseconds,
+                        DSClientModelController<DSClientModel>.Model.DataPath, //extract to subfolder in Data folder
+                        DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage
                     )
@@ -736,7 +737,7 @@ namespace DocumentScannerLibrary
                     (
                         operatorId,
                         date,
-                        DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName,
+                        DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName,
                         ref errorMessage
                     );
 
@@ -786,7 +787,7 @@ namespace DocumentScannerLibrary
                     Manifest.ManifestsAvailable
                     (
                         operatorId,
-                        DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName,
+                        DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName,
                         ref errorMessage
                     );
 
@@ -874,8 +875,8 @@ namespace DocumentScannerLibrary
                     (
                         packageId,
                         Path.GetDirectoryName(packageFilePath), //location of package file
-                        DSController<DSModel>.Model.DataPath, //extract to subfolder in Data folder
-                        DSController<DSModel>.Model.ReNewWaitMilliseconds,
+                        DSClientModelController<DSClientModel>.Model.DataPath, //extract to subfolder in Data folder
+                        DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage,
                         out manifest
@@ -900,12 +901,12 @@ namespace DocumentScannerLibrary
                 //2..6 of 6
                 if
                 (
-                    !FillManifestSettings
+                    !FillManifestDSClientSettings
                     (
                         manifest,
                         packageId,
-                        DSController<DSModel>.Model.DataPath, //extract to subfolder in Data folder
-                        DSController<DSModel>.Model.ReNewWaitMilliseconds,
+                        DSClientModelController<DSClientModel>.Model.DataPath, //extract to subfolder in Data folder
+                        DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds,
                         reportProgressDelegate,
                         ref errorMessage
                     )
@@ -951,7 +952,7 @@ namespace DocumentScannerLibrary
         /// <param name="e"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static Boolean SplitPackageSettingsInBackground
+        public static Boolean SplitPackageDSClientSettingsInBackground
         (
             BackgroundWorker worker,
             DoWorkEventArgs e,
@@ -1010,31 +1011,31 @@ namespace DocumentScannerLibrary
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "removing duplicates in original");
                 tempList = manifestA.DocumentFiles.ToList<ImageFile>();
                 tempList.RemoveRange(0, beforeIndex + 1);
-                SettingsController<Settings>.Settings.SetDocumentFilesListChangedDelegate();
+                SettingsController<DSClientSettings>.Settings.SetDocumentFilesListChangedDelegate();
                 manifestA.DocumentFiles = tempList.ToOrderedEquatableBindingList<ImageFile>();
                 tempList = null;
                 
                 //save settings w/ manifest a
                 //2 of 6
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "saving original");
-                DSSettingsController.Save();
-                sourceDocumentFolder = DSController<DSModel>.GetTransactionImagesPath(false);
+                DSClientSettingsController.Save();
+                sourceDocumentFolder = DSClientModelController<DSClientModel>.GetTransactionImagesPath(false);
 
                 //new settings for b, will generate new GUID 
                 //assign new GUID to manifest b transaction id
                 //assign manifest b to manifest property, 
                 //3 of 6
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "new settings for copy");
-                DSSettingsController.New();
-                manifestB.TransactionId = SettingsController<Settings>.Settings.Manifest.TransactionId;
-                SettingsController<Settings>.Settings.Manifest = manifestB;
+                DSClientSettingsController.New();
+                manifestB.TransactionId = SettingsController<DSClientSettings>.Settings.Manifest.TransactionId;
+                SettingsController<DSClientSettings>.Settings.Manifest = manifestB;
 
                 //in manifest b, for each document item from indexAfter to count-1, delete item
                 //4 of 6
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "removing duplicates from copy");
                 tempList = manifestB.DocumentFiles.ToList<ImageFile>();
                 tempList.RemoveRange(afterIndex, manifestB.DocumentFiles.Count - afterIndex);
-                SettingsController<Settings>.Settings.SetDocumentFilesListChangedDelegate();
+                SettingsController<DSClientSettings>.Settings.SetDocumentFilesListChangedDelegate();
                 manifestB.DocumentFiles = tempList.ToOrderedEquatableBindingList<ImageFile>();
                 tempList = null;
                 
@@ -1042,16 +1043,16 @@ namespace DocumentScannerLibrary
                 //this will create images folder for manifest b as new manifest b guid
                 //5 of 6
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "saving copy");
-                dataFilename = String.Format("{0}.{1}", manifestB.TransactionId, /*SettingsController<Settings>.Settings*/SettingsBase.FileTypeExtension);
-                dataFilePath = Path.Combine(DSController<DSModel>.Model.DataPath, dataFilename);
-                SettingsController<Settings>.Filename = dataFilePath;
-                DSSettingsController.Save();
+                dataFilename = String.Format("{0}.{1}", manifestB.TransactionId, /*SettingsController<DSClientSettings>.Settings*/SettingsBase.FileTypeExtension);
+                dataFilePath = Path.Combine(DSClientModelController<DSClientModel>.Model.DataPath, dataFilename);
+                SettingsController<DSClientSettings>.Filename = dataFilePath;
+                DSClientSettingsController.Save();
 
                 //in manifest b, for each document item from 0 to indexBefore, 
                 //move image file from manifest a images folder to manifest b images folder
                 //6 of 6
                 worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "moving copy's images");
-                destinationDocumentFolder = DSController<DSModel>.GetTransactionImagesPath(false);
+                destinationDocumentFolder = DSClientModelController<DSClientModel>.GetTransactionImagesPath(false);
                 foreach (ImageFile imageFile in manifestB.DocumentFiles)
                 {
                     sourceDocumentFilePath = Path.Combine(sourceDocumentFolder, imageFile.Filename);
@@ -1085,10 +1086,10 @@ namespace DocumentScannerLibrary
 
         #region Menu Methods
         ///// <summary>
-        ///// Custom override of SettingsController(Of TSettings).New(); manages data file and data folder.
+        ///// Custom override of DSClientSettingsController(Of TDSClientSettings).New(); manages data file and data folder.
         ///// </summary>
         //public static void New()
-        //{//TODO: override SettingsController<Settings> and call that
+        //{//TODO: override SettingsController<DSClientSettings> and call that
         //    Action postNewDelegate = default(Action);
 
         //    try
@@ -1100,10 +1101,10 @@ namespace DocumentScannerLibrary
         //                String folderPath = default(String);
 
         //                //check for folder and delete if present
-        //                folderPath = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.FILE_NEW);
+        //                folderPath = Path.Combine(DSClientModelController<DSClientModel>.Model.DataPath, SettingsController<DSClientSettings>.FILE_NEW);
 
         //                //check for folder and delete if present
-        //                Folder.DeleteFolderWithWait(folderPath, DSController<DSModel>.Model.ReNewWaitMilliseconds);
+        //                Folder.DeleteFolderWithWait(folderPath, DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds);
 
         //                //check for folder and create if missing
         //                if (!Directory.Exists(folderPath))
@@ -1112,7 +1113,7 @@ namespace DocumentScannerLibrary
         //                }
         //            };
 
-        //        SettingsController<Settings>.New();
+        //        SettingsController<DSClientSettings>.New();
 
         //        postNewDelegate();
         //    }
@@ -1126,7 +1127,7 @@ namespace DocumentScannerLibrary
         ///// Custom override of Open; provides for setting oldfilename to filename
         ///// </summary>
         //public static void Open()
-        //{//TODO: override SettingsController<Settings> and call that
+        //{//TODO: override SettingsController<DSClientSettings> and call that
         //    Action postOpenDelegate = default(Action);
 
         //    try
@@ -1136,13 +1137,13 @@ namespace DocumentScannerLibrary
         //            () =>
         //            {
         //                //force new Filename into OldFilename
-        //               SettingsController<Settings>.Filename = SettingsController<Settings>.Filename;
+        //               SettingsController<DSClientSettings>.Filename = SettingsController<DSClientSettings>.Filename;
         //            };
 
         //        //Open was not synchronizing OldFilename with Filename, and Save logic was seeing '(new)'
         //        //and performing wrong actions.
-        //        //Note:this may be fixed in new Settings architecture (Ssepan.* v2.6) anyway...--SJS
-        //        SettingsController<Settings>.Open();
+        //        //Note:this may be fixed in new DSClientSettings architecture (Ssepan.* v2.6) anyway...--SJS
+        //        SettingsController<DSClientSettings>.Open();
 
         //        postOpenDelegate();
         //    }
@@ -1157,7 +1158,7 @@ namespace DocumentScannerLibrary
         ///// data file and data folder.
         ///// </summary>
         //public static void Save()
-        //{//TODO: override SettingsController<Settings> and call that
+        //{//TODO: override SettingsController<DSClientSettings> and call that
         //    Action postSaveDelegate = default(Action);
 
         //    try
@@ -1170,34 +1171,34 @@ namespace DocumentScannerLibrary
         //                String newFolderPath_ = default(String);
         //                String filePath = default(String);
 
-        //                if (SettingsController<Settings>.OldFilename.ToUpper() !=SettingsController<Settings>.Filename.ToUpper())
+        //                if (SettingsController<DSClientSettings>.OldFilename.ToUpper() !=SettingsController<DSClientSettings>.Filename.ToUpper())
         //                {
 
-        //                    if (SettingsController<Settings>.OldFilename == SettingsController<Settings>.FILE_NEW)
+        //                    if (SettingsController<DSClientSettings>.OldFilename == SettingsController<DSClientSettings>.FILE_NEW)
         //                    {
         //                        //source will be (new)
         //                        //if (new), then rename folder to transaction's id
-        //                        oldFolderPath_ = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.OldFilename);
+        //                        oldFolderPath_ = Path.Combine(DSClientModelController<DSClientModel>.Model.DataPath, SettingsController<DSClientSettings>.OldFilename);
         //                        //force transaction id for destination
-        //                        newFolderPath_ = DSController<DSModel>.GetTransactionImagesPath(true);
+        //                        newFolderPath_ = DSClientModelController<DSClientModel>.GetTransactionImagesPath(true);
         //                        Directory.Move(oldFolderPath_, newFolderPath_);
         //                    }
-        //                    else //(oldFilename != SettingsController<Settings>.FILE_NEW) 
+        //                    else //(oldFilename != SettingsController<DSClientSettings>.FILE_NEW) 
         //                    {
         //                        //if not (new), then delete original data file
         //                        //filename is different; delete original because it has same transaction #
-        //                        filePath = Path.Combine(DSController<DSModel>.Model.DataPath, SettingsController<Settings>.OldFilename);
+        //                        filePath = Path.Combine(DSClientModelController<DSClientModel>.Model.DataPath, SettingsController<DSClientSettings>.OldFilename);
         //                        System.IO.File.Delete(filePath);
         //                    }
         //                    //force new Filename into OldFilename
-        //                   SettingsController<Settings>.Filename = SettingsController<Settings>.Filename;
+        //                   SettingsController<DSClientSettings>.Filename = SettingsController<DSClientSettings>.Filename;
         //                }
         //            };
 
         //        //Call to controller base Save() writes xml and triggers refresh...
         //        //...but refresh was seeing non-new transaction and getting wrong transaction path...
         //        // ... because folder was still 'new' until Move().
-        //        SettingsController<Settings>.Save();
+        //        SettingsController<DSClientSettings>.Save();
 
         //        postSaveDelegate();
         //    }
@@ -1263,7 +1264,7 @@ namespace DocumentScannerLibrary
         //{
         //    try
         //    {
-        //        DSController<DSModel>.Model.Refresh();//Value doesn't matter; a changed fire event;
+        //        DSClientModelController<DSClientModel>.Model.Refresh();//Value doesn't matter; a changed fire event;
         //    }
         //    catch (Exception ex)
         //    {
@@ -1287,7 +1288,7 @@ namespace DocumentScannerLibrary
             Boolean returnValue = default(Boolean);
             try
             {
-                DSController<DSModel>.Model.TwainSource = new TwainSource(handle, scanFinished);
+                DSClientModelController<DSClientModel>.Model.TwainSource = new TwainSource(handle, scanFinished);
 
                 returnValue = true;
             }
@@ -1310,9 +1311,9 @@ namespace DocumentScannerLibrary
             Boolean returnValue = default(Boolean);
             try
             {
-                if (DSController<DSModel>.Model.TwainSource != null)
+                if (DSClientModelController<DSClientModel>.Model.TwainSource != null)
                 {
-                    DSController<DSModel>.Model.TwainSource.Dispose();
+                    DSClientModelController<DSClientModel>.Model.TwainSource.Dispose();
                 }
 
                 returnValue = true;
@@ -1349,61 +1350,61 @@ namespace DocumentScannerLibrary
         //        {
         //            throw new Exception(String.Format("Unable to load FileTransferServiceEndpointConfigurationName: '{0}'", _fileTransferServiceEndpointConfigurationName));
         //        }
-        //        DSController<DSModel>.Model.FileTransferServiceEndpointConfigurationName = _fileTransferServiceEndpointConfigurationName;
+        //        DSClientModelController<DSClientModel>.Model.FileTransferServiceEndpointConfigurationName = _fileTransferServiceEndpointConfigurationName;
 
         //        if (!Configuration.ReadString("PackageManifestServiceEndpointConfigurationName", out _packageManifestServiceEndpointConfigurationName))
         //        {
         //            throw new Exception(String.Format("Unable to load PackageManifestServiceEndpointConfigurationName: '{0}'", _packageManifestServiceEndpointConfigurationName));
         //        }
-        //        DSController<DSModel>.Model.PackageManifestServiceEndpointConfigurationName = _packageManifestServiceEndpointConfigurationName;
+        //        DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName = _packageManifestServiceEndpointConfigurationName;
 
         //        //if (!Configuration.ReadValue<Int32>("ImageQualityPercent", out _imageQualityPercent))
         //        //{
         //        //    throw new Exception(String.Format("Unable to load ImageQualityPercent: '{0}'", _imageQualityPercent));
         //        //}
-        //        //DSController<DSModel>.Model.ImageQualityPercent = _imageQualityPercent;
+        //        //DSClientModelController<DSClientModel>.Model.ImageQualityPercent = _imageQualityPercent;
 
         //        if (!Configuration.ReadValue<Boolean>("AutoNavigateTabs", out _autoNavigateTabs))
         //        {
         //            throw new Exception(String.Format("Unable to load AutoNavigateTabs: '{0}'", _autoNavigateTabs));
         //        }
-        //        DSController<DSModel>.Model.AutoNavigateTabs = _autoNavigateTabs;
+        //        DSClientModelController<DSClientModel>.Model.AutoNavigateTabs = _autoNavigateTabs;
                 
         //        if (!Configuration.ReadValue<Int32>("ReNewWaitMilliseconds", out _reNewWaitMilliseconds))
         //        {
         //            throw new Exception(String.Format("Unable to load ReNewWaitMilliseconds: '{0}'", _reNewWaitMilliseconds));
         //        }
-        //        DSController<DSModel>.Model.ReNewWaitMilliseconds = _reNewWaitMilliseconds;
+        //        DSClientModelController<DSClientModel>.Model.ReNewWaitMilliseconds = _reNewWaitMilliseconds;
 
         //        if (!Configuration.ReadString("DataPath", out _dataPath))
         //        {
         //            throw new Exception(String.Format("Unable to load DataPath: '{0}'", _dataPath));
         //        }
-        //        DSController<DSModel>.Model.DataPath = _dataPath;
+        //        DSClientModelController<DSClientModel>.Model.DataPath = _dataPath;
                 
         //        if (!Configuration.ReadString("PushSendPath", out _pushSendPath))
         //        {
         //            throw new Exception(String.Format("Unable to load PushSendPath: '{0}'", _pushSendPath));
         //        }
-        //        DSController<DSModel>.Model.PushSendPath = _pushSendPath;
+        //        DSClientModelController<DSClientModel>.Model.PushSendPath = _pushSendPath;
 
         //        if (!Configuration.ReadString("PullReceivePath", out _pullReceivePath))
         //        {
         //            throw new Exception(String.Format("Unable to load PullReceivePath: '{0}'", _pullReceivePath));
         //        }
-        //        DSController<DSModel>.Model.PullReceivePath = _pullReceivePath;
+        //        DSClientModelController<DSClientModel>.Model.PullReceivePath = _pullReceivePath;
 
         //        if (!Configuration.ReadValue<Int32>("CompletedTransactionRetentionDays", out _completedTransactionRetentionDays))
         //        {
         //            throw new Exception(String.Format("Unable to load CompletedTransactionRetentionDays: '{0}'", _completedTransactionRetentionDays));
         //        }
-        //        DSController<DSModel>.Model.CompletedTransactionRetentionDays = _completedTransactionRetentionDays;
+        //        DSClientModelController<DSClientModel>.Model.CompletedTransactionRetentionDays = _completedTransactionRetentionDays;
 
         //        if (!Configuration.ReadValue<Int32>("ErrorTransactionRetentionDays", out _errorTransactionRetentionDays))
         //        {
         //            throw new Exception(String.Format("Unable to load ErrorTransactionRetentionDays: '{0}'", _errorTransactionRetentionDays));
         //        }
-        //        DSController<DSModel>.Model.ErrorTransactionRetentionDays = _errorTransactionRetentionDays;
+        //        DSClientModelController<DSClientModel>.Model.ErrorTransactionRetentionDays = _errorTransactionRetentionDays;
 
         //        returnValue = true;
         //    }
@@ -1425,7 +1426,7 @@ namespace DocumentScannerLibrary
         /// <param name="progressDelegate"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        private static Boolean FillManifestSettings
+        private static Boolean FillManifestDSClientSettings
         (
             PackageManifest manifest,
             String packageId,
@@ -1452,7 +1453,7 @@ namespace DocumentScannerLibrary
                 //perform New
                 //prevent change notifications that could update views; refresh views explicitly after this thread ends
                 _NoUiOnThisThread = true;
-                DSSettingsController.New();
+                DSClientSettingsController.New();
                 _NoUiOnThisThread = false;
 
 
@@ -1467,12 +1468,12 @@ namespace DocumentScannerLibrary
                 
                 //load manifest into settings, so transaction images path is available
                 _NoUiOnThisThread = true;
-                SettingsController<Settings>.Settings.Manifest = PackageManifest.Load(manifestSourceFilePath);
+                SettingsController<DSClientSettings>.Settings.Manifest = PackageManifest.Load(manifestSourceFilePath);
                 _NoUiOnThisThread = false;
 
                 //copy images folder from package path to Data folder
                 imagesSourcePath = Path.Combine(packageContentsPackageSubfolderPath, packageId);
-                imagesDestinationPath = DSController<DSModel>.GetTransactionImagesPath(false); //this requires open manifest in new or named settings
+                imagesDestinationPath = DSClientModelController<DSClientModel>.GetTransactionImagesPath(false); //this requires open manifest in new or named settings
                 Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory
                 (
                     imagesSourcePath,
@@ -1485,11 +1486,11 @@ namespace DocumentScannerLibrary
                 
                 //save package and clean up
                 //prevent change notifications that could update views; refresh views explicitly after this thread ends
-                dataFilename = String.Format("{0}.{1}", packageId, /*SettingsController<Settings>.Settings*/SettingsBase.FileTypeExtension);
+                dataFilename = String.Format("{0}.{1}", packageId, /*SettingsController<DSClientSettings>.Settings*/SettingsBase.FileTypeExtension);
                 dataFilePath = Path.Combine(packageContentsRootPath, dataFilename);
-               SettingsController<Settings>.Filename = dataFilePath;
+               SettingsController<DSClientSettings>.Filename = dataFilePath;
                 _NoUiOnThisThread = true;
-                DSSettingsController.Save();
+                DSClientSettingsController.Save();
                 _NoUiOnThisThread = false;
 
 
@@ -1505,21 +1506,21 @@ namespace DocumentScannerLibrary
 
                 //Perform validation
                 //re-validate manifest as part of settings
-                if (!SettingsController<Settings>.Settings.Valid())
+                if (!SettingsController<DSClientSettings>.Settings.Valid())
                 {
-                    throw new ApplicationException(String.Format("{0}", SettingsController<Settings>.Settings.ErrorMessage));
+                    throw new ApplicationException(String.Format("{0}", SettingsController<DSClientSettings>.Settings.ErrorMessage));
                 }
 
                 //validate settings determined at the time of the submit
-                if (!SettingsController<Settings>.Settings.Complete())
+                if (!SettingsController<DSClientSettings>.Settings.Complete())
                 {
-                    throw new ApplicationException(String.Format("{0}", SettingsController<Settings>.Settings.ErrorMessage));
+                    throw new ApplicationException(String.Format("{0}", SettingsController<DSClientSettings>.Settings.ErrorMessage));
                 }
 
                 //settings should not be Dirty
-                if (SettingsController<Settings>.Settings.Dirty)
+                if (SettingsController<DSClientSettings>.Settings.Dirty)
                 {
-                    throw new ApplicationException(String.Format("There are unsaved changes: '{0}'",SettingsController<Settings>.Filename));
+                    throw new ApplicationException(String.Format("There are unsaved changes: '{0}'",SettingsController<DSClientSettings>.Filename));
                 }
 
 
@@ -1539,7 +1540,7 @@ namespace DocumentScannerLibrary
             return returnValue;
         }
 
-        private static Boolean ExtractManifestSettings
+        private static Boolean ExtractManifestDSClientSettings
         (
             String packageId,
             String packageContentsRootPath,
@@ -1564,21 +1565,21 @@ namespace DocumentScannerLibrary
                 progressDelegate(String.Format("validating settings..."));
 
                 //validate settings entered by user
-                if (!SettingsController<Settings>.Settings.Valid())
+                if (!SettingsController<DSClientSettings>.Settings.Valid())
                 {
-                    throw new ApplicationException(String.Format("{0}", SettingsController<Settings>.Settings.ErrorMessage));
+                    throw new ApplicationException(String.Format("{0}", SettingsController<DSClientSettings>.Settings.ErrorMessage));
                 }
 
                 //validate settings determined at the time of the submit
-                if (!SettingsController<Settings>.Settings.Complete())
+                if (!SettingsController<DSClientSettings>.Settings.Complete())
                 {
-                    throw new ApplicationException(String.Format("{0}", SettingsController<Settings>.Settings.ErrorMessage));
+                    throw new ApplicationException(String.Format("{0}", SettingsController<DSClientSettings>.Settings.ErrorMessage));
                 }
 
                 //settings should not be Dirty
-                if (SettingsController<Settings>.Settings.Dirty)
+                if (SettingsController<DSClientSettings>.Settings.Dirty)
                 {
-                    throw new ApplicationException(String.Format("There are unsaved changes: '{0}'",SettingsController<Settings>.Filename));
+                    throw new ApplicationException(String.Format("There are unsaved changes: '{0}'",SettingsController<DSClientSettings>.Filename));
                 }
                 
                 
@@ -1603,10 +1604,10 @@ namespace DocumentScannerLibrary
                 //save only settings necessary to construct manifest to package path
                 manifestFilename = String.Format("{0}.{1}", packageId, DocumentScannerCommon.PackageManifest.DATA_FILE_TYPE);
                 manifestFilePath = Path.Combine(packageContentsPackageSubfolderPath, manifestFilename);
-                PackageManifest.Save(SettingsController<Settings>.Settings.Manifest, manifestFilePath);
+                PackageManifest.Save(SettingsController<DSClientSettings>.Settings.Manifest, manifestFilePath);
 
                 //copy images folder to package path
-                imagesSourcePath = DSController<DSModel>.GetTransactionImagesPath(false);
+                imagesSourcePath = DSClientModelController<DSClientModel>.GetTransactionImagesPath(false);
                 imagesDestinationPath = Path.Combine(packageContentsPackageSubfolderPath, packageId);
                 Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory
                 (

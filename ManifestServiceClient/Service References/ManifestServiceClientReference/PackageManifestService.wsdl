@@ -296,10 +296,11 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:53408/PackageManifestService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:53408/PackageManifestService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:53408/PackageManifestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" />
-      <xsd:import schemaLocation="http://localhost:53408/PackageManifestService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" />
+      <xsd:import schemaLocation="http://localhost:8732/PackageManifestService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8732/PackageManifestService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8732/PackageManifestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" />
+      <xsd:import schemaLocation="http://localhost:8732/PackageManifestService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DocumentScannerCommon" />
+      <xsd:import schemaLocation="http://localhost:8732/PackageManifestService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Ssepan.Application.MVC" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPackageManifestService_Ping_InputMessage">
@@ -464,16 +465,16 @@
   </wsdl:binding>
   <wsdl:service name="PackageManifestService">
     <wsdl:port name="ws1manifest" binding="tns:ws1manifest">
-      <soap12:address location="http://localhost:53408/PackageManifestService.svc/ws1" />
+      <soap12:address location="http://localhost:8732/PackageManifestService.svc/ws1" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://localhost:53408/PackageManifestService.svc/ws1</wsa10:Address>
+        <wsa10:Address>http://localhost:8732/PackageManifestService.svc/ws1</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Dns>localhost</Dns>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="basic1manifest" binding="tns:basic1manifest">
-      <soap:address location="http://localhost:53408/PackageManifestService.svc/basic1" />
+      <soap:address location="http://localhost:8732/PackageManifestService.svc/basic1" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

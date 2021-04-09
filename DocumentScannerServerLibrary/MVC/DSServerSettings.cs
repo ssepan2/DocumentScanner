@@ -1,53 +1,34 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Reflection;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Ssepan.Application;
-using Ssepan.Collections;
+//using Ssepan.Application.MVC;
 using Ssepan.Utility;
+using System.Diagnostics;
+using System.Reflection;
 using DocumentScannerCommon;
 
-namespace DocumentScannerLibrary
+namespace DocumentScannerServerLibrary.MVC
 {
 	/// <summary>
     /// persisted settings; run-time model depends on this
     /// </summary>
+    //[DataContract]//was this
     [TypeConverter(typeof(ExpandableObjectConverter))]
     [Serializable]
-    public class Settings :
+    public class DSServerSettings :
         SettingsBase
     {
         #region Declarations
-        private const String FILE_TYPE_EXTENSION = "documentscanner";
-        private const String FILE_TYPE_NAME = "documentscannerfile";
-        private const String FILE_TYPE_DESCRIPTION = "DocumentScanner Settings File";
-
-        #region Enums
-        public enum ColorSchemeTypes
-        {
-            [XmlEnum(Name = "Mono")]
-            Mono,
-            [XmlEnum(Name = "Color")]
-            Color            
-        }
-
-        public enum ImageFormatTypes
-        {
-            [XmlEnum(Name = "Metafile")]
-            Metafile,
-            [XmlEnum(Name = "Bitmap")]
-            Bitmap
-        }
-        #endregion Enums
+        private const String FILE_TYPE_EXTENSION = "DocumentScannerServer"; //"xml";
+        private const String FILE_TYPE_NAME = "documentscannerserverfile";
+        private const String FILE_TYPE_DESCRIPTION = "DocumentScannerServer Settings File";
         #endregion Declarations
 
         #region Constructors
-        public Settings()
+        public DSServerSettings()
         {
             try
             {
@@ -55,23 +36,17 @@ namespace DocumentScannerLibrary
                 FileTypeName = FILE_TYPE_NAME;
                 FileTypeDescription = FILE_TYPE_DESCRIPTION;
                 SerializeAs = SerializationFormat.Xml;//default
-
-                Manifest = new PackageManifest();
-                Manifest.TransactionId = Guid.NewGuid().ToString();
-                Manifest.OperatorId = Environment.UserName;
-                Manifest.SetDocumentFilesListChangedDelegate(DocumentFiles_ListChanged);
             }
             catch (Exception ex)
             {
                 Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-
                 throw;
             }
         }
         #endregion Constructors
 
         #region IDisposable support
-        ~Settings()
+        ~DSServerSettings()
         {
             Dispose(false);
         }
@@ -104,7 +79,7 @@ namespace DocumentScannerLibrary
                 //Resources already disposed
             }
         }
-        #endregion
+        #endregion IDisposable support
 
         #region IEquatable<ISettings>
         /// <summary>
@@ -115,11 +90,11 @@ namespace DocumentScannerLibrary
         public override Boolean Equals(ISettingsComponent other)
         {
             Boolean returnValue = default(Boolean);
-            Settings otherSettings = default(Settings);
+            DSServerSettings otherSettings = default(DSServerSettings);
 
             try
             {
-                otherSettings = other as Settings;
+                otherSettings = other as DSServerSettings;
 
                 if (this == otherSettings)
                 {
@@ -135,10 +110,10 @@ namespace DocumentScannerLibrary
                     {
                         returnValue = false;
                     }
-                    else if (!this.Manifest.Equals(otherSettings.Manifest))
-                    { 
-                        returnValue = false;
-                    }
+                    //else if (!this.SubObject.Equals(otherSettings.SubObject))
+                    //{
+                    //    returnValue = false;
+                    //}
                     else
                     {
                         returnValue = true;
@@ -153,7 +128,7 @@ namespace DocumentScannerLibrary
 
             return returnValue;
         }
-        #endregion IEquatable<ISettings>
+        #endregion IEquatable<ISettings> 
 
         #region ListChanged handlers
         void DocumentFiles_ListChanged(Object sender, ListChangedEventArgs e)
@@ -170,21 +145,6 @@ namespace DocumentScannerLibrary
         }
         #endregion ListChanged handlers
 
-        #region AddingNew handlers
-        //void DocumentFiles_AddingNew(Object sender, AddingNewEventArgs e)
-        //{
-        //    try
-        //    {
-        //        e.NewObject = new ImageFile(String.Format("{0}{1}", Guid.NewGuid().ToString(), ImageFile.FILE_EXTENSION));
-        //    }
-        //    catch (Exception ex)
-        //    {
-                //Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-        //        throw;
-        //    }
-        //}
-        #endregion ListChanged handlers
-
         #region Properties
         [XmlIgnore]
         public override Boolean Dirty
@@ -199,26 +159,10 @@ namespace DocumentScannerLibrary
                     {
                         returnValue = true;
                     }
-                    //else if ((this._Manifest == null) && (this.__Manifest == null))
-                    //{
-                    //}
-                    else if ((this._Manifest == null) || (this.__Manifest == null))
-                    {
-                        //if either is true, we're not going to get a match, and it will show as dirty
-                        returnValue = true;
-                    }
-                    else if (!this._Manifest.Equals(this.__Manifest))
+                    else if (_Version != __Version)
                     {
                         returnValue = true;
                     }
-                    else if (this._Version != this.__Version)
-                    {
-                        returnValue = true;
-                    }
-                    //else if (this._UserName != this.__UserName)
-                    //{
-                    //    returnValue = true;
-                    //}
                     else
                     {
                         returnValue = false;
@@ -234,14 +178,6 @@ namespace DocumentScannerLibrary
             }
         }
 
-        private String _ErrorMessage = default(String);
-        [XmlIgnore]
-        public String ErrorMessage
-        {
-            get { return _ErrorMessage; }
-            set { _ErrorMessage = value; }
-        }
-
         //note:serializer won't serialize properties that contain the default value.
         #region Persisted Properties
         private PackageManifest __Manifest = default(PackageManifest);
@@ -251,7 +187,7 @@ namespace DocumentScannerLibrary
         public PackageManifest Manifest
         {
             get { return _Manifest; }
-            set 
+            set
             {
                 if (Manifest != null)
                 {
@@ -276,9 +212,11 @@ namespace DocumentScannerLibrary
 
         private String __Version = "0";
         private String _Version = "0";
+        [ReadOnly(true)]
         [DescriptionAttribute("Application major version"),
         CategoryAttribute("Misc"),
         DefaultValueAttribute(null)]
+        [DataMember]
         public String Version
         {
             get { return _Version; }
@@ -288,116 +226,24 @@ namespace DocumentScannerLibrary
                 OnPropertyChanged("Version");
             }
         }
-
-        //private String __UserName = FILE_NEW;
-        //private String _UserName = FILE_NEW;
-        ///// <summary>
-        ///// Identifier used to store and retrieve the settings.
-        ///// </summary>
-        //[DescriptionAttribute("Identifier used to store and retrieve the settings."), 
-        //CategoryAttribute("Misc"),
-        //DefaultValueAttribute("(new)")]
-        //public String UserName
-        //{
-        //    get { return _UserName; }
-        //    set 
-        //    { 
-        //        _UserName = value;
-        //        OnPropertyChanged("UserName");
-        //    }
-        //}
-
         #endregion Persisted Properties
         #endregion Properties
 
         #region Methods
         /// <summary>
-        /// validate settings entered by user
-        /// </summary>
-        public Boolean Valid()
-        {
-            Boolean returnValue = default(Boolean);
-
-            try
-            {
-                ErrorMessage = String.Empty;
-
-                if (!_Manifest.Valid(DSController<DSModel>.GetTransactionImagesPath(false)))
-                { 
-                    returnValue = false;
-                    ErrorMessage = _Manifest.ErrorMessage;
-                }
-                //else if (false)
-                //{
-                //    returnValue = false;
-                //    ErrorMessage = String.Format("some other non-manifest, settings condition");
-                //}
-                else
-                {
-                    returnValue = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-                throw;
-            }
-
-            return returnValue;
-        }
-
-        /// <summary>
-        /// validate settings determined at the time of the collate
-        /// </summary>
-        public Boolean Complete()
-        {
-            Boolean returnValue = default(Boolean);
-
-            try
-            {
-                ErrorMessage = String.Empty;
-
-                if (!Valid())
-                {
-                    returnValue = false;
-                    //ErrorMessage = String.Format("");
-                }
-                //else if (false)
-                //{
-                //    returnValue = false;
-                //    ErrorMessage = String.Format("some other non-input, runtime criteria.");
-                //}
-                else
-                {
-                    returnValue = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-                throw;
-            }
-
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Copies property values from source working fields to destination working fields, then optionally syncs destination.
+        /// Copies property values from source working fields to detination working fields, then optionally syncs destination.
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="sync"></param>
         public override void CopyTo(ISettingsComponent destination, Boolean sync)
         {
-            Settings destinationSettings = default(Settings);
+            DSServerSettings destinationSettings = default(DSServerSettings);
 
             try
             {
-                destinationSettings = destination as Settings;
+                destinationSettings = destination as DSServerSettings;
 
                 destinationSettings.Version = this.Version;
-                //destinationSettings.UserName = this.UserName;
-                destinationSettings.Manifest = this.Manifest;
-                //this.PackageManifest.CopyTo(destinationSettings.PackageManifest);
 
                 base.CopyTo(destination, sync);//also checks and optionally performs sync
             }
@@ -416,15 +262,6 @@ namespace DocumentScannerLibrary
             try
             {
                 __Version = _Version;
-                //this.__UserName = this._UserName;
-                if (_Manifest != null)
-                {
-                    __Manifest = ObjectHelper.Clone<PackageManifest>(_Manifest);
-                }
-                else
-                { 
-                    __Manifest = null;
-                }
 
                 base.Sync();
 
@@ -439,24 +276,6 @@ namespace DocumentScannerLibrary
                 throw;
             }
         }
-
-        /// <summary>
-        /// Set the delegate for instances that may not call new (clones).
-        /// In order to de-couple certain objects with collections from settings,
-        /// it is necessary to provide a mechanism to continue to wire up list changed events.
-        /// </summary>
-        public void SetDocumentFilesListChangedDelegate()
-        {
-            try
-            {
-                Manifest.SetDocumentFilesListChangedDelegate(DocumentFiles_ListChanged);
-            }
-            catch (Exception ex)
-            {
-                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
-            }
-        }
         #endregion Methods
-
     }
 }

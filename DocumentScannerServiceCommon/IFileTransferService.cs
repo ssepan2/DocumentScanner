@@ -15,15 +15,15 @@ namespace DocumentScannerServiceCommon
         Boolean Ping(ref String errorMessage);
 
         [OperationContract]
-        Boolean Push(TransactionContract transactionContract, ref String errorMessage);
+        Boolean Push(TransferContract transferContract, ref String errorMessage);
 
         [OperationContract]
-        Boolean Pull(ref TransactionContract transactionContract, ref String errorMessage);
+        Boolean Pull(ref TransferContract transferContract, ref String errorMessage);
     }
 
 
     [DataContract]
-    public class TransactionContract
+    public class TransferContract
     {
 
         private String _ID = String.Empty;

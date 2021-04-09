@@ -1,36 +1,38 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentScanner", "DocumentScanner\DocumentScanner.csproj", "{CED8931A-0ABA-4889-9CEA-959BFCDBB6F7}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentScanner", "DocumentScanner\DocumentScanner.csproj", "{CED8931A-0ABA-4889-9CEA-959BFCDBB6F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferServiceClient", "TransferServiceClient\TransferServiceClient.csproj", "{E7EE228C-54B2-4DA2-AE4C-7B0D3AE92A93}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1115D9FD-F387-4E12-9A05-5D413203B40B} = {1115D9FD-F387-4E12-9A05-5D413203B40B}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Conversion", "..\Ssepan.Conversion\Ssepan.Conversion.csproj", "{B5879E34-6A1D-4264-8DB3-04906A44B064}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Utility", "..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj", "{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Application", "..\Ssepan.Application\Ssepan.Application.csproj", "{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Conversion", "..\Ssepan.Conversion\Ssepan.Conversion.csproj", "{B5879E34-6A1D-4264-8DB3-04906A44B064}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferServerBusiness", "TransferServerBusiness\TransferServerBusiness.csproj", "{F98761B0-94C5-42E6-AB3D-5277D1856CE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Application", "..\Ssepan.Application\Ssepan.Application.csproj", "{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Io", "..\Ssepan.Io\Ssepan.Io.csproj", "{9EFE2EC6-F48E-4E4E-927F-068B54210E09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Patterns", "..\Ssepan.Patterns\Ssepan.Patterns.csproj", "{02B288FD-2642-4A7F-96E0-54031FA137F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferServiceServer", "TransferServiceServer\TransferServiceServer.csproj", "{B6B17947-5248-42CE-A960-948F1D1C17F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferServerBusiness", "TransferServerBusiness\TransferServerBusiness.csproj", "{F98761B0-94C5-42E6-AB3D-5277D1856CE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Io", "..\Ssepan.Io\Ssepan.Io.csproj", "{9EFE2EC6-F48E-4E4E-927F-068B54210E09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferServiceServer", "TransferServiceServer\TransferServiceServer.csproj", "{B6B17947-5248-42CE-A960-948F1D1C17F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferServiceWebHost", "TransferServiceWebHost\TransferServiceWebHost.csproj", "{1115D9FD-F387-4E12-9A05-5D413203B40B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Collections", "..\Ssepan.Collections\Ssepan.Collections.csproj", "{07E139E8-739C-41C7-A53A-6AF3288B7B83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Collections", "..\Ssepan.Collections\Ssepan.Collections.csproj", "{07E139E8-739C-41C7-A53A-6AF3288B7B83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Graphics", "..\Ssepan.Graphics\Ssepan.Graphics.csproj", "{65314B1F-7719-4E25-9D3E-55E893F80B1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Graphics", "..\Ssepan.Graphics\Ssepan.Graphics.csproj", "{65314B1F-7719-4E25-9D3E-55E893F80B1B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourceRegistrationForm", "..\Ssepan.Utility\EventSourceRegistrationForm\EventSourceRegistrationForm.csproj", "{808ADBFE-AFC8-4073-84B1-19D7D89088E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourceRegistrationForm", "..\Ssepan.Utility\EventSourceRegistrationForm\EventSourceRegistrationForm.csproj", "{808ADBFE-AFC8-4073-84B1-19D7D89088E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Transaction", "..\Ssepan.Transaction\Ssepan.Transaction.csproj", "{B3EEA538-82CF-445E-B55B-89ADDAF3A6E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Transaction", "..\Ssepan.Transaction\Ssepan.Transaction.csproj", "{B3EEA538-82CF-445E-B55B-89ADDAF3A6E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Compression", "..\Ssepan.Compression\Ssepan.Compression.csproj", "{5F92C0BD-E954-49C4-A3ED-B0703819211A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ssepan.Compression", "..\Ssepan.Compression\Ssepan.Compression.csproj", "{5F92C0BD-E954-49C4-A3ED-B0703819211A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.SharpZLib", "..\SharpZip\src\ICSharpCode.SharpZLib.csproj", "{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}"
 EndProject
@@ -38,17 +40,17 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DocumentScannerClientSetup"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DocumentScannerServiceSetup", "DocumentScannerServiceSetup\DocumentScannerServiceSetup.vdproj", "{ED5C7097-C58C-440E-90AB-C2076CC2B907}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwainLib", "..\TwainLib\TwainLib.csproj", "{908F1FE0-BDB6-47AD-85A2-7868B7EEE871}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwainLib", "..\TwainLib\TwainLib.csproj", "{908F1FE0-BDB6-47AD-85A2-7868B7EEE871}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScanTestForm", "ScanTestForm\ScanTestForm.csproj", "{719CDEFB-B650-432B-BE5B-B1555E4B476E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScanTestForm", "ScanTestForm\ScanTestForm.csproj", "{719CDEFB-B650-432B-BE5B-B1555E4B476E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentScannerLibrary", "DocumentScannerLibrary\DocumentScannerLibrary.csproj", "{83BDDE74-8E40-4751-B9EA-2DFEB03157D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentScannerLibrary", "DocumentScannerLibrary\DocumentScannerLibrary.csproj", "{83BDDE74-8E40-4751-B9EA-2DFEB03157D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentScannerCommon", "DocumentScannerCommon\DocumentScannerCommon.csproj", "{0322295B-89F7-484C-B89F-7B0C56BA0E23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentScannerCommon", "DocumentScannerCommon\DocumentScannerCommon.csproj", "{0322295B-89F7-484C-B89F-7B0C56BA0E23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentScannerServerLibrary", "DocumentScannerServerLibrary\DocumentScannerServerLibrary.csproj", "{AF8182DE-5FEF-4594-8A75-24F4AC7D8590}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentScannerServerLibrary", "DocumentScannerServerLibrary\DocumentScannerServerLibrary.csproj", "{AF8182DE-5FEF-4594-8A75-24F4AC7D8590}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentScannerServerHostConsole", "DocumentScannerServerHostConsole\DocumentScannerServerHostConsole.csproj", "{B688CAB4-6BAF-4400-ABA5-5BA83710A808}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentScannerServerHostConsole", "DocumentScannerServerHostConsole\DocumentScannerServerHostConsole.csproj", "{B688CAB4-6BAF-4400-ABA5-5BA83710A808}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DocumentScannerServerSetup", "DocumentScannerServerSetup\DocumentScannerServerSetup.vdproj", "{3D6035BF-0CE5-4CD5-B322-8B48699B9411}"
 EndProject
@@ -57,22 +59,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestServiceClient", "Ma
 		{1115D9FD-F387-4E12-9A05-5D413203B40B} = {1115D9FD-F387-4E12-9A05-5D413203B40B}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestServiceServer", "ManifestServiceServer\ManifestServiceServer.csproj", "{C6BAED82-BDBC-447B-948C-70A9FA92972A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestServiceServer", "ManifestServiceServer\ManifestServiceServer.csproj", "{C6BAED82-BDBC-447B-948C-70A9FA92972A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentScannerServiceCommon", "DocumentScannerServiceCommon\DocumentScannerServiceCommon.csproj", "{BA9DBD80-24BC-4622-A029-DF0CC9FBFD8C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssepan.Utility", "..\Ssepan.Utility\Ssepan.Utility\Ssepan.Utility.csproj", "{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentScannerServiceCommon", "DocumentScannerServiceCommon\DocumentScannerServiceCommon.csproj", "{BA9DBD80-24BC-4622-A029-DF0CC9FBFD8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F4C4A85-9CFD-490E-ACC9-1B225892A717}"
 	ProjectSection(SolutionItems) = preProject
 		License.txt = License.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferClientBusiness", "TransferClientBusiness\TransferClientBusiness.csproj", "{198B3D52-E173-426E-A983-0C29B7954044}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferClientBusiness", "TransferClientBusiness\TransferClientBusiness.csproj", "{198B3D52-E173-426E-A983-0C29B7954044}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestServerBusiness", "ManifestServerBusiness\ManifestServerBusiness.csproj", "{048D3AB4-7557-4226-8063-29774D9C5DCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScanTestConsole", "ScanTestConsole\ScanTestConsole.csproj", "{16AF1EED-9815-42E8-BDBF-1C177345D4FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestClientBusiness", "ManifestClientBusiness\ManifestClientBusiness.csproj", "{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestClientBusiness", "ManifestClientBusiness\ManifestClientBusiness.csproj", "{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestServerBusiness", "ManifestServerBusiness\ManifestServerBusiness.csproj", "{C839EC4D-CF58-458D-9060-EE6E570B582A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,18 @@ Global
 		{E7EE228C-54B2-4DA2-AE4C-7B0D3AE92A93}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E7EE228C-54B2-4DA2-AE4C-7B0D3AE92A93}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E7EE228C-54B2-4DA2-AE4C-7B0D3AE92A93}.Release|x86.ActiveCfg = Release|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|x86.Build.0 = Debug|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|x86.ActiveCfg = Release|Any CPU
+		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|x86.Build.0 = Release|Any CPU
 		{B5879E34-6A1D-4264-8DB3-04906A44B064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5879E34-6A1D-4264-8DB3-04906A44B064}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5879E34-6A1D-4264-8DB3-04906A44B064}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -124,6 +138,16 @@ Global
 		{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}.Release|x86.ActiveCfg = Release|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{02B288FD-2642-4A7F-96E0-54031FA137F8}.Release|x86.ActiveCfg = Release|Any CPU
 		{F98761B0-94C5-42E6-AB3D-5277D1856CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F98761B0-94C5-42E6-AB3D-5277D1856CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F98761B0-94C5-42E6-AB3D-5277D1856CE5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -239,7 +263,6 @@ Global
 		{ED5C7097-C58C-440E-90AB-C2076CC2B907}.Debug|Any CPU.ActiveCfg = Debug
 		{ED5C7097-C58C-440E-90AB-C2076CC2B907}.Debug|Any CPU.Build.0 = Debug
 		{ED5C7097-C58C-440E-90AB-C2076CC2B907}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{ED5C7097-C58C-440E-90AB-C2076CC2B907}.Debug|Mixed Platforms.Build.0 = Debug
 		{ED5C7097-C58C-440E-90AB-C2076CC2B907}.Debug|x86.ActiveCfg = Debug
 		{ED5C7097-C58C-440E-90AB-C2076CC2B907}.Debug|x86.Build.0 = Debug
 		{ED5C7097-C58C-440E-90AB-C2076CC2B907}.Release|Any CPU.ActiveCfg = Release
@@ -309,9 +332,11 @@ Global
 		{B688CAB4-6BAF-4400-ABA5-5BA83710A808}.Release|x86.ActiveCfg = Release|x86
 		{B688CAB4-6BAF-4400-ABA5-5BA83710A808}.Release|x86.Build.0 = Release|x86
 		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Debug|Any CPU.ActiveCfg = Debug
+		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Debug|Mixed Platforms.ActiveCfg = Debug
 		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Debug|x86.ActiveCfg = Debug
 		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Release|Any CPU.ActiveCfg = Release
+		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Release|Mixed Platforms.ActiveCfg = Release
 		{3D6035BF-0CE5-4CD5-B322-8B48699B9411}.Release|x86.ActiveCfg = Release
 		{C3A24AA4-6FC2-4F0D-988A-91DA25B74FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -346,18 +371,6 @@ Global
 		{BA9DBD80-24BC-4622-A029-DF0CC9FBFD8C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BA9DBD80-24BC-4622-A029-DF0CC9FBFD8C}.Release|x86.ActiveCfg = Release|Any CPU
 		{BA9DBD80-24BC-4622-A029-DF0CC9FBFD8C}.Release|x86.Build.0 = Release|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Debug|x86.Build.0 = Debug|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|x86.ActiveCfg = Release|Any CPU
-		{9C11D8DD-E335-4FE3-AAE6-5C3B17732890}.Release|x86.Build.0 = Release|Any CPU
 		{198B3D52-E173-426E-A983-0C29B7954044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{198B3D52-E173-426E-A983-0C29B7954044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{198B3D52-E173-426E-A983-0C29B7954044}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -370,30 +383,36 @@ Global
 		{198B3D52-E173-426E-A983-0C29B7954044}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{198B3D52-E173-426E-A983-0C29B7954044}.Release|x86.ActiveCfg = Release|Any CPU
 		{198B3D52-E173-426E-A983-0C29B7954044}.Release|x86.Build.0 = Release|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Debug|x86.Build.0 = Debug|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|x86.ActiveCfg = Release|Any CPU
-		{048D3AB4-7557-4226-8063-29774D9C5DCA}.Release|x86.Build.0 = Release|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Debug|x86.Build.0 = Debug|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|x86.ActiveCfg = Release|Any CPU
-		{BCF3EB6A-1EA3-4CE4-9EBB-DBA5E72DE3AB}.Release|x86.Build.0 = Release|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{16AF1EED-9815-42E8-BDBF-1C177345D4FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9406329E-6BB4-403F-9EAC-8DF2BD5E88E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C839EC4D-CF58-458D-9060-EE6E570B582A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

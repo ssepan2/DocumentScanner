@@ -909,7 +909,6 @@ namespace DocumentScanner
             this.tabControl.Controls.Add(this.tabPageReceive);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = global::DocumentScanner.Properties.Settings.Default.Size;
             // 
             // tabPageScan
             // 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using DocumentScannerServerLibrary;
 using Ssepan.Application;
+using Ssepan.Application.WinConsole;
 using Ssepan.Utility;
 
 namespace DocumentScannerServerHostConsole

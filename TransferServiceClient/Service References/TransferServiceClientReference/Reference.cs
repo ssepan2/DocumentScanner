@@ -19,10 +19,10 @@ namespace TransferServiceClient.TransferServiceClientReference {
         bool Ping(ref string errorMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransferService/Push", ReplyAction="http://tempuri.org/IFileTransferService/PushResponse")]
-        bool Push(DocumentScannerServiceCommon.TransactionContract transactionContract, ref string errorMessage);
+        bool Push(DocumentScannerServiceCommon.TransferContract transferContract, ref string errorMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransferService/Pull", ReplyAction="http://tempuri.org/IFileTransferService/PullResponse")]
-        bool Pull(ref DocumentScannerServiceCommon.TransactionContract transactionContract, ref string errorMessage);
+        bool Pull(ref DocumentScannerServiceCommon.TransferContract transferContract, ref string errorMessage);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -56,12 +56,12 @@ namespace TransferServiceClient.TransferServiceClientReference {
             return base.Channel.Ping(ref errorMessage);
         }
         
-        public bool Push(DocumentScannerServiceCommon.TransactionContract transactionContract, ref string errorMessage) {
-            return base.Channel.Push(transactionContract, ref errorMessage);
+        public bool Push(DocumentScannerServiceCommon.TransferContract transferContract, ref string errorMessage) {
+            return base.Channel.Push(transferContract, ref errorMessage);
         }
         
-        public bool Pull(ref DocumentScannerServiceCommon.TransactionContract transactionContract, ref string errorMessage) {
-            return base.Channel.Pull(ref transactionContract, ref errorMessage);
+        public bool Pull(ref DocumentScannerServiceCommon.TransferContract transferContract, ref string errorMessage) {
+            return base.Channel.Pull(ref transferContract, ref errorMessage);
         }
     }
 }

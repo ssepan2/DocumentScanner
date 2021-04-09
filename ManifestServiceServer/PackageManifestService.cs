@@ -10,6 +10,7 @@ using System.Text;
 using Ssepan.Utility;
 using ManifestServerBusiness;
 using DocumentScannerCommon;
+using DocumentScannerServiceCommon;
 
 namespace ManifestServiceServer
 {
@@ -22,7 +23,7 @@ namespace ManifestServiceServer
         {
             string errorMessage = default(String);
 
-            //Moved DSServerController assignment out of ManifestServiceServer. 
+            //Moved DSServerModelController assignment out of ManifestServiceServer. 
             //Call TransferServerBusiness.Transfer.InitDelegates() to have it load delegates from another library.
             if (!ManifestServerBusiness.Manifest.InitDelegates(ref errorMessage))
             {
@@ -53,18 +54,19 @@ namespace ManifestServiceServer
         }
 
         /// <summary>
-        /// Given the Operator ID and the specified date, 
-        /// return a List(Of PackageManifest) from the server.
+        /// Given a contract with the Operator ID and the specified date, 
+        /// return a contract with a List(Of PackageManifest) from the server.
         /// </summary>
         /// <param name="contract"></param>
-        /// <returns></returns>
-        public List<PackageManifest> ManifestsConfirmed
+        /// <returns>Boolean</returns>
+        public Boolean ManifestsConfirmed
         (
-            ManifestContract contract,
+            ref ManifestContract contract,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            List<PackageManifest> manifestList = default(List<PackageManifest>);
 
             try
             {
@@ -73,8 +75,10 @@ namespace ManifestServiceServer
                     (
                         contract.OperatorId, 
                         contract.Date, 
+                        ref manifestList,//cannot pass property by ref
                         ref errorMessage
                     );
+                contract.Manifests = manifestList;
             }
             catch (Exception ex)
             {
@@ -86,18 +90,19 @@ namespace ManifestServiceServer
         }
 
         /// <summary>
-        /// Given the Operator ID, a Transaction ID, and the specified date, 
-        /// return a List(Of ImageFile) from the server.
+        /// Given a contract with the Operator ID, a Transaction ID, and the specified date, 
+        /// return a contract with a List(Of ImageFile) from the server.
         /// </summary>
         /// <param name="contract"></param>
-        /// <returns></returns>
-        public List<ImageFile> DocumentsConfirmed
+        /// <returns>Boolean</returns>
+        public Boolean DocumentsConfirmed
         (
-            ManifestContract contract,
+            ref DocumentContract contract,
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
+            Boolean returnValue = default(Boolean);
+            List<ImageFile> documentList = default(List<ImageFile>);
 
             try
             {
@@ -107,8 +112,10 @@ namespace ManifestServiceServer
                         contract.OperatorId,
                         contract.TransactionId,
                         contract.Date,
+                        ref documentList,//cannot pass property by ref
                         ref errorMessage
                     );
+                contract.Documents = documentList;
             }
             catch (Exception ex)
             {
@@ -120,18 +127,19 @@ namespace ManifestServiceServer
         }
 
         /// <summary>
-        /// Given the Operator ID and the operator id, 
-        /// return a List(Of PackageManifest) from the server.
+        /// Given a contract with the Operator ID and the operator id, 
+        /// return a contract with a List(Of PackageManifest) from the server.
         /// </summary>
         /// <param name="contract"></param>
-        /// <returns></returns>
-        public List<PackageManifest> ManifestsAvailable
+        /// <returns>Boolean</returns>
+        public Boolean ManifestsAvailable
         (
-            ManifestContract contract,
+            ref ManifestContract contract,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            List<PackageManifest> manifestList = default(List<PackageManifest>);
 
             try
             {
@@ -139,9 +147,11 @@ namespace ManifestServiceServer
                     ManifestServerBusiness.Manifest.manifestsAvailableDelegate
                     (
                         contract.OperatorId, 
-                        contract.Date, 
+                        contract.Date,
+                        ref manifestList,//cannot pass property by ref
                         ref errorMessage
                     );
+                contract.Manifests = manifestList;
             }
             catch (Exception ex)
             {
@@ -153,18 +163,19 @@ namespace ManifestServiceServer
         }
 
         /// <summary>
-        /// Given the Operator ID, a Transaction ID, and the operator id, 
-        /// return a List(Of ImageFile) from the server.
+        /// Given a contract with the Operator ID, a Transaction ID, and the operator id, 
+        /// return a contract with a List(Of ImageFile) from the server.
         /// </summary>
         /// <param name="contract"></param>
-        /// <returns></returns>
-        public List<ImageFile> DocumentsAvailable
+        /// <returns>Boolean</returns>
+        public Boolean DocumentsAvailable
         (
-            ManifestContract contract,
+            ref DocumentContract contract,
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
+            Boolean returnValue = default(Boolean);
+            List<ImageFile> documentList = default(List<ImageFile>);
 
             try
             {
@@ -174,8 +185,10 @@ namespace ManifestServiceServer
                         contract.OperatorId,
                         contract.TransactionId,
                         contract.Date,
+                        ref documentList,//cannot pass property by ref
                         ref errorMessage
                     );
+                contract.Documents = documentList;
             }
             catch (Exception ex)
             {

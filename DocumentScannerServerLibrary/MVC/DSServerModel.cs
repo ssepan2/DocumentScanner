@@ -7,10 +7,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using Ssepan.Utility;
 using DocumentScannerCommon;
 
-namespace DocumentScannerServerLibrary
+namespace DocumentScannerServerLibrary.MVC
 {
     /// <summary>
     /// run-time model; relies on settings
@@ -25,11 +26,11 @@ namespace DocumentScannerServerLibrary
         #region Constructors
         public DSServerModel() 
         {
-            if (SettingsController<Settings>.Settings == null)
+            if (SettingsController<DSServerSettings>.Settings == null)
             {
-                SettingsController<Settings>.New();
+                SettingsController<DSServerSettings>.New();
             }
-            Debug.Assert(SettingsController<Settings>.Settings != null, "SettingsController<Settings>.Settings != null");
+            Debug.Assert(SettingsController<DSServerSettings>.Settings != null, "SettingsController<DSServerSettings>.Settings != null");
         }
         #endregion Constructors
 
@@ -37,7 +38,7 @@ namespace DocumentScannerServerLibrary
         /// <summary>
         /// Compare property values of two specified Model objects.
         /// </summary>
-        /// <param name="anotherSettings"></param>
+        /// <param name="anotherDSServerSettings"></param>
         /// <returns></returns>
         public override Boolean Equals(IModelComponent other)
         {
@@ -62,7 +63,7 @@ namespace DocumentScannerServerLibrary
                     {
                         returnValue = false;
                     }
-                    //else if (!this.SubObject.Equals(otherSettings.SubObject))
+                    //else if (!this.SubObject.Equals(otherDSServerSettings.SubObject))
                     //{
                     //    returnValue = false;
                     //}
@@ -86,10 +87,10 @@ namespace DocumentScannerServerLibrary
         #region Persisted Properties
         public String Version
         {
-            get { return SettingsController<Settings>.Settings.Version; }
+            get { return SettingsController<DSServerSettings>.Settings.Version; }
             set
             {
-                SettingsController<Settings>.Settings.Version = value;
+                SettingsController<DSServerSettings>.Settings.Version = value;
                 OnPropertyChanged("Version");
             }
         }

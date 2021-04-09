@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DocumentScannerServiceCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="TransactionContract">
+  <xs:complexType name="TransferContract">
     <xs:sequence>
       <xs:element minOccurs="0" name="ByteArray" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
@@ -9,5 +9,5 @@
       <xs:element minOccurs="0" name="Operator" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="TransactionContract" nillable="true" type="tns:TransactionContract" />
+  <xs:element name="TransferContract" nillable="true" type="tns:TransferContract" />
 </xs:schema>

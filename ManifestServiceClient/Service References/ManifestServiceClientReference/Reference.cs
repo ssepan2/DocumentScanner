@@ -19,16 +19,16 @@ namespace ManifestServiceClient.ManifestServiceClientReference {
         bool Ping(ref string errorMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPackageManifestService/ManifestsConfirmed", ReplyAction="http://tempuri.org/IPackageManifestService/ManifestsConfirmedResponse")]
-        System.Collections.Generic.List<DocumentScannerCommon.PackageManifest> ManifestsConfirmed(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage);
+        bool ManifestsConfirmed(ref DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPackageManifestService/DocumentsConfirmed", ReplyAction="http://tempuri.org/IPackageManifestService/DocumentsConfirmedResponse")]
-        System.Collections.Generic.List<DocumentScannerCommon.ImageFile> DocumentsConfirmed(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage);
+        bool DocumentsConfirmed(ref DocumentScannerServiceCommon.DocumentContract contract, ref string errorMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPackageManifestService/ManifestsAvailable", ReplyAction="http://tempuri.org/IPackageManifestService/ManifestsAvailableResponse")]
-        System.Collections.Generic.List<DocumentScannerCommon.PackageManifest> ManifestsAvailable(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage);
+        bool ManifestsAvailable(ref DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPackageManifestService/DocumentsAvailable", ReplyAction="http://tempuri.org/IPackageManifestService/DocumentsAvailableResponse")]
-        System.Collections.Generic.List<DocumentScannerCommon.ImageFile> DocumentsAvailable(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage);
+        bool DocumentsAvailable(ref DocumentScannerServiceCommon.DocumentContract contract, ref string errorMessage);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -62,20 +62,20 @@ namespace ManifestServiceClient.ManifestServiceClientReference {
             return base.Channel.Ping(ref errorMessage);
         }
         
-        public System.Collections.Generic.List<DocumentScannerCommon.PackageManifest> ManifestsConfirmed(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage) {
-            return base.Channel.ManifestsConfirmed(contract, ref errorMessage);
+        public bool ManifestsConfirmed(ref DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage) {
+            return base.Channel.ManifestsConfirmed(ref contract, ref errorMessage);
         }
         
-        public System.Collections.Generic.List<DocumentScannerCommon.ImageFile> DocumentsConfirmed(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage) {
-            return base.Channel.DocumentsConfirmed(contract, ref errorMessage);
+        public bool DocumentsConfirmed(ref DocumentScannerServiceCommon.DocumentContract contract, ref string errorMessage) {
+            return base.Channel.DocumentsConfirmed(ref contract, ref errorMessage);
         }
         
-        public System.Collections.Generic.List<DocumentScannerCommon.PackageManifest> ManifestsAvailable(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage) {
-            return base.Channel.ManifestsAvailable(contract, ref errorMessage);
+        public bool ManifestsAvailable(ref DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage) {
+            return base.Channel.ManifestsAvailable(ref contract, ref errorMessage);
         }
         
-        public System.Collections.Generic.List<DocumentScannerCommon.ImageFile> DocumentsAvailable(DocumentScannerServiceCommon.ManifestContract contract, ref string errorMessage) {
-            return base.Channel.DocumentsAvailable(contract, ref errorMessage);
+        public bool DocumentsAvailable(ref DocumentScannerServiceCommon.DocumentContract contract, ref string errorMessage) {
+            return base.Channel.DocumentsAvailable(ref contract, ref errorMessage);
         }
     }
 }

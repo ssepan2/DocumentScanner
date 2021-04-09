@@ -8,6 +8,7 @@ using System.ServiceModel.Activation;
 using System.Reflection;
 using System.Text;
 using Ssepan.Utility;
+using DocumentScannerServiceCommon;
 using TransferServerBusiness;
 
 namespace TransferServiceServer
@@ -22,9 +23,9 @@ namespace TransferServiceServer
             string errorMessage = default(String);
 
             //Was doing this:
-            //TransferServerBusiness.Transfer.pushDelegate = DSServerController<DSServerModel>.PushFile;
-            //TransferServerBusiness.Transfer.pullDelegate = DSServerController<DSServerModel>.PullFile;
-            //Moved DSServerController assignment out of TransferServiceServer. 
+            //TransferServerBusiness.Transfer.pushDelegate = DSServerModelController<DSServerModel>.PushFile;
+            //TransferServerBusiness.Transfer.pullDelegate = DSServerModelController<DSServerModel>.PullFile;
+            //Moved DSServerModelController assignment out of TransferServiceServer. 
             //Call TransferServerBusiness.Transfer.InitDelegates() to have it load delegates from another library.
             if (!TransferServerBusiness.Transfer.InitDelegates(ref errorMessage))
             {
@@ -60,7 +61,7 @@ namespace TransferServiceServer
         /// <param name="transactionContract"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public Boolean Push(TransactionContract contract, ref String errorMessage)
+        public Boolean Push(TransferContract contract, ref String errorMessage)
         {
             Boolean returnValue = default(Boolean);
             Byte[] bytes = default(Byte[]);
@@ -90,7 +91,7 @@ namespace TransferServiceServer
         /// <param name="transactionContract"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public Boolean Pull(ref TransactionContract contract, ref String errorMessage)
+        public Boolean Pull(ref TransferContract contract, ref String errorMessage)
         {
             Boolean returnValue = default(Boolean);
             Byte[] bytes = default(Byte[]);

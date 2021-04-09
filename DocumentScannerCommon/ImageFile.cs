@@ -8,8 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Ssepan.Application;
+using Ssepan.Application.MVC;
 using Ssepan.Collections;
 using Ssepan.Graphics;
 using Ssepan.Utility;
@@ -105,6 +107,7 @@ namespace DocumentScannerCommon
         #endregion Non-Persisted Properties
 
         #region Persisted Properties
+        [OptionalField]
         private String _Filename = String.Empty; 
         public String Filename
         {
@@ -116,6 +119,7 @@ namespace DocumentScannerCommon
             }
         }
 
+        [OptionalField]
         private String _Description = String.Empty;
         /// <summary>
         /// Describe ImageFile.
@@ -130,6 +134,7 @@ namespace DocumentScannerCommon
             }
         }
 
+        [OptionalField]
         private String _DocumentType = String.Empty;
         public String DocumentType
         {
@@ -182,7 +187,7 @@ namespace DocumentScannerCommon
         {
             try
             {
-                Transform.RotateImageFile(Path.Combine(dataPath, this.Filename), rotateFlipType);
+                Ssepan.Graphics.File.RotateImageFile(Path.Combine(dataPath, this.Filename), rotateFlipType);
             }
             catch (Exception ex)
             {

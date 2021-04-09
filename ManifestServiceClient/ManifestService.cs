@@ -82,15 +82,15 @@ namespace ManifestServiceClient
         /// <param name="date"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static List<PackageManifest> ManifestsConfirmed
+        public static List<DocumentScannerCommon.PackageManifest> ManifestsConfirmed
         (
             String operatorId,
             DateTime date, 
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
-            ManifestContract contract = default(ManifestContract);
+            List<DocumentScannerCommon.PackageManifest> returnValue = default(List<DocumentScannerCommon.PackageManifest>);
+            DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
             try
@@ -105,7 +105,7 @@ namespace ManifestServiceClient
                 }
 
                 //perform package query
-                contract = new ManifestContract();
+                contract = new DocumentScannerServiceCommon.ManifestContract();
                 contract.OperatorId = operatorId;
                 contract.Date = date;
 
@@ -140,7 +140,7 @@ namespace ManifestServiceClient
         /// <param name="date"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static List<ImageFile> DocumentsConfirmed
+        public static List<DocumentScannerCommon.ImageFile> DocumentsConfirmed
         (
             String operatorId,
             String transactionId,
@@ -148,8 +148,8 @@ namespace ManifestServiceClient
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
-            ManifestContract contract = default(ManifestContract);
+            List<DocumentScannerCommon.ImageFile> returnValue = default(List<DocumentScannerCommon.ImageFile>);
+            DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
             try
@@ -164,7 +164,7 @@ namespace ManifestServiceClient
                 }
 
                 ///perform document query
-                contract = new ManifestContract();
+                contract = new DocumentScannerServiceCommon.ManifestContract();
                 contract.OperatorId = operatorId;
                 contract.Date = date;
                 contract.TransactionId = transactionId;
@@ -197,14 +197,15 @@ namespace ManifestServiceClient
         /// <param name="operatorId"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static List<PackageManifest> ManifestsAvailable
+        public static List<DocumentScannerCommon.PackageManifest> ManifestsAvailable
         (
             String operatorId,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
-            ManifestContract contract = default(ManifestContract);
+            List<DocumentScannerCommon.PackageManifest> returnValue = default(List<DocumentScannerCommon.PackageManifest>);
+            DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
+            //ManifestServiceClientReference.ManifestContract contract2 = default(ManifestServiceClientReference.ManifestContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
             try
@@ -219,9 +220,9 @@ namespace ManifestServiceClient
                 }
 
                 //perform package query
-                contract = new ManifestContract();
+                contract = new DocumentScannerServiceCommon.ManifestContract();
                 contract.OperatorId = operatorId;
-                
+
                 returnValue = client.ManifestsAvailable(contract, ref errorMessage);
                 if (returnValue == null)
                 {
@@ -252,15 +253,15 @@ namespace ManifestServiceClient
         /// <param name="transactionId"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static List<ImageFile> DocumentsAvailable
+        public static List<DocumentScannerCommon.ImageFile> DocumentsAvailable
         (
             String operatorId,
             String transactionId,
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
-            ManifestContract contract = default(ManifestContract);
+            List<DocumentScannerCommon.ImageFile> returnValue = default(List<DocumentScannerCommon.ImageFile>);
+            DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
             try
@@ -275,7 +276,7 @@ namespace ManifestServiceClient
                 }
 
                 ///perform document query
-                contract = new ManifestContract();
+                contract = new DocumentScannerServiceCommon.ManifestContract();
                 contract.OperatorId = operatorId;
                 contract.TransactionId = transactionId;
 
