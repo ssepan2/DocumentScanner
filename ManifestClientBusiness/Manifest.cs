@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Ssepan.Application;
 using Ssepan.Io;
 using Ssepan.Utility;
 using DocumentScannerCommon;
@@ -246,25 +247,28 @@ namespace ManifestClientBusiness
         /// <param name="transactionId"></param>
         /// <param name="date"></param>
         /// <param name="endpointConfigurationName"></param>
+        /// <param name="documentList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<ImageFile> DocumentsConfirmed
+        /// <returns>Boolean</returns>
+        public static Boolean DocumentsConfirmed
         (
             String operatorId,
             String transactionId,
             DateTime date,
             String endpointConfigurationName,
+            ref List<ImageFile> documentList,
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
+            Boolean returnValue = default(Boolean);
+            documentList = default(List<ImageFile>);
 
             try
             {
                 //call service to receive list
                 ManifestService.EndpointConfigurationName = endpointConfigurationName;
-                returnValue = ManifestService.DocumentsConfirmed(operatorId, transactionId, date, ref errorMessage);
-                if (returnValue == null)
+                returnValue = ManifestService.DocumentsConfirmed(operatorId, transactionId, date, ref documentList, ref errorMessage);
+                if (documentList == null)
                 {
                     throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for documents: '{0}'\nUsername: '{1}'\nDate: '{2}'\nTransaction: '{3}'", errorMessage, operatorId, date, transactionId));
                 }
@@ -326,24 +330,27 @@ namespace ManifestClientBusiness
         /// <param name="operatorId"></param>
         /// <param name="transactionId"></param>
         /// <param name="endpointConfigurationName"></param>
+        /// <param name="documentList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<ImageFile> DocumentsAvailable
+        /// <returns>Boolean</returns>
+        public static Boolean DocumentsAvailable
         (
             String operatorId,
             String transactionId,
             String endpointConfigurationName,
+            ref List<ImageFile> documentList,
             ref String errorMessage
         )
         {
-            List<ImageFile> returnValue = default(List<ImageFile>);
+            Boolean returnValue = default(Boolean);
+            documentList = default(List<ImageFile>);
 
             try
             {
                 //call service to receive list
                 ManifestService.EndpointConfigurationName = endpointConfigurationName;
-                returnValue = ManifestService.DocumentsAvailable(operatorId, transactionId, ref errorMessage);
-                if (returnValue == null)
+                returnValue = ManifestService.DocumentsAvailable(operatorId, transactionId, ref documentList, ref errorMessage);
+                if (documentList == null)
                 {
                     throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for documents: '{0}'\nUsername: '{1}'\nTransaction: '{3}'", errorMessage, operatorId, transactionId));
                 }

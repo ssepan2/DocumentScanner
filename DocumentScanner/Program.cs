@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using DocumentScannerLibrary;
 using Ssepan.Application;
+using Ssepan.Application.WinConsole;
 using Ssepan.Utility;
 
 namespace DocumentScanner

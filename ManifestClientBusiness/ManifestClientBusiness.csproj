@@ -44,6 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Ssepan.Application\Ssepan.Application.csproj">
+      <Project>{C69040CF-5ACD-4F55-8540-49FB7C2A7AA2}</Project>
+      <Name>Ssepan.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Ssepan.Io\Ssepan.Io.csproj">
       <Project>{9EFE2EC6-F48E-4E4E-927F-068B54210E09}</Project>
       <Name>Ssepan.Io</Name>

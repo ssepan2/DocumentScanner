@@ -92,8 +92,8 @@ namespace ManifestServiceClient
         )
         {
             Boolean returnValue = default(Boolean);
-            manifestList = default(List<DocumentScannerCommon.PackageManifest>);
-            DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
+            manifestList = default(List<PackageManifest>);
+            ManifestContract contract = default(ManifestContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
             try
@@ -108,7 +108,7 @@ namespace ManifestServiceClient
                 }
 
                 //perform package query
-                contract = new DocumentScannerServiceCommon.ManifestContract();
+                contract = new ManifestContract();
                 contract.OperatorId = operatorId;
                 contract.Date = date;
 
@@ -141,18 +141,21 @@ namespace ManifestServiceClient
         /// <param name="operatorId"></param>
         /// <param name="transactionId"></param>
         /// <param name="date"></param>
+        /// <param name="documentList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<DocumentScannerCommon.ImageFile> DocumentsConfirmed
+        /// <returns>Boolean</returns>
+        public static Boolean DocumentsConfirmed
         (
             String operatorId,
             String transactionId,
             DateTime date, 
+            ref List<ImageFile> documentList,
             ref String errorMessage
         )
         {
-            List<DocumentScannerCommon.ImageFile> returnValue = default(List<DocumentScannerCommon.ImageFile>);
-            DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
+            Boolean returnValue = default(Boolean);
+            documentList = default(List<ImageFile>);
+            DocumentContract contract = default(DocumentContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
             try
@@ -167,16 +170,17 @@ namespace ManifestServiceClient
                 }
 
                 ///perform document query
-                contract = new DocumentScannerServiceCommon.ManifestContract();
+                contract = new DocumentContract();
                 contract.OperatorId = operatorId;
                 contract.Date = date;
                 contract.TransactionId = transactionId;
 
-                returnValue = client.DocumentsConfirmed(contract, ref errorMessage);
-                if (returnValue == null)
+                returnValue = client.DocumentsConfirmed(ref contract, ref errorMessage);
+                if (contract.Documents == null)
                 {
                     throw new Exception(String.Format("Manifest Service Client is unable to query Manifest Service Server for documents: '{0}'\nUsername: '{1}'\nDate: '{2}'\nTransaction: '{3}'", errorMessage, contract.OperatorId, contract.Date, contract.TransactionId));
                 }
+                documentList = contract.Documents;
             }
             catch (Exception ex)
             {
@@ -257,17 +261,20 @@ namespace ManifestServiceClient
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="transactionId"></param>
+        /// <param name="documentList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<DocumentScannerCommon.ImageFile> DocumentsAvailable
+        /// <returns>Boolean</returns>
+        public static Boolean DocumentsAvailable
         (
             String operatorId,
             String transactionId,
+            ref List<ImageFile> documentList,
             ref String errorMessage
         )
         {
-            List<DocumentScannerCommon.ImageFile> returnValue = default(List<DocumentScannerCommon.ImageFile>);
-            DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
+            Boolean returnValue = default(Boolean);
+            documentList = default(List<ImageFile>);
+            DocumentContract contract = default(DocumentContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
             try
@@ -282,15 +289,16 @@ namespace ManifestServiceClient
                 }
 
                 ///perform document query
-                contract = new DocumentScannerServiceCommon.ManifestContract();
+                contract = new DocumentContract();
                 contract.OperatorId = operatorId;
                 contract.TransactionId = transactionId;
 
-                returnValue = client.DocumentsAvailable(contract, ref errorMessage);
-                if (returnValue == null)
+                returnValue = client.DocumentsAvailable(ref contract, ref errorMessage);
+                if (contract.Documents == null)
                 {
                     throw new Exception(String.Format("Manifest Service Client is unable to query Manifest Service Server for documents: '{0}'\nUsername: '{1}'\nTransaction: '{2}'", errorMessage, contract.OperatorId, contract.TransactionId));
                 }
+                documentList = contract.Documents;
             }
             catch (Exception ex)
             {

@@ -22,7 +22,6 @@ using Ssepan.Utility;
 using DocumentScannerCommon;
 using DocumentScannerLibrary;
 using DocumentScannerLibrary.MVC;
-using DocumentScannerLibrary.Properties;
 
 namespace DocumentScanner
 {
@@ -635,6 +634,8 @@ namespace DocumentScanner
             ViewModel.Grid_CellMouseDown(sender as DataGridView, e.Button, e.RowIndex, e.X, e.Y);
         }
 
+        #region Background Workers
+        #region ConfirmManifests
         /// <summary>
         /// Handle DoWork event for ConfirmManifests
         /// </summary>
@@ -707,7 +708,9 @@ namespace DocumentScanner
                 }
             );
         }
+        #endregion ConfirmManifests
 
+        #region AvailableManifests
         /// <summary>
         /// Handle DoWork event for AvailableManifests
         /// </summary>
@@ -779,7 +782,17 @@ namespace DocumentScanner
                 }
             );
         }
+        #endregion AvailableManifests
+        
+        #region ConfirmDocuments
+        //TODO:Background Workers ConfirmDocuments
+        #endregion ConfirmDocuments
+        
+        #region AvailableDocuments
+        //TODO:Background Workers AvailableDocuments
+        #endregion AvailableDocuments
 
+        #region Send
         /// <summary>
         /// Handle DoWork event for Send
         /// </summary>
@@ -839,7 +852,9 @@ namespace DocumentScanner
                 }
             );
         }
+        #endregion Send
 
+        #region Receive
         /// <summary>
         /// Handle DoWork event for Receive
         /// </summary>
@@ -905,7 +920,9 @@ namespace DocumentScanner
                 }
             );
         }
+        #endregion Receive
 
+        #region Package
         /// <summary>
         /// Handle DoWork event for Package
         /// </summary>
@@ -955,7 +972,9 @@ namespace DocumentScanner
                 })
             ;
         }
+        #endregion Package
 
+        #region UnPackage
         /// <summary>
         /// Handle DoWork event for UnPackage
         /// </summary>
@@ -1005,7 +1024,9 @@ namespace DocumentScanner
                 }
             );
         }
+        #endregion UnPackage
 
+        #region Split Package Settings
         /// <summary>
         /// Handle DoWork event for Split Package Settings
         /// </summary>
@@ -1054,6 +1075,9 @@ namespace DocumentScanner
                 }
             );
         }
+        #endregion Split Package Settings
+
+        #endregion Background Workers
 
         /// <summary>
         /// Handle DataError event; specifically, catch combobox cell data errors.
@@ -1103,7 +1127,7 @@ namespace DocumentScanner
             var arguments =
                 Tuple.Create<String /*operatorId*/, DateTime /*date*/>
                 (
-                    SettingsController<Settings>.Settings.Manifest.OperatorId,
+                    SettingsController<DSClientSettings>.Settings.Manifest.OperatorId,
                     confirmationDateTimePicker.Value
                 );
 
@@ -1122,7 +1146,7 @@ namespace DocumentScanner
             var arguments =
                 Tuple.Create<String /*operatorId*/>
                 (
-                    SettingsController<Settings>.Settings.Manifest.OperatorId
+                    SettingsController<DSClientSettings>.Settings.Manifest.OperatorId
                 );
 
             ViewModel.ListManifests("available", backgroundWorkerAvailableManifests, arguments);
@@ -1140,19 +1164,19 @@ namespace DocumentScanner
                 ModelController<DSClientModel>.DefaultHandler = PropertyChangedEventHandlerDelegate;
 
                 //tell controller how settings should notify view about persisted properties
-                SettingsController<Settings>.DefaultHandler = PropertyChangedEventHandlerDelegate;
+                SettingsController<DSClientSettings>.DefaultHandler = PropertyChangedEventHandlerDelegate;
 
                 InitModelAndSettings();
 
                 FileDialogInfo settingsFileDialogInfo =
                     new FileDialogInfo
                     (
-                        SettingsController<Settings>.FILE_NEW,
+                        SettingsController<DSClientSettings>.FILE_NEW,
                         null,
                         null,
-                        /*SettingsController<Settings>.Settings*/SettingsBase.FileTypeExtension,
-                        /*SettingsController<Settings>.Settings*/SettingsBase.FileTypeDescription,
-                        /*SettingsController<Settings>.Settings*/SettingsBase.FileTypeName,
+                        /*SettingsController<DSClientSettings>.Settings*/SettingsBase.FileTypeExtension,
+                        /*SettingsController<DSClientSettings>.Settings*/SettingsBase.FileTypeDescription,
+                        /*SettingsController<DSClientSettings>.Settings*/SettingsBase.FileTypeName,
                         new String[] 
                         { 
                             "XML files (*.xml)|*.xml", 
@@ -1220,7 +1244,7 @@ namespace DocumentScanner
 
                 //DEBUG:filename coming in is being converted/passed as DOS 8.3 format equivalent
                 //Load
-                if ((SettingsController<Settings>.FilePath == null) || (SettingsController<Settings>.Filename == SettingsController<Settings>.FILE_NEW))
+                if ((SettingsController<DSClientSettings>.FilePath == null) || (SettingsController<DSClientSettings>.Filename == SettingsController<DSClientSettings>.FILE_NEW))
                 {
                     //NEW
                     ViewModel.FileNew();
@@ -1252,9 +1276,9 @@ namespace DocumentScanner
         protected void InitModelAndSettings()
         {
             //create Settings before first use by Model
-            if (SettingsController<Settings>.Settings == null)
+            if (SettingsController<DSClientSettings>.Settings == null)
             {
-                SettingsController<Settings>.New();
+                SettingsController<DSClientSettings>.New();
             }
             //Model properties rely on Settings, so don't call Refresh before this is run.
             if (DSClientModelController<DSClientModel>.Model == null)
@@ -1268,7 +1292,7 @@ namespace DocumentScanner
             //save user and application settings 
             Properties.Settings.Default.Save();
 
-            if (SettingsController<Settings>.Settings.Dirty)
+            if (SettingsController<DSClientSettings>.Settings.Dirty)
             {
                 //prompt before saving
                 DialogResult dialogResult = MessageBox.Show("Save changes?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -1351,10 +1375,10 @@ namespace DocumentScanner
 
                 //SCAN
                 //Manifest.Description
-                manifestBindingSource.DataSource = SettingsController<Settings>.Settings.Manifest;
+                manifestBindingSource.DataSource = SettingsController<DSClientSettings>.Settings.Manifest;
 
                 //Manifest.DocumentFiles
-                documentBindingSource.DataSource = SettingsController<Settings>.Settings.Manifest.DocumentFiles;
+                documentBindingSource.DataSource = SettingsController<DSClientSettings>.Settings.Manifest.DocumentFiles;
 
                 //Document Image
                 if (!ViewModel.RefreshImage(dgvDocuments, documentPictureBox, ref errorMessage))
@@ -1441,13 +1465,13 @@ namespace DocumentScanner
                 //TODO:encapsulate these so that they can be used by SetFunctionControlsEnable?
                 this.menuFilePackage.Enabled = 
                     (
-                        SettingsController<Settings>.Settings.Valid()
+                        SettingsController<DSClientSettings>.Settings.Valid()
                         &&
-                        !SettingsController<Settings>.Settings.Dirty
+                        !SettingsController<DSClientSettings>.Settings.Dirty
                     );
-                if ((!this.menuFilePackage.Enabled) && (!SettingsController<Settings>.Settings.Dirty))
+                if ((!this.menuFilePackage.Enabled) && (!SettingsController<DSClientSettings>.Settings.Dirty))
                 {
-                    ViewModel.UpdateStatusBarMessages("", SettingsController<Settings>.Settings.ErrorMessage);
+                    ViewModel.UpdateStatusBarMessages("", SettingsController<DSClientSettings>.Settings.ErrorMessage);
                 }
                 this.buttonFilePackage.Enabled = this.menuFilePackage.Enabled;
                 this.packageButton.Enabled = this.menuFilePackage.Enabled;
@@ -1470,10 +1494,10 @@ namespace DocumentScanner
                 //apply settings that shouldn't use databindings
 
                 //apply settings that can't use databindings
-                Text = Path.GetFileName(SettingsController<Settings>.Filename) + " - " + ViewName;
+                Text = Path.GetFileName(SettingsController<DSClientSettings>.Filename) + " - " + ViewName;
 
                 //apply settings that don't have databindings
-                ViewModel.DirtyIconIsVisible = (SettingsController<Settings>.Settings.Dirty);
+                ViewModel.DirtyIconIsVisible = (SettingsController<DSClientSettings>.Settings.Dirty);
 
                 _ValueChangedProgrammatically = false;
             }

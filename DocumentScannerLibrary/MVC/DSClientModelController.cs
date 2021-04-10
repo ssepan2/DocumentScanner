@@ -341,7 +341,7 @@ namespace DocumentScannerLibrary.MVC
                 //1..2 of 6
                 if
                 (
-                    !ExtractManifestDSClientSettings
+                    !ExtractManifestSettings
                     (
                         SettingsController<DSClientSettings>.Settings.Manifest.TransactionId,
                         DSClientModelController<DSClientModel>.Model.DataPath, //extract to subfolder in Data folder
@@ -672,7 +672,7 @@ namespace DocumentScannerLibrary.MVC
                 //load settings with manifest from a package subfolder of the Data path
                 if
                 (
-                    !FillManifestDSClientSettings
+                    !FillManifestSettings
                     (
                         manifest,
                         transactionId,
@@ -703,7 +703,7 @@ namespace DocumentScannerLibrary.MVC
         }
         #endregion Send Receive Methods
 
-        #region Manifest Methods
+        #region Confirm/Available Manifest/Document Methods
         /// <summary>
         /// Confirm Manifests.
         /// State of settings is not a consideration.
@@ -814,7 +814,126 @@ namespace DocumentScannerLibrary.MVC
             }
             return returnValue;
         }
-        #endregion Manifest Methods
+
+        /// <summary>
+        /// Confirm Documents.
+        /// State of settings is not a consideration.
+        /// </summary>
+        /// <param name="operatorId"></param>
+        /// <param name="transactionId"></param>
+        /// <param name="date"></param>
+        /// <param name="worker"></param>
+        /// <param name="e"></param>
+        /// <param name="documentList"></param>
+        /// <param name="errorMessage"></param>
+        /// <returns>Boolean</returns>
+        public static Boolean ConfirmDocumentsInBackground
+        (
+            String operatorId,
+            String transactionId,
+            DateTime date,
+            BackgroundWorker worker,
+            DoWorkEventArgs e,
+            ref List<ImageFile> documentList,
+            ref String errorMessage
+        )
+        {
+            Boolean returnValue = default(Boolean);
+            documentList = default(List<ImageFile>);
+            Single stepsCountComplete = default(Int32);
+            Single stepsCountTotal = 1; //based on single call to service
+
+            try
+            {
+                //report initial status
+                worker.ReportProgress((Int32)((stepsCountComplete / stepsCountTotal) * 100), "querying...");
+
+                returnValue =
+                    Manifest.DocumentsConfirmed
+                    (
+                        operatorId,
+                        transactionId,
+                        date,
+                        DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName,
+                        ref documentList,
+                        ref errorMessage
+                    );
+
+                if ((!returnValue) || (documentList == null) || ((errorMessage != null) && (errorMessage != String.Empty)))
+                {
+                    throw new Exception(errorMessage);
+                }
+
+                //report final status
+                worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "done.");
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
+                worker.ReportProgress((Int32)((stepsCountComplete / stepsCountTotal) * 100), ex.Message);
+            }
+            return returnValue;
+        }
+
+        //TODO:AvailableDocumentsInBackground
+        /// <summary>
+        /// Available Documents.
+        /// State of settings is not a consideration.
+        /// </summary>
+        /// <param name="operatorId"></param>
+        /// <param name="transactionId"></param>
+        /// <param name="worker"></param>
+        /// <param name="e"></param>
+        /// <param name="documentList"></param>
+        /// <param name="errorMessage"></param>
+        /// <returns>Boolean</returns>
+        public static Boolean AvailableDocumentsInBackground
+        (
+            String operatorId,
+            String transactionId,
+            BackgroundWorker worker,
+            DoWorkEventArgs e,
+            ref List<ImageFile> documentList,
+            ref String errorMessage
+        )
+        {
+            Boolean returnValue = default(Boolean);
+            documentList = default(List<ImageFile>);
+            Single stepsCountComplete = default(Int32);
+            Single stepsCountTotal = 1; //based on single call to service
+
+            try
+            {
+                //report initial status
+                worker.ReportProgress((Int32)((stepsCountComplete / stepsCountTotal) * 100), "querying...");
+
+                returnValue =
+                    Manifest.DocumentsAvailable
+                    (
+                        operatorId,
+                        transactionId,
+                        DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName,
+                        ref documentList,
+                        ref errorMessage
+                    );
+
+                if ((!returnValue) || (documentList == null) || ((errorMessage != null) && (errorMessage != String.Empty)))
+                {
+                    throw new Exception(errorMessage);
+                }
+
+                //report final status
+                worker.ReportProgress((Int32)((++stepsCountComplete / stepsCountTotal) * 100), "done.");
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex, MethodBase.GetCurrentMethod(), EventLogEntryType.Error);
+                worker.ReportProgress((Int32)((stepsCountComplete / stepsCountTotal) * 100), ex.Message);
+            }
+            return returnValue;
+        }
+
+        #endregion  Confirm/Available Manifest/Document Methods
 
         #region Package Methods
         /// <summary>
@@ -909,7 +1028,7 @@ namespace DocumentScannerLibrary.MVC
                 //2..6 of 6
                 if
                 (
-                    !FillManifestDSClientSettings
+                    !FillManifestSettings
                     (
                         manifest,
                         packageId,
@@ -960,7 +1079,7 @@ namespace DocumentScannerLibrary.MVC
         /// <param name="e"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static Boolean SplitPackageDSClientSettingsInBackground
+        public static Boolean SplitPackageSettingsInBackground
         (
             BackgroundWorker worker,
             DoWorkEventArgs e,
@@ -1434,7 +1553,7 @@ namespace DocumentScannerLibrary.MVC
         /// <param name="progressDelegate"></param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        private static Boolean FillManifestDSClientSettings
+        private static Boolean FillManifestSettings
         (
             PackageManifest manifest,
             String packageId,
@@ -1548,7 +1667,7 @@ namespace DocumentScannerLibrary.MVC
             return returnValue;
         }
 
-        private static Boolean ExtractManifestDSClientSettings
+        private static Boolean ExtractManifestSettings
         (
             String packageId,
             String packageContentsRootPath,
