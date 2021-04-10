@@ -203,24 +203,27 @@ namespace ManifestClientBusiness
         /// <param name="operatorId"></param>
         /// <param name="date"></param>
         /// <param name="endpointConfigurationName"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> ManifestsConfirmed
+        /// <returns>Boolean</returns>
+        public static Boolean ManifestsConfirmed
         (
             String operatorId,
             DateTime date,
             String endpointConfigurationName,
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            manifestList = default(List<PackageManifest>);
 
             try
             {
                 //call service to receive list
                 ManifestService.EndpointConfigurationName = endpointConfigurationName;
-                returnValue = ManifestService.ManifestsConfirmed(operatorId, date, ref errorMessage);
-                if (returnValue == null)
+                returnValue = ManifestService.ManifestsConfirmed(operatorId, date, ref manifestList, ref errorMessage);
+                if (manifestList == null)
                 {
                     throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for package manifests: '{0}'\nUsername: '{1}'\nDate: '{2}'", errorMessage, operatorId, date));
                 }
@@ -282,23 +285,26 @@ namespace ManifestClientBusiness
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="endpointConfigurationName"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> ManifestsAvailable
+        /// <returns>Boolean</returns>
+        public static Boolean ManifestsAvailable
         (
             String operatorId,
             String endpointConfigurationName,
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            manifestList = default(List<PackageManifest>);
 
             try
             {
                 //call service to receive list
                 ManifestService.EndpointConfigurationName = endpointConfigurationName;
-                returnValue = ManifestService.ManifestsAvailable(operatorId, ref errorMessage);
-                if (returnValue == null)
+                returnValue = ManifestService.ManifestsAvailable(operatorId, ref manifestList, ref errorMessage);
+                if (manifestList == null)
                 {
                     throw new Exception(String.Format("DocumentScanner Controller is unable to query Manifest Service Client for package manifests: '{0}'\nUsername: '{1}'", errorMessage, operatorId));
                 }

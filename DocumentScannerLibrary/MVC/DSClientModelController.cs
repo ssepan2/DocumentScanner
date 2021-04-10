@@ -712,18 +712,21 @@ namespace DocumentScannerLibrary.MVC
         /// <param name="date"></param>
         /// <param name="worker"></param>
         /// <param name="e"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> ConfirmManifestsInBackground
+        /// <returns>Boolean</returns>
+        public static Boolean ConfirmManifestsInBackground
         (
             String operatorId,
             DateTime date,
             BackgroundWorker worker,
             DoWorkEventArgs e,
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            manifestList = default(List<PackageManifest>);
             Single stepsCountComplete = default(Int32);
             Single stepsCountTotal = 1; //based on single call to service
 
@@ -738,10 +741,11 @@ namespace DocumentScannerLibrary.MVC
                         operatorId,
                         date,
                         DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName,
+                        ref manifestList,
                         ref errorMessage
                     );
 
-                if ((returnValue == null) || ((errorMessage != null) && (errorMessage != String.Empty)))
+                if ((!returnValue) || (manifestList == null) || ((errorMessage != null) && (errorMessage != String.Empty)))
                 {
                     throw new Exception(errorMessage);
                 }
@@ -764,17 +768,20 @@ namespace DocumentScannerLibrary.MVC
         /// <param name="operatorId"></param>
         /// <param name="worker"></param>
         /// <param name="e"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<PackageManifest> AvailableManifestsInBackground
+        /// <returns>Boolean</returns>
+        public static Boolean AvailableManifestsInBackground
         (
             String operatorId,
             BackgroundWorker worker,
             DoWorkEventArgs e,
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<PackageManifest> returnValue = default(List<PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            manifestList = default(List<PackageManifest>);
             Single stepsCountComplete = default(Int32);
             Single stepsCountTotal = 1; //based on single call to service
 
@@ -788,10 +795,11 @@ namespace DocumentScannerLibrary.MVC
                     (
                         operatorId,
                         DSClientModelController<DSClientModel>.Model.PackageManifestServiceEndpointConfigurationName,
+                        ref manifestList,
                         ref errorMessage
                     );
 
-                if ((returnValue == null) || ((errorMessage != null) && (errorMessage != String.Empty)))
+                if ((!returnValue) || (manifestList == null) || ((errorMessage != null) && (errorMessage != String.Empty)))
                 {
                     throw new Exception(errorMessage);
                 }

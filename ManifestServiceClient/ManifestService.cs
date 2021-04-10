@@ -80,16 +80,19 @@ namespace ManifestServiceClient
         /// </summary>
         /// <param name="operatorId"></param>
         /// <param name="date"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<DocumentScannerCommon.PackageManifest> ManifestsConfirmed
+        /// <returns>Boolean</returns>
+        public static Boolean ManifestsConfirmed
         (
             String operatorId,
             DateTime date, 
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<DocumentScannerCommon.PackageManifest> returnValue = default(List<DocumentScannerCommon.PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            manifestList = default(List<DocumentScannerCommon.PackageManifest>);
             DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
 
@@ -109,12 +112,12 @@ namespace ManifestServiceClient
                 contract.OperatorId = operatorId;
                 contract.Date = date;
 
-                returnValue = client.ManifestsConfirmed(contract, ref errorMessage);//.ToList<PackageManifest>();
-                if (returnValue == null)
+                returnValue = client.ManifestsConfirmed(ref contract, ref errorMessage);//.ToList<PackageManifest>();
+                if (contract.Manifests == null)
                 {
                     throw new Exception(String.Format("Manifest Service Client is unable to query Manifest Service Server for package manifests: '{0}'\nUsername: '{1}'\nDate: '{2}'", errorMessage, contract.OperatorId, contract.Date));
                 }
-
+                manifestList = contract.Manifests;
             }
             catch (Exception ex)
             {
@@ -195,15 +198,18 @@ namespace ManifestServiceClient
         /// return a List(Of PackageManifest) from the server.
         /// </summary>
         /// <param name="operatorId"></param>
+        /// <param name="manifestList"></param>
         /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public static List<DocumentScannerCommon.PackageManifest> ManifestsAvailable
+        /// <returns>Boolean</returns>
+        public static Boolean ManifestsAvailable
         (
             String operatorId,
+            ref List<PackageManifest> manifestList,
             ref String errorMessage
         )
         {
-            List<DocumentScannerCommon.PackageManifest> returnValue = default(List<DocumentScannerCommon.PackageManifest>);
+            Boolean returnValue = default(Boolean);
+            manifestList = default(List<DocumentScannerCommon.PackageManifest>);
             DocumentScannerServiceCommon.ManifestContract contract = default(DocumentScannerServiceCommon.ManifestContract);
             //ManifestServiceClientReference.ManifestContract contract2 = default(ManifestServiceClientReference.ManifestContract);
             PackageManifestServiceClient client = default(PackageManifestServiceClient);
@@ -223,12 +229,12 @@ namespace ManifestServiceClient
                 contract = new DocumentScannerServiceCommon.ManifestContract();
                 contract.OperatorId = operatorId;
 
-                returnValue = client.ManifestsAvailable(contract, ref errorMessage);
-                if (returnValue == null)
+                returnValue = client.ManifestsAvailable(ref contract, ref errorMessage);
+                if (contract.Manifests == null)
                 {
                     throw new Exception(String.Format("Manifest Service Client is unable to query Manifest Service Server for package manifests: '{0}'\nUsername: '{1}'", errorMessage, contract.OperatorId));
                 }
-
+                manifestList = contract.Manifests;
             }
             catch (Exception ex)
             {
