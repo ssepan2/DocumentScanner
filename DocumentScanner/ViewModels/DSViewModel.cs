@@ -116,7 +116,7 @@ namespace DocumentScanner
                 StartProgressBar("Scanning...", String.Empty, View.menuDocumentsScan.Image as Bitmap, false, 0);
 
                 //perform scan to obtain List<Image>
-                if (!DSController<DSClientModel>.ScanAcquire(View.Handle, twainSourceScanFinishedEventhandler))
+                if (!DSClientModelController<DSClientModel>.ScanAcquire(View.Handle, twainSourceScanFinishedEventhandler))
                 {
                     throw new ApplicationException(String.Format("Scan not initiated."));
                 }
@@ -152,7 +152,7 @@ namespace DocumentScanner
                 StartProgressBar("Selecting...", null, View.menuDocumentsScan.Image as Bitmap, false, 0);
 
                 //select scanner using twain ui
-                if (!DSController<DSClientModel>.SelectScanner(View.Handle, twainSourceScanFinishedEventhandler))
+                if (!DSClientModelController<DSClientModel>.SelectScanner(View.Handle, twainSourceScanFinishedEventhandler))
                 {
                     throw new ApplicationException(String.Format("Scanner not selected."));
                 }
@@ -228,7 +228,7 @@ namespace DocumentScanner
                 //set cancellation hook
                 View.cancelDelegate = View.backgroundWorkerSend.CancelAsync;
 
-                View.backgroundWorkerSend.RunWorkerAsync(SettingsController<DSClientSettings>.Settings);//TODO:pass model insteadl, or neither?
+                View.backgroundWorkerSend.RunWorkerAsync(DSClientSettingsController.Settings);//TODO:pass model insteadl, or neither?
             }
             catch (Exception ex)
             {
@@ -289,7 +289,7 @@ namespace DocumentScanner
                             View.menuDocumentsPromoteDocument.Enabled = true;
                             View.menuDocumentsDemoteDocument.Enabled = true;
                             //only split on saved settings
-                            if (!SettingsController<DSClientSettings>.Settings.Dirty)
+                            if (!DSClientSettingsController.Settings.Dirty)
                             {
                                 if (source.SelectedRows[0].Index == 0)
                                 {
@@ -370,7 +370,7 @@ namespace DocumentScanner
                 }
 
                 //pass the PrintDocument and the Image to be printed
-                DSController<DSClientModel>.Print(View.printDocument, image);
+                DSClientModelController<DSClientModel>.Print(View.printDocument, image);
 
                 StopProgressBar("Printed.", null);
             }
@@ -403,7 +403,7 @@ namespace DocumentScanner
                         item = (ImageFile)View.dgvDocuments.SelectedRows[0].DataBoundItem;
 
                         //Rotate counter-clockwise
-                        if (!DSController<DSClientModel>.RotateDocumentItem(item, RotateFlipType.Rotate270FlipNone))
+                        if (!DSClientModelController<DSClientModel>.RotateDocumentItem(item, RotateFlipType.Rotate270FlipNone))
                         {
                             throw new ApplicationException(String.Format("Item '{0}' not roated counter-clockwise.", item.Filename));
                         }
@@ -436,7 +436,7 @@ namespace DocumentScanner
                         item = (ImageFile)View.dgvDocuments.SelectedRows[0].DataBoundItem;
 
                         //Rotate clockwise
-                        if (!DSController<DSClientModel>.RotateDocumentItem(item, RotateFlipType.Rotate90FlipNone))
+                        if (!DSClientModelController<DSClientModel>.RotateDocumentItem(item, RotateFlipType.Rotate90FlipNone))
                         {
                             throw new ApplicationException(String.Format("Item '{0}' not rotated clockwise.", item.Filename));
                         }
@@ -468,7 +468,7 @@ namespace DocumentScanner
                     {
                         item = (ImageFile)View.dgvDocuments.SelectedRows[0].DataBoundItem;
 
-                        if (!DSController<DSClientModel>.ShiftDocumentItem(item, ListOfTExtension.ShiftTypes.Promote))
+                        if (!DSClientModelController<DSClientModel>.ShiftDocumentItem(item, ListOfTExtension.ShiftTypes.Promote))
                         {
                             throw new ApplicationException(String.Format("Item '{0}' not promoted.", item.Filename));
                         }
@@ -500,7 +500,7 @@ namespace DocumentScanner
                     {
                         item = (ImageFile)View.dgvDocuments.SelectedRows[0].DataBoundItem;
 
-                        if (!DSController<DSClientModel>.ShiftDocumentItem(item, ListOfTExtension.ShiftTypes.Demote))
+                        if (!DSClientModelController<DSClientModel>.ShiftDocumentItem(item, ListOfTExtension.ShiftTypes.Demote))
                         {
                             throw new ApplicationException(String.Format("Item '{0}' not demoted.", item.Filename));
                         }
@@ -529,7 +529,7 @@ namespace DocumentScanner
                 var arguments =
                     Tuple.Create<PackageManifest /*manifest*/, Int32 /*beforeIndex*/, Int32 /*afterIndex*/>
                     (
-                        SettingsController<DSClientSettings>.Settings.Manifest,
+                        DSClientSettingsController.Settings.Manifest,
                         View.dgvDocuments.SelectedRows[0].Index - 1,
                         View.dgvDocuments.SelectedRows[0].Index
                     );
@@ -564,7 +564,7 @@ namespace DocumentScanner
                 var arguments =
                     Tuple.Create<PackageManifest /*manifest*/, Int32 /*beforeIndex*/, Int32 /*afterIndex*/>
                     (
-                        SettingsController<DSClientSettings>.Settings.Manifest,
+                        DSClientSettingsController.Settings.Manifest,
                         View.dgvDocuments.SelectedRows[0].Index,
                         View.dgvDocuments.SelectedRows[0].Index + 1
                     );
@@ -746,7 +746,7 @@ namespace DocumentScanner
                 var arguments =
                     Tuple.Create<String /*operatorId*/, DateTime /*date*/, String /*transactionId*/>
                     (
-                        SettingsController<DSClientSettings>.Settings.Manifest.OperatorId,
+                        DSClientSettingsController.Settings.Manifest.OperatorId,
                         View.confirmationDateTimePicker.Value,
                         (View.confirmedManifestsDataGridView.CurrentRow.DataBoundItem as PackageManifest).TransactionId
                     );
@@ -831,7 +831,7 @@ namespace DocumentScanner
                 var arguments =
                     Tuple.Create<String /*operatorId*/, String /*transactionId*/>
                     (
-                        SettingsController<DSClientSettings>.Settings.Manifest.OperatorId,
+                        DSClientSettingsController.Settings.Manifest.OperatorId,
                         (View.receivableManifestsDataGridView.CurrentRow.DataBoundItem as PackageManifest).TransactionId
                     );
 
@@ -858,7 +858,7 @@ namespace DocumentScanner
                 var arguments =
                     Tuple.Create<String /*operatorId*/, String /*transactionId*/>
                     (
-                        SettingsController<DSClientSettings>.Settings.Manifest.OperatorId,
+                        DSClientSettingsController.Settings.Manifest.OperatorId,
                         (View.receivableManifestsDataGridView.CurrentRow.DataBoundItem as PackageManifest).TransactionId
                     );
 
@@ -1094,7 +1094,7 @@ namespace DocumentScanner
                     {
                         //get image from file
                         //use path defined by config and by current transaction id for the sub-folder.
-                        filePath = Path.Combine(Path.Combine(Application.StartupPath, DSController<DSClientModel>.GetTransactionImagesPath(false)), file.Filename);
+                        filePath = Path.Combine(Path.Combine(Application.StartupPath, DSClientModelController<DSClientModel>.GetTransactionImagesPath(false)), file.Filename);
                         if (!Ssepan.Graphics.File.LoadImageUnlocked(ref image, filePath, ref errorMessage))
                         {
                             image = Properties.Resources.no_image_loaded;
@@ -1125,20 +1125,20 @@ namespace DocumentScanner
                 UpdateProgressBar("Scanning...Processing...", 75);
 
                 //perform processing of scanned List<Image>
-                if (!DSController<DSClientModel>.ScanProcess(ref errorMessage))
+                if (!DSClientModelController<DSClientModel>.ScanProcess(ref errorMessage))
                 {
                     throw new ApplicationException(String.Format("Scan not completed: {0}", errorMessage));
                 }
 
                 UpdateProgressBar("Scanned.", 100);
 
-                if (DSController<DSClientModel>.Model.AutoNavigateTabs)
+                if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
                 {
                     View.tabControl.SelectTab(View.tabPageScan);
                 }
 
                 //refresh
-                DSController<DSClientModel>.Model.Refresh();
+                DSClientModelController<DSClientModel>.Model.Refresh();
 
                 View.Activate();
                 //StopProgressBar("Scanned.", null);
