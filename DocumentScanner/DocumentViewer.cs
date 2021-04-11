@@ -654,20 +654,25 @@ namespace DocumentScanner
                     ref String errorMessage
                 ) =>
                 {
+                    Boolean returnValue = default(Boolean);
+                    List<PackageManifest> manifestList = default(List<PackageManifest>);
+
                     // Get Tuple object passed from RunWorkerAsync() method
                     Tuple<String /*operatorId*/, DateTime /*date*/> arguments =
                         e.Argument as Tuple<String /*operatorId*/, DateTime /*date*/>;
 
                     //run process
-                    ea.Result =
+                    returnValue = 
                         DSClientModelController<DSClientModel>.ConfirmManifestsInBackground//Note:pass wrapper instead of this.--SJS
                         (
                             arguments.Item1,
                             arguments.Item2, 
                             worker,
                             ea,
+                            ref manifestList,//List<ImageFile>
                             ref errorMessage
                         );
+                    ea.Result = manifestList;
                     return true;
                 }
             );
@@ -729,19 +734,24 @@ namespace DocumentScanner
                     ref String errorMessage
                 ) =>
                 {
+                    Boolean returnValue = default(Boolean);
+                    List<PackageManifest> manifestList = default(List<PackageManifest>);
+
                     // Get Tuple object passed from RunWorkerAsync() method
                     Tuple<String /*operatorId*/> arguments =
                         e.Argument as Tuple<String /*operatorId*/>;
 
                     //run process
-                    ea.Result = 
+                    returnValue =
                         DSClientModelController<DSClientModel>.AvailableManifestsInBackground//Note:pass wrapper instead of this.--SJS
                         (
                             arguments.Item1,
                             worker,
                             ea,
+                            ref manifestList,//List<ImageFile>
                             ref errorMessage
                         );
+                    ea.Result = manifestList;
                     return true;
                 }
             );
@@ -787,10 +797,163 @@ namespace DocumentScanner
         
         #region ConfirmDocuments
         //TODO:Background Workers ConfirmDocuments
+        ///// <summary>
+        ///// Handle DoWork event for ConfirmManifests
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void backgroundWorkerConfirmManifests_DoWork(Object sender, DoWorkEventArgs e)
+        //{
+        //    ViewModel.BackgroundWorker_DoWork
+        //    (
+        //        sender as BackgroundWorker,
+        //        e,
+        //        (
+        //            BackgroundWorker worker,
+        //            DoWorkEventArgs ea,
+        //            ref String errorMessage
+        //        ) =>
+        //        {
+        //            Boolean returnValue = default(Boolean);
+        //            List<PackageManifest> manifestList = default(List<PackageManifest>);
+
+        //            // Get Tuple object passed from RunWorkerAsync() method
+        //            Tuple<String /*operatorId*/, DateTime /*date*/> arguments =
+        //                e.Argument as Tuple<String /*operatorId*/, DateTime /*date*/>;
+
+        //            //run process
+        //            returnValue =
+        //                DSClientModelController<DSClientModel>.ConfirmManifestsInBackground//Note:pass wrapper instead of this.--SJS
+        //                (
+        //                    arguments.Item1,
+        //                    arguments.Item2,
+        //                    worker,
+        //                    ea,
+        //                    ref manifestList,//List<ImageFile>
+        //                    ref errorMessage
+        //                );
+        //            ea.Result = manifestList;
+        //            return true;
+        //        }
+        //    );
+        //}
+
+        ///// <summary>
+        ///// Handle ProgressChanged event for ConfirmManifests
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void backgroundWorkerConfirmManifests_ProgressChanged(Object sender, ProgressChangedEventArgs e)
+        //{
+        //    ViewModel.BackgroundWorker_ProgressChanged("Listing confirmed manifests", e.UserState, e.ProgressPercentage);
+        //}
+
+        ///// <summary>
+        ///// Handle RunWorkerCompleted event for ConfirmManifests
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void backgroundWorkerConfirmManifests_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    ViewModel.BackgroundWorker_RunWorkerCompleted
+        //    (
+        //        "Confirmed manifests listed.",
+        //        sender as BackgroundWorker,
+        //        e,
+        //        null,
+        //        null,
+        //        () =>
+        //        {
+        //            //Confirmed manifests
+        //            confirmedManifestBindingSource.DataSource = (List<PackageManifest>)e.Result;
+
+        //            if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
+        //            {
+        //                //tabControl.SelectTab(tabPageConfirm);
+        //            }
+        //        }
+        //    );
+        //}
         #endregion ConfirmDocuments
         
         #region AvailableDocuments
         //TODO:Background Workers AvailableDocuments
+        ///// <summary>
+        ///// Handle DoWork event for AvailableManifests
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void backgroundWorkerAvailableManifests_DoWork(Object sender, DoWorkEventArgs e)
+        //{
+        //    ViewModel.BackgroundWorker_DoWork
+        //    (
+        //        sender as BackgroundWorker,
+        //        e,
+        //        (
+        //            BackgroundWorker worker,
+        //            DoWorkEventArgs ea,
+        //            ref String errorMessage
+        //        ) =>
+        //        {
+        //            Boolean returnValue = default(Boolean);
+        //            List<PackageManifest> manifestList = default(List<PackageManifest>);
+
+        //            // Get Tuple object passed from RunWorkerAsync() method
+        //            Tuple<String /*operatorId*/> arguments =
+        //                e.Argument as Tuple<String /*operatorId*/>;
+
+        //            //run process
+        //            returnValue =
+        //                DSClientModelController<DSClientModel>.AvailableManifestsInBackground//Note:pass wrapper instead of this.--SJS
+        //                (
+        //                    arguments.Item1,
+        //                    worker,
+        //                    ea,
+        //                    ref manifestList,//List<ImageFile>
+        //                    ref errorMessage
+        //                );
+        //            ea.Result = manifestList;
+        //            return true;
+        //        }
+        //    );
+        //}
+
+        ///// <summary>
+        ///// Handle ProgressChanged event for AvailableManifests
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void backgroundWorkerAvailableManifests_ProgressChanged(Object sender, ProgressChangedEventArgs e)
+        //{
+        //    ViewModel.BackgroundWorker_ProgressChanged("Listing available manifests", e.UserState, e.ProgressPercentage);
+        //}
+
+        ///// <summary>
+        ///// Handle RunWorkerCompleted event for AvailableManifests
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void backgroundWorkerAvailableManifests_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    ViewModel.BackgroundWorker_RunWorkerCompleted
+        //    (
+        //        "Available manifests listed.",
+        //        sender as BackgroundWorker,
+        //        e,
+        //        null,
+        //        null,
+        //        () =>
+        //        {
+        //            //Available manifests
+        //            receivableManifestBindingSource.DataSource = (List<PackageManifest>)e.Result;
+
+        //            if (DSClientModelController<DSClientModel>.Model.AutoNavigateTabs)
+        //            {
+        //                tabControl.SelectTab(tabPageReceive);
+        //            }
+        //        }
+        //    );
+        //}
         #endregion AvailableDocuments
 
         #region Send
