@@ -1174,7 +1174,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DocumentScanner"
         "ProductCode" = "8:{262F7C6B-B43A-4CE5-9DFF-93B77AB95CE3}"
-        "PackageCode" = "8:{F8DD4430-2B0C-4A1A-B64A-8AC2DF93005A}"
+        "PackageCode" = "8:{8187C324-EBDE-457C-BC43-96928BD918F6}"
         "UpgradeCode" = "8:{1BD263C5-378F-4F53-905D-145D58DB0294}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
