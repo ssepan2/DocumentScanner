@@ -33,7 +33,7 @@ using Ssepan.Application.WinForms;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.12")]
+[assembly: AssemblyVersion("0.13")]
 
 
 #region " Helper class to get information for the About form. "

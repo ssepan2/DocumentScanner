@@ -560,7 +560,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DocumentScannerServiceCommon, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:DocumentScannerServiceCommon, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_05B7A4FC491C77A75C027EF6939BBDBB"
@@ -591,7 +591,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DocumentScannerCommon, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:DocumentScannerCommon, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1BF8F5A81C1A425F64AD3D86929BC1AF"
@@ -622,7 +622,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TransferServiceClient, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:TransferServiceClient, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6440EF0056B58CF909985B5DEF19AEE6"
@@ -684,7 +684,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ManifestServiceClient, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ManifestServiceClient, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7015C1EAACE666C32C37BE89FC150E9F"
@@ -839,7 +839,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DocumentScannerLibrary, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:DocumentScannerLibrary, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_AD4E4A604EA22B4077E285EBB16F6129"
@@ -994,7 +994,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ManifestClientBusiness, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ManifestClientBusiness, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_EA4B6DF05E51F154EE51336780428B0A"
@@ -1025,7 +1025,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TransferClientBusiness, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:TransferClientBusiness, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F76A0375904394DCA225AA667270E899"
@@ -1174,7 +1174,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DocumentScanner"
         "ProductCode" = "8:{262F7C6B-B43A-4CE5-9DFF-93B77AB95CE3}"
-        "PackageCode" = "8:{8187C324-EBDE-457C-BC43-96928BD918F6}"
+        "PackageCode" = "8:{65745A1F-4D12-42F0-8194-4F227679AAE4}"
         "UpgradeCode" = "8:{1BD263C5-378F-4F53-905D-145D58DB0294}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

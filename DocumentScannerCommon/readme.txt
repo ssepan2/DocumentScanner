@@ -72,6 +72,11 @@ Enhancements:
 ~TODO:implement Cancel in Receive
 ~TODO:consolidate delete wait time settings name, location
 
+0.13:
+~Reverted project(s) to Visual Studio 2010, including solution file instead of Visual Studio 2019. Reasons: VS2010 just worked, whereas VS2019 is bloated/slow; Setup projects still worked; WCF still worked.
+~Reverted projects(s) to .Net Framework 4.0 instead of v4.8. Reasons: compatibility, see above.
+~TODO: Updated Ssepan.* to v2.8, reverted to .Net Framework 4.0. Reasons: compatibility, see above.
+
 0.12:
 ~Updated Ssepan.* to 2.7
 ~update to Framework 4.8
