@@ -118,12 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="menuFile.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
   <data name="menuFileNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -253,11 +247,11 @@
   <data name="menuFileExit.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="menuEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
   </data>
-  <data name="menuEdit.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
+  <data name="menuFile.Text" xml:space="preserve">
+    <value>&amp;File</value>
   </data>
   <data name="menuEditCopyToClipboard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -309,6 +303,18 @@
   <data name="menuEditProperties.Text" xml:space="preserve">
     <value>P&amp;roperties...</value>
   </data>
+  <data name="menuEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="menuEdit.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="menuHelpAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="menuHelpAbout.Text" xml:space="preserve">
+    <value>&amp;About DocumentScanner ...</value>
+  </data>
   <data name="menuHelp.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
   </data>
@@ -317,12 +323,6 @@
   </data>
   <data name="menuHelp.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
-  </data>
-  <data name="menuHelpAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
-  </data>
-  <data name="menuHelpAbout.Text" xml:space="preserve">
-    <value>&amp;About DocumentScanner ...</value>
   </data>
   <data name="toolStripSeparator.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -366,15 +366,6 @@
   <metadata name="menuDocuments.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 54</value>
   </metadata>
-  <data name="menuDocuments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 198</value>
-  </data>
-  <data name="&gt;&gt;menuDocuments.Name" xml:space="preserve">
-    <value>menuDocuments</value>
-  </data>
-  <data name="&gt;&gt;menuDocuments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="menuDocumentsPrint.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -504,6 +495,15 @@
   <data name="menuDocumentsSplitPackageBelow.Text" xml:space="preserve">
     <value>Split Package Below</value>
   </data>
+  <data name="menuDocuments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 198</value>
+  </data>
+  <data name="&gt;&gt;menuDocuments.Name" xml:space="preserve">
+    <value>menuDocuments</value>
+  </data>
+  <data name="&gt;&gt;menuDocuments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="queuedBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>190, 165</value>
   </metadata>
@@ -516,15 +516,6 @@
   <metadata name="menuFailed.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>258, 91</value>
   </metadata>
-  <data name="menuFailed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 26</value>
-  </data>
-  <data name="&gt;&gt;menuFailed.Name" xml:space="preserve">
-    <value>menuFailed</value>
-  </data>
-  <data name="&gt;&gt;menuFailed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="menuFailedUnpackage.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -537,21 +528,21 @@
   <data name="menuFailedUnpackage.Text" xml:space="preserve">
     <value>&amp;Unpackage</value>
   </data>
+  <data name="menuFailed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 26</value>
+  </data>
+  <data name="&gt;&gt;menuFailed.Name" xml:space="preserve">
+    <value>menuFailed</value>
+  </data>
+  <data name="&gt;&gt;menuFailed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="confirmedManifestBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="menuConfirmation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>218, 239</value>
   </metadata>
-  <data name="menuConfirmation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 26</value>
-  </data>
-  <data name="&gt;&gt;menuConfirmation.Name" xml:space="preserve">
-    <value>menuConfirmation</value>
-  </data>
-  <data name="&gt;&gt;menuConfirmation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="menuConfirmationListManifestDocumentConfirmations.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -567,6 +558,15 @@
   <data name="menuConfirmationListManifestDocumentConfirmations.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="menuConfirmation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 26</value>
+  </data>
+  <data name="&gt;&gt;menuConfirmation.Name" xml:space="preserve">
+    <value>menuConfirmation</value>
+  </data>
+  <data name="&gt;&gt;menuConfirmation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="confirmedDocumentBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 276</value>
   </metadata>
@@ -576,15 +576,6 @@
   <metadata name="menuReceive.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>391, 313</value>
   </metadata>
-  <data name="menuReceive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 54</value>
-  </data>
-  <data name="&gt;&gt;menuReceive.Name" xml:space="preserve">
-    <value>menuReceive</value>
-  </data>
-  <data name="&gt;&gt;menuReceive.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="menuReceiveListManifestDocuments.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -614,6 +605,15 @@
   </data>
   <data name="menuReceiveManifest.Text" xml:space="preserve">
     <value>&amp;Receive</value>
+  </data>
+  <data name="menuReceive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 54</value>
+  </data>
+  <data name="&gt;&gt;menuReceive.Name" xml:space="preserve">
+    <value>menuReceive</value>
+  </data>
+  <data name="&gt;&gt;menuReceive.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="receivableDocumentBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>274, 394</value>
@@ -648,30 +648,6 @@
   <metadata name="toolbar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>566, 91</value>
   </metadata>
-  <data name="toolbar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="toolbar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 25</value>
-  </data>
-  <data name="toolbar.TabIndex" type="System.Int32, mscorlib">
-    <value>112</value>
-  </data>
-  <data name="toolbar.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolbar.Name" xml:space="preserve">
-    <value>toolbar</value>
-  </data>
-  <data name="&gt;&gt;toolbar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolbar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolbar.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="buttonFileNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -828,33 +804,33 @@
   <data name="buttonEditProperties.Text" xml:space="preserve">
     <value>P&amp;roperties...</value>
   </data>
+  <data name="toolbar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="toolbar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>624, 25</value>
+  </data>
+  <data name="toolbar.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="toolbar.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolbar.Name" xml:space="preserve">
+    <value>toolbar</value>
+  </data>
+  <data name="&gt;&gt;toolbar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolbar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolbar.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="statusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>489, 17</value>
   </metadata>
-  <data name="statusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 420</value>
-  </data>
-  <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 22</value>
-  </data>
-  <data name="statusBar.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="statusBar.Text" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;statusBar.Name" xml:space="preserve">
-    <value>statusBar</value>
-  </data>
-  <data name="&gt;&gt;statusBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusBar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusBar.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="StatusBarActionIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -929,6 +905,30 @@
   <data name="StatusBarNetworkIndicator.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="statusBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 420</value>
+  </data>
+  <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>624, 22</value>
+  </data>
+  <data name="statusBar.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="statusBar.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Name" xml:space="preserve">
+    <value>statusBar</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusBar.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <metadata name="backgroundWorkerPackage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>187, 128</value>
   </metadata>
@@ -964,126 +964,6 @@
   </metadata>
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.Name" xml:space="preserve">
-    <value>tabPageScan</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPageSend.Name" xml:space="preserve">
-    <value>tabPageSend</value>
-  </data>
-  <data name="&gt;&gt;tabPageSend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageSend.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageSend.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabPageReview.Name" xml:space="preserve">
-    <value>tabPageReview</value>
-  </data>
-  <data name="&gt;&gt;tabPageReview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageReview.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageReview.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPageConfirm.Name" xml:space="preserve">
-    <value>tabPageConfirm</value>
-  </data>
-  <data name="&gt;&gt;tabPageConfirm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageConfirm.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageConfirm.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tabPageReceive.Name" xml:space="preserve">
-    <value>tabPageReceive</value>
-  </data>
-  <data name="&gt;&gt;tabPageReceive.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageReceive.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageReceive.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 52</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 365</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;splitScan.Name" xml:space="preserve">
-    <value>splitScan</value>
-  </data>
-  <data name="&gt;&gt;splitScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitScan.Parent" xml:space="preserve">
-    <value>tabPageScan</value>
-  </data>
-  <data name="&gt;&gt;splitScan.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageScan.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 339</value>
-  </data>
-  <data name="tabPageScan.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPageScan.Text" xml:space="preserve">
-    <value>Scan</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.Name" xml:space="preserve">
-    <value>tabPageScan</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageScan.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="splitScan.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1579,44 +1459,32 @@
   <data name="&gt;&gt;splitScan.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitSend.Name" xml:space="preserve">
-    <value>splitSend</value>
-  </data>
-  <data name="&gt;&gt;splitSend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitSend.Parent" xml:space="preserve">
-    <value>tabPageSend</value>
-  </data>
-  <data name="&gt;&gt;splitSend.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageSend.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageScan.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageSend.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageScan.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageSend.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 339</value>
   </data>
-  <data name="tabPageSend.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="tabPageScan.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="tabPageSend.Text" xml:space="preserve">
-    <value>Send</value>
+  <data name="tabPageScan.Text" xml:space="preserve">
+    <value>Scan</value>
   </data>
-  <data name="&gt;&gt;tabPageSend.Name" xml:space="preserve">
-    <value>tabPageSend</value>
+  <data name="&gt;&gt;tabPageScan.Name" xml:space="preserve">
+    <value>tabPageScan</value>
   </data>
-  <data name="&gt;&gt;tabPageSend.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageScan.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSend.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageScan.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageSend.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabPageScan.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="splitSend.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1962,44 +1830,32 @@
   <data name="&gt;&gt;splitSend.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitReview.Name" xml:space="preserve">
-    <value>splitReview</value>
-  </data>
-  <data name="&gt;&gt;splitReview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitReview.Parent" xml:space="preserve">
-    <value>tabPageReview</value>
-  </data>
-  <data name="&gt;&gt;splitReview.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageReview.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageSend.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageReview.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageSend.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageReview.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageSend.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 339</value>
   </data>
-  <data name="tabPageReview.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="tabPageSend.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="tabPageReview.Text" xml:space="preserve">
-    <value>Review</value>
+  <data name="tabPageSend.Text" xml:space="preserve">
+    <value>Send</value>
   </data>
-  <data name="&gt;&gt;tabPageReview.Name" xml:space="preserve">
-    <value>tabPageReview</value>
+  <data name="&gt;&gt;tabPageSend.Name" xml:space="preserve">
+    <value>tabPageSend</value>
   </data>
-  <data name="&gt;&gt;tabPageReview.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSend.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageReview.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSend.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageReview.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;tabPageSend.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="splitReview.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2578,44 +2434,32 @@
   <data name="&gt;&gt;splitReview.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitConfirm.Name" xml:space="preserve">
-    <value>splitConfirm</value>
-  </data>
-  <data name="&gt;&gt;splitConfirm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitConfirm.Parent" xml:space="preserve">
-    <value>tabPageConfirm</value>
-  </data>
-  <data name="&gt;&gt;splitConfirm.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageConfirm.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageReview.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageConfirm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageReview.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageConfirm.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageReview.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 339</value>
   </data>
-  <data name="tabPageConfirm.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="tabPageReview.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="tabPageConfirm.Text" xml:space="preserve">
-    <value>Confirm</value>
+  <data name="tabPageReview.Text" xml:space="preserve">
+    <value>Review</value>
   </data>
-  <data name="&gt;&gt;tabPageConfirm.Name" xml:space="preserve">
-    <value>tabPageConfirm</value>
+  <data name="&gt;&gt;tabPageReview.Name" xml:space="preserve">
+    <value>tabPageReview</value>
   </data>
-  <data name="&gt;&gt;tabPageConfirm.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageReview.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageConfirm.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageReview.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageConfirm.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;tabPageReview.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="splitConfirm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3287,44 +3131,32 @@
   <data name="&gt;&gt;splitConfirm.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitReceive.Name" xml:space="preserve">
-    <value>splitReceive</value>
-  </data>
-  <data name="&gt;&gt;splitReceive.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitReceive.Parent" xml:space="preserve">
-    <value>tabPageReceive</value>
-  </data>
-  <data name="&gt;&gt;splitReceive.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageReceive.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageConfirm.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageReceive.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageConfirm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageReceive.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageConfirm.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 339</value>
   </data>
-  <data name="tabPageReceive.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="tabPageConfirm.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="tabPageReceive.Text" xml:space="preserve">
-    <value>Receive</value>
+  <data name="tabPageConfirm.Text" xml:space="preserve">
+    <value>Confirm</value>
   </data>
-  <data name="&gt;&gt;tabPageReceive.Name" xml:space="preserve">
-    <value>tabPageReceive</value>
+  <data name="&gt;&gt;tabPageConfirm.Name" xml:space="preserve">
+    <value>tabPageConfirm</value>
   </data>
-  <data name="&gt;&gt;tabPageReceive.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageConfirm.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageReceive.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageConfirm.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageReceive.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;tabPageConfirm.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="splitReceive.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3941,6 +3773,54 @@
   </data>
   <data name="&gt;&gt;splitReceive.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tabPageReceive.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageReceive.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageReceive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>616, 339</value>
+  </data>
+  <data name="tabPageReceive.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPageReceive.Text" xml:space="preserve">
+    <value>Receive</value>
+  </data>
+  <data name="&gt;&gt;tabPageReceive.Name" xml:space="preserve">
+    <value>tabPageReceive</value>
+  </data>
+  <data name="&gt;&gt;tabPageReceive.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageReceive.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageReceive.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 52</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>624, 365</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
